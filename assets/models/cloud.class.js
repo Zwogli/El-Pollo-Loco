@@ -1,11 +1,18 @@
-class Cloud extends MovableObject{
-y = 30;
-width = 400;
-height = 200;
+class Cloud extends MovableObject {
+  x = 0;
+  y = 30;
+  width = 400;
+  height = 200;
 
-  constructor(img, x,){
+  constructor(img, x) {
     super().loadImage(img);
-    this.x = x
-    // this.x = this.x + Math.random() * 500;
+    this.x = x;
+    this.animate();
+  }
+
+  animate() {
+    setInterval(() => {
+      this.x += .1;
+    }, 1000/60);
   }
 }
