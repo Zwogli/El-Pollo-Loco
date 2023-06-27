@@ -4,8 +4,8 @@ class World {
   character = new Character(); //Erstellt aus der Schablone ein Objekt
   enemies = [new Chicken(), new Chicken(), new Chicken(), new BabyChicken(), new BabyChicken(), new BabyChicken(),];
   clouds = [
-    new Cloud('./assets/img/5_background/layers/4_clouds/1.png', 100),
-    new Cloud('./assets/img/5_background/layers/4_clouds/2.png', 500),
+    new Cloud('assets/img/5_background/layers/4_clouds/full.png', -1050),
+    // new Cloud('assets/img/5_background/layers/4_clouds/full.png', 0),
   ];
   backgroundLayers = [
     new BackgroundLayer('./assets/img/5_background/layers/air.png', 0),
