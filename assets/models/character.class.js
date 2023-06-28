@@ -12,6 +12,7 @@ class Character extends MovableObject{
   y = 150;
   width = 150;
   height = 280;
+  world;
 
   constructor(){
     super().loadImage('./assets/img/2_character_pepe/2_walk/W-21.png');

@@ -1,5 +1,6 @@
 class World {
   canvas;
+  keyboard;
   ctx; //context
   character = new Character(); //Erstellt aus der Schablone ein Objekt
   enemies = [new Chicken(), new Chicken(), new Chicken(), new BabyChicken(), new BabyChicken(), new BabyChicken(),];
@@ -18,11 +19,18 @@ class World {
     new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/2.png', canvas.width),
     new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width),
   ]
+  keyboard = new Keyboard;
 
-  constructor(canvas){
+  constructor(canvas, keyboard){
     this.canvas = canvas;
+    this.keyboard = keyboard;
     this.ctx = canvas.getContext("2d");
     this.draw();
+    this.setWorld();
+  }
+
+  setWorld(){
+    this.character.world = this;  //übergibt die world variablen an den Character
   }
 
   draw(){
