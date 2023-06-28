@@ -51,10 +51,13 @@ class Character extends MovableObject {
   keyboardInputs(self){
     if (self.world.keyboard.RIGHT) {
       self.x += self.speed;
+      self.otherDirection = false;
     }
     if (self.world.keyboard.LEFT) {
       self.x -= self.speed;
+      self.otherDirection = true;
     }
+    self.world.camera_x = -self.x // invert camera motion
   }
 
   jump() {}
