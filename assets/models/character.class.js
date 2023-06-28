@@ -49,11 +49,11 @@ class Character extends MovableObject {
   }
 
   keyboardInputs(self){
-    if (self.world.keyboard.RIGHT) {
+    if (self.world.keyboard.RIGHT && self.world.level.levelArea_end >= self.x) {
       self.x += self.speed;
       self.otherDirection = false;
     }
-    if (self.world.keyboard.LEFT) {
+    if (self.world.keyboard.LEFT && self.world.level.levelArea_start <= self.x) {
       self.x -= self.speed;
       self.otherDirection = true;
     }

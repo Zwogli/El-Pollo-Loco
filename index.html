@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El-Pollo-Loco</title>
-<!-- Style -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El-Pollo-Loco</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-<!-- models -->
-  <script src="assets/models/keyboard.class.js"></script>
-  <script src="assets/models/movable-object.class.js"></script>
-  <script src="assets/models/backgroundLayer.class.js"></script>
-  <script src="assets/models/cloud.class.js"></script>
-  <script src="assets/models/character.class.js"></script>
-  <script src="assets/models/chicken.class.js"></script>
-  <script src="assets/models/babyChicken.class.js"></script>
-<!-- JavaScript -->
-  <script src="assets/models/world.class.js"></script>
+    <!-- models -->
+    <script src="assets/models/keyboard.class.js"></script>
+    <script src="assets/models/level.class.js"></script>
+    <script src="assets/models/movable-object.class.js"></script>
+    <script src="assets/models/backgroundLayer.class.js"></script>
+    <script src="assets/models/cloud.class.js"></script>
+    <script src="assets/models/character.class.js"></script>
+    <script src="assets/models/chicken.class.js"></script>
+    <script src="assets/models/babyChicken.class.js"></script>
+    <script src="assets/models/world.class.js"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/game.js"></script>
+    <script src="assets/levels/level.js"></script>
+    <script src="assets/js/eventListener.js"></script>
+  </head>
 
-  <script src="assets/js/game.js"></script>
-  <script src="assets/js/eventListener.js"></script>r
+  <body onload="init()">
 
-</head>
+    <h1>El pollo loco</h1>
 
-<body onload="init()">
+    <canvas id="canvas" width="720" height="480"></canvas>
 
-  <h1>El pollo loco</h1>
-
-  <canvas id="canvas" width="720" height="480"></canvas>
-  
-</body>
+  </body>
 </html>

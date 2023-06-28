@@ -1,45 +1,27 @@
 class World {
   canvas;
-  keyboard;
   ctx; //context
+  keyboard;
+  level;
   character = new Character(); //Erstellt aus der Schablone ein Objekt
-  enemies = [new Chicken(), new Chicken(), new Chicken(), new BabyChicken(), new BabyChicken(), new BabyChicken(),];
-  clouds = [
-    new Cloud('assets/img/5_background/layers/4_clouds/full.png', -1050),
-    // new Cloud('assets/img/5_background/layers/4_clouds/full.png', 0),
-  ];
-  backgroundLayers = [
-    new BackgroundLayer('./assets/img/5_background/layers/air.png', -canvas.width * 2),
-    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', -canvas.width * 2),
-    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/1.png', -canvas.width * 2),
-    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', -canvas.width * 2),
-    new BackgroundLayer('./assets/img/5_background/layers/air.png', -canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', -canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/2.png', -canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', -canvas.width),
-
-    new BackgroundLayer('./assets/img/5_background/layers/air.png', 0),
-    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', 0),
-    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/1.png', 0),
-    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', 0),
-    new BackgroundLayer('./assets/img/5_background/layers/air.png', canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/2.png', canvas.width),
-    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width),
-  ]
+  // enemies = level1.enemies;
+  // clouds = level1.clouds;
+  // backgroundLayers = level1.backgroundLayers;
   keyboard = new Keyboard;
   camera_x;
 
   constructor(canvas, keyboard){
     this.canvas = canvas;
-    this.keyboard = keyboard;
     this.ctx = canvas.getContext("2d");
+    this.keyboard = keyboard;
+    this.level = initLevel(0);
     this.draw();
     this.setWorld();
   }
 
   setWorld(){
     this.character.world = this;  //übergibt die world variablen an den Character
+    this.level.world = this;
   }
 
   draw(){
@@ -47,9 +29,9 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
 
-    this.addArrayToWorld(this.backgroundLayers);
-    this.addArrayToWorld(this.clouds);
-    this.addArrayToWorld(this.enemies);
+    this.addArrayToWorld(this.level.backgroundLayers);
+    this.addArrayToWorld(this.level.clouds);
+    this.addArrayToWorld(this.level.enemies);
 
     this.addToWorld(this.character);
 
