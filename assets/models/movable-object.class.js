@@ -7,6 +7,38 @@ class MovableObject {
   imgCache = {};
   speed = 0.15;
   otherDirection = false;
+  speedY = 0;
+  acceleration = 1.5; // dt.: Beschleunigung
+  start_positionY;
+
+  draw(ctx){
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
+
+  drawHitBox(ctx){
+    ctx.beginPath();
+    ctx.lineWidth = '5';
+    ctx.strokeStyle = 'blue';
+    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.stroke();
+  }
+
+ applyGravity(){
+  setInterval(() => {
+    if(this.isAboveGround() || this.speedY > 0){
+      this.y -= this.speedY;
+      this.speedY -= this.acceleration;
+    }
+  }, 1000 / 25);
+ }
+
+isAboveGround(){
+  return this.y < this.start_positionY;
+}
+
+jump(jumpEnergy) {
+  this.speedY = jumpEnergy;
+}
 
   /**Load picture.
    *
@@ -44,14 +76,24 @@ class MovableObject {
   }
 
   moveRight() {
-    setInterval(() => {
-      this.x += this.speed;
-    }, 1000 / 60);
+    this.x += this.speed;
   }
 
   moveLeft() {
-    setInterval(() => {
-      this.x -= this.speed;
-    }, 1000 / 60);
+    this.x -= this.speed;
+  }
+
+  movementLoop(self){
+    if(!self.otherDirection){
+      self.moveLeft();
+      if(self.x < self.postion_startX - 200){
+        self.otherDirection = true;
+      }
+    }else if (self.otherDirection) {
+      self.moveRight();
+      if (self.x > self.postion_startX) {
+        self.otherDirection = false;
+      }
+    }
   }
 }

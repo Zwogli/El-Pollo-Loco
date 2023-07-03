@@ -15,12 +15,12 @@ function createLevel1Area(){
 
 function createLevel1Enemies(){
 return [
-  new Chicken(), 
-  new Chicken(),
-  new Chicken(), 
-  new BabyChicken(), 
-  new BabyChicken(), 
-  new BabyChicken(),
+  new Chicken(550), 
+  new Chicken(850),
+  new Chicken(1200), 
+  new BabyChicken(600), 
+  new BabyChicken(750), 
+  new BabyChicken(1100),
   new Endboss(),
 ];
 }

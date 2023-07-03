@@ -9,23 +9,38 @@ class BabyChicken extends MovableObject{
   y = 380;
   width = 40;
   height = 40;
-  startPosition_x;
+  postion_startX;
+  start_positionY = 380;
 
-  constructor(){
+  constructor(postion_startX){
     super().loadImage('./assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
-    this.x = this.x + Math.random() * 500;
-    const startPosition = this.x;
-    this.startPosition_x = startPosition;
-    this.speed = .2 + Math.random() * .3;
     this.loadImages(this.IMAGES_WALKING);
-    this.animate();
+    this.x = postion_startX;
+    this.postion_startX = postion_startX;
+    this.speed = .2 + Math.random() * .3;
+    this.applyGravity();
+
+    let self = this;
+    let jumpIntervall = setInterval(this.enemieJumpAction, 5000, self);
+    let actionIntervall = setInterval(this.enemieAction, 1000 / 60, self);
+    let animationIntervall = setInterval(this.enemieImageAnimation, 100, self);
   }
 
-  animate(){
-    this. moveLeft();
-    
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALKING);
-    }, 100);
+  enemieJumpAction(self){
+    if (!self.isAboveGround()) {
+      self.jump(10);
+    }
+  }
+
+  /**It´s a setIntervall function for enemie action.
+   * 
+   * @param {object} self - self = this
+   */
+  enemieAction(self){
+    self.movementLoop(self);
+  }
+
+  enemieImageAnimation(self){
+    self.playAnimation(self.IMAGES_WALKING);
   }
 }

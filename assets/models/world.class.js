@@ -55,7 +55,8 @@ class World {
       object.x = object.x * -1;
     }
 
-    this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+    object.draw(this.ctx);
+    object.drawHitBox(this.ctx);
 
     if(object.otherDirection){
       object.x = object.x * -1;
