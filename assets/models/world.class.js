@@ -2,11 +2,8 @@ class World {
   canvas;
   ctx; //context
   keyboard;
-  level;
+  level; 
   character = new Character(); //Erstellt aus der Schablone ein Objekt
-  // enemies = level1.enemies;
-  // clouds = level1.clouds;
-  // backgroundLayers = level1.backgroundLayers;
   keyboard = new Keyboard;
   camera_x;
 
@@ -14,7 +11,7 @@ class World {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.keyboard = keyboard;
-    this.level = initLevel(0);
+    this.level = initLevel(0); //generate level object
     this.draw();
     this.setWorld();
   }

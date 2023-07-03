@@ -21,6 +21,7 @@ return [
   new BabyChicken(), 
   new BabyChicken(), 
   new BabyChicken(),
+  new Endboss(),
 ];
 }
 

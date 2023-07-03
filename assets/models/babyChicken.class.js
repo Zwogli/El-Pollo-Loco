@@ -25,13 +25,7 @@ class BabyChicken extends MovableObject{
     this. moveLeft();
     
     setInterval(() => {
-      let i = this.currentImg % this.IMAGES_WALKING.length; // % = modulo
-      let path = this.IMAGES_WALKING[i];
-      this.img = this.imgCache[path];
-      this.currentImg++;
-      if(this.currentImg > 5){
-        this.currentImg = 0;
-      }
+      this.playAnimation(this.IMAGES_WALKING);
     }, 100);
   }
 }

@@ -13,51 +13,36 @@ class Character extends MovableObject {
   width = 150;
   height = 280;
   world;
-  speed = 3; //2
+  speed = 10; //3
 
   constructor() {
     super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_WALKING);
-    this.animate();
+
     let self = this; //! In setIntervall wird this. nicht erkannt !
     let keyboardIntervall = setInterval(this.keyboardInputs, 1000 / 60, self); // setIntervall( function, time, argument1)
+    let animationIntervall = setInterval(this.walkingAnimation, 100, self);
   }
 
-  animate() {
-    // setInterval(() => {
-    //   if (this.world.keyboard.RIGHT) {
-    //     this.x += this.speed;
-    //   }
-    //   if (this.world.keyboard.LEFT) {
-    //     this.x -= this.speed;
-    //   }
-    // }, 1000 / 60);
-
-    // setInterval(() => {this.keyboardInputs();}, 1000 / 60);
-
-    setInterval(() => {
-      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        let i = this.currentImg % this.IMAGES_WALKING.length; // % = modulo
-        let path = this.IMAGES_WALKING[i];
-        this.img = this.imgCache[path];
-        this.currentImg++;
-        if (this.currentImg > 5) {
-          this.currentImg = 0;
-        }
-      }
-    }, 100);
+  walkingAnimation(self) {
+    if (self.world.keyboard.RIGHT || self.world.keyboard.LEFT) {
+      self.playAnimation(self.IMAGES_WALKING);
+    }
   }
 
-  keyboardInputs(self){
+  keyboardInputs(self) {
+    if (
+      self.world.keyboard.LEFT &&
+      self.world.level.levelArea_start <= self.x
+    ) {
+      self.x -= self.speed;
+      self.otherDirection = true;
+    }
     if (self.world.keyboard.RIGHT && self.world.level.levelArea_end >= self.x) {
       self.x += self.speed;
       self.otherDirection = false;
     }
-    if (self.world.keyboard.LEFT && self.world.level.levelArea_start <= self.x) {
-      self.x -= self.speed;
-      self.otherDirection = true;
-    }
-    self.world.camera_x = -self.x // invert camera motion
+    self.world.camera_x = -self.x + 200; // invert camera motion and set position
   }
 
   jump() {}
