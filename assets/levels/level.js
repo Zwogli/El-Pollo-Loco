@@ -10,7 +10,7 @@ function initLevel(lvlNumber){
 }
 
 function createLevel1Area(){
-  return [- canvas.width, canvas.width * 3];
+  return [- canvas.width * 1.5, canvas.width * 3];
 }
 
 function createLevel1Enemies(){
@@ -18,9 +18,9 @@ return [
   new Chicken(550), 
   new Chicken(850),
   new Chicken(1200), 
-  new BabyChicken(600), 
-  new BabyChicken(750), 
-  new BabyChicken(1100),
+  new BabyChicken(600, 2500), 
+  new BabyChicken(750, 4000), 
+  new BabyChicken(1100, 3200),
   new Endboss(),
 ];
 }

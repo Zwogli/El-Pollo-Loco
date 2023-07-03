@@ -49,18 +49,26 @@ class World {
 
   addToWorld(object){
     if(object.otherDirection){
-      this.ctx.save(); // saves the entire state of the canvas by pushing the current state onto a stack.
-      this.ctx.translate(object.width, 0); // translate(x, y),
-      this.ctx.scale(-1, 1); // scale(x, y) adds a scaling transformation to the canvas units horizontally and/or vertically.
-      object.x = object.x * -1;
+      this.flipImage(object);
     }
 
     object.draw(this.ctx);
     object.drawHitBox(this.ctx);
 
     if(object.otherDirection){
-      object.x = object.x * -1;
-      this.ctx.restore();
+      this.flipImageBack(object);
     }
+  }
+
+  flipImage(object){
+    this.ctx.save(); // saves the entire state of the canvas by pushing the current state onto a stack.
+    this.ctx.translate(object.width, 0); // translate(x, y),
+    this.ctx.scale(-1, 1); // scale(x, y) adds a scaling transformation to the canvas units horizontally and/or vertically.
+    object.x = object.x * -1;
+  }
+
+  flipImageBack(object){
+    object.x = object.x * -1;
+    this.ctx.restore();
   }
 }

@@ -23,6 +23,10 @@ class Character extends MovableObject {
   y = 150;
   width = 150;
   height = 280;
+  offset_x = 25;
+  offset_y = 110;
+  offset_width = -50;
+  offset_height = -120;
   world;
   speed = 10; //3
   start_positionY = 150;

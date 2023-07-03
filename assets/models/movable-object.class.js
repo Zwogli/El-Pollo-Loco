@@ -3,6 +3,10 @@ class MovableObject {
   y = 150;
   width = 150;
   height = 280;
+  offset_x = 0;
+  offset_y = 0;
+  offset_width = 0;
+  offset_height = 0;
   img;
   imgCache = {};
   speed = 0.15;
@@ -16,10 +20,19 @@ class MovableObject {
   }
 
   drawHitBox(ctx){
+    if (this instanceof Character) {
+      this.setHitBoxColor(ctx, 'blue');
+    }
+    if (this instanceof Chicken || this instanceof BabyChicken || this instanceof Endboss) {
+      this.setHitBoxColor(ctx, 'red');
+    }
+  }
+
+  setHitBoxColor(ctx, color){
     ctx.beginPath();
     ctx.lineWidth = '5';
-    ctx.strokeStyle = 'blue';
-    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.strokeStyle = color;
+    ctx.rect(this.x + this.offset_x, this.y + this.offset_y, this.width + this.offset_width, this.height + this.offset_height);
     ctx.stroke();
   }
 

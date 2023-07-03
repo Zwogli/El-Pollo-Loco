@@ -12,7 +12,7 @@ class BabyChicken extends MovableObject{
   postion_startX;
   start_positionY = 380;
 
-  constructor(postion_startX){
+  constructor(postion_startX, timeToJump){
     super().loadImage('./assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
     this.loadImages(this.IMAGES_WALKING);
     this.x = postion_startX;
@@ -21,7 +21,7 @@ class BabyChicken extends MovableObject{
     this.applyGravity();
 
     let self = this;
-    let jumpIntervall = setInterval(this.enemieJumpAction, 5000, self);
+    let jumpIntervall = setInterval(this.enemieJumpAction, timeToJump, self);
     let actionIntervall = setInterval(this.enemieAction, 1000 / 60, self);
     let animationIntervall = setInterval(this.enemieImageAnimation, 100, self);
   }
