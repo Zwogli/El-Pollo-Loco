@@ -13,7 +13,7 @@ class MovableObject {
   otherDirection = false;
   speedY = 0;
   acceleration = 1.5; // dt.: Beschleunigung
-  start_positionY;
+  position_startY;
 
   draw(ctx){
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -46,7 +46,7 @@ class MovableObject {
  }
 
 isAboveGround(){
-  return this.y < this.start_positionY;
+  return this.y < this.position_startY;
 }
 
 jump(jumpEnergy) {

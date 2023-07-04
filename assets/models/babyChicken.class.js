@@ -10,7 +10,7 @@ class BabyChicken extends MovableObject{
   width = 40;
   height = 40;
   postion_startX;
-  start_positionY = 380;
+  position_startY = 380;
 
   constructor(postion_startX, timeToJump){
     super().loadImage('./assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
