@@ -36,6 +36,14 @@ class MovableObject {
     ctx.stroke();
   }
 
+  // character.isColliding(chicken)
+  isColliding(object){
+    return  this.x + this.width > object.x &&
+            this.y + this.height > object.y &&
+            this.x < object.x &&
+            this.y < object.y + object.height
+  }
+
  applyGravity(){
   setInterval(() => {
     if(this.isAboveGround() || this.speedY > 0){

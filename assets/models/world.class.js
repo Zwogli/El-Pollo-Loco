@@ -14,11 +14,22 @@ class World {
     this.level = initLevel(0); //generate level object
     this.draw();
     this.setWorld();
+    let self = this;
+    let collisionEnemy = setInterval(this.checkCollisions, 1000, self);
+    // this.checkCollisions(self);
   }
 
   setWorld(){
     this.character.world = this;  //übergibt die world variablen an den Character
     this.level.world = this;
+  }
+
+  checkCollisions(self){
+      self.level.enemies.forEach(enemy => {
+        if (self.character.isColliding(enemy)) {
+          console.log('treffer')
+        }
+      });
   }
 
   draw(){
