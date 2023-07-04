@@ -17,9 +17,11 @@ function createLevel1Enemies(){
 return [
   new Chicken(550), 
   new Chicken(850),
-  new Chicken(1200), 
+  new Chicken(1200),
+  new BabyChicken(-300, 6000),
+  new BabyChicken(-500, 4000),
+  new BabyChicken(-400, 5000), 
   new BabyChicken(600, 2500), 
-  new BabyChicken(750, 4000), 
   new BabyChicken(1100, 3200),
   new Endboss(),
 ];
