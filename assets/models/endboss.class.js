@@ -8,10 +8,14 @@ class Endboss extends MovableObject{
   y = 120;
   width = 250;
   height = 350;
+  offset_x = 20;
+  offset_y = 60;
+  offset_width = -30;
+  offset_height = -90;
 
   constructor(){
     super().loadImage(this.IMAGES_WALKING[0]);
     this.loadImages(this.IMAGES_WALKING)
-    this.x = canvas.width * 3 + 200; //canvas.width * 3 + 200;
+    this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
   }
 }
