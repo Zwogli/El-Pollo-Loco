@@ -29,6 +29,7 @@ class Character extends MovableObject {
   offset_height = -120;
   world;
   speed = 10; //3
+  isJumping;
   position_startY = 150;
 
   constructor() {
@@ -45,6 +46,9 @@ class Character extends MovableObject {
   imageAnimation(self) {
     if (self.isAboveGround()) {
       self.playAnimation(self.IMAGES_JUMPING);
+    } else if(!self.isAboveGround() && self.isJumping){
+      self.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
+      self.isJumping = false;
     } else if (self.world.keyboard.RIGHT || self.world.keyboard.LEFT) {
       self.playAnimation(self.IMAGES_WALKING);
     }
@@ -61,6 +65,7 @@ class Character extends MovableObject {
     }
     if (self.world.keyboard.UP && !self.isAboveGround()) {
       self.jump(20);
+      self.isJumping = true;
     }
     self.world.camera_x = -self.x + 200; // invert camera motion and set position
   }
