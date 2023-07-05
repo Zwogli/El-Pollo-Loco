@@ -5,6 +5,8 @@ class World {
   level; 
   character = new Character(); //Erstellt aus der Schablone ein Objekt
   statusbarLive = new StatusbarLive();
+  statusbarCoins = new StatusbarCoins();
+  statusbarBottles = new StatusbarBottles();
   keyboard = new Keyboard;
   camera_x;
 
@@ -29,6 +31,7 @@ class World {
       self.level.enemies.forEach(enemy => {
         if (self.character.isColliding(enemy)) {
           self.character.hit();
+          self.statusbarLive.setPercentageLive(self.character.energy)
         }
       });
   }
@@ -46,7 +49,10 @@ class World {
     
     this.ctx.translate(-this.camera_x, 0);
 
+    // HUD
     this.addToWorld(this.statusbarLive);
+    this.addToWorld(this.statusbarCoins);
+    this.addToWorld(this.statusbarBottles);
 
     
     let self = this; // this wird nicht in requestAnimationFrame erkannt, daher wird eine hilfsvariable erzeugt.
