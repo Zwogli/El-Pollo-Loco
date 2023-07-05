@@ -14,6 +14,9 @@ class MovableObject {
   speedY = 0;
   acceleration = 1.5; // dt.: Beschleunigung
   position_startY;
+  energy = 100;
+  lastHit = 0;
+  idle_countdown = 0;
 
   draw(ctx){
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -44,6 +47,31 @@ class MovableObject {
             this.y < object.y + object.height
   }
 
+  hit(){
+    this.energy -= 20;
+    if (this.energy < 0) {
+      this.energy = 0;
+    }else{
+      this.lastHit = new Date().getTime();  //timestamp
+    }
+  }
+
+  isHurt(){
+    let timepassed = new Date().getTime() - this.lastHit; // difference in ms
+    timepassed = timepassed / 1000  // difference ins s
+    return timepassed < 1;  //
+  }
+
+  isDead(){
+    return this.energy == 0;
+  }
+
+  sleepCount(){
+    this.idle_countdown++;
+    let idleCountdown_seconds = this.idle_countdown / 10; // change into seconds
+    return idleCountdown_seconds > 5;
+  }
+
  applyGravity(){
   setInterval(() => {
     if(this.isAboveGround() || this.speedY > 0){
@@ -61,6 +89,9 @@ jump(jumpEnergy) {
   this.speedY = jumpEnergy;
 }
 
+isMoving(){
+  return this.world.keyboard.LEFT && this.world.keyboard.RIGHT && this.world.keyboard.UP && this.world.keyboard.DOWN && this.world.keyboard.SPACE && this.isJumping;
+}
   /**Load picture.
    *
    * @param {Object} path - new Image
@@ -91,10 +122,22 @@ jump(jumpEnergy) {
     let path = images[i];
     this.img = this.imgCache[path];
     this.currentImg++;
-    if (this.currentImg > 5) {
+    if (this.currentImg > images.length) {
       this.currentImg = 0;
     }
   }
+
+  // todo
+  // playSingleAnimation(images){
+  //   let i = this.currentImg % images.length; // % = modulo
+  //   let path = images[i];
+  //   this.img = this.imgCache[path];
+  //   this.currentImg++;
+  //   console.log(this.currentImg)
+  //   if (this.currentImg == images.length - 1) {
+  //     return;
+  //   }
+  // }
 
   moveRight() {
     this.x += this.speed;

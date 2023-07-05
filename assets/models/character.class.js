@@ -1,11 +1,24 @@
 class Character extends MovableObject {
-  IMAGES_WALKING = [
-    "./assets/img/2_character_pepe/2_walk/W-21.png",
-    "./assets/img/2_character_pepe/2_walk/W-22.png",
-    "./assets/img/2_character_pepe/2_walk/W-23.png",
-    "./assets/img/2_character_pepe/2_walk/W-24.png",
-    "./assets/img/2_character_pepe/2_walk/W-25.png",
-    "./assets/img/2_character_pepe/2_walk/W-26.png",
+  IMAGES_DEAD = [
+    "./assets/img/2_character_pepe/5_dead/D-51.png",
+    "./assets/img/2_character_pepe/5_dead/D-52.png",
+    "./assets/img/2_character_pepe/5_dead/D-53.png",
+    "./assets/img/2_character_pepe/5_dead/D-54.png",
+    "./assets/img/2_character_pepe/5_dead/D-55.png",
+    "./assets/img/2_character_pepe/5_dead/D-56.png",
+    "./assets/img/2_character_pepe/5_dead/D-57.png",
+  ];
+  IMAGES_IDLE = [
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-11.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-12.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-13.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-14.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-15.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-16.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-17.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-18.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-19.png",
+    "./assets/img/2_character_pepe/1_idle/long_idle/I-20.png",
   ];
   IMAGES_JUMPING = [
     "./assets/img/2_character_pepe/3_jump/J-31.png",
@@ -18,6 +31,19 @@ class Character extends MovableObject {
     "./assets/img/2_character_pepe/3_jump/J-38.png",
     "./assets/img/2_character_pepe/3_jump/J-39.png",
   ];
+  IMAGES_HURT = [
+    "./assets/img/2_character_pepe/4_hurt/H-41.png",
+    "./assets/img/2_character_pepe/4_hurt/H-42.png",
+    "./assets/img/2_character_pepe/4_hurt/H-43.png",
+  ];
+  IMAGES_WALKING = [
+    "./assets/img/2_character_pepe/2_walk/W-21.png",
+    "./assets/img/2_character_pepe/2_walk/W-22.png",
+    "./assets/img/2_character_pepe/2_walk/W-23.png",
+    "./assets/img/2_character_pepe/2_walk/W-24.png",
+    "./assets/img/2_character_pepe/2_walk/W-25.png",
+    "./assets/img/2_character_pepe/2_walk/W-26.png",
+  ];
   currentImg = 0;
   x = 100;
   y = 150;
@@ -29,13 +55,13 @@ class Character extends MovableObject {
   offset_height = -120;
   world;
   speed = 10; //3
-  isJumping;
+  isJumping = false;
   position_startY = 150;
+  isIdle = false;
 
   constructor() {
     super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
-    this.loadImages(this.IMAGES_WALKING);
-    this.loadImages(this.IMAGES_JUMPING);
+    this.renderImages();
     this.applyGravity();
 
     let self = this; //! In setIntervall wird this. nicht erkannt !
@@ -43,23 +69,54 @@ class Character extends MovableObject {
     let animationIntervall = setInterval(this.imageAnimation, 100, self);
   }
 
+  renderImages(){
+    this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_JUMPING);
+    this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_WALKING);
+  }
+
   imageAnimation(self) {
-    if (self.isAboveGround()) {
+    console.log(!self.isMoving());
+    if (self.isDead()) {
+      self.playAnimation(self.IMAGES_DEAD);
+      self.isIdle = false;
+      self.idle_countdown = 0;
+    }else if (self.isHurt()) {
+      self.playAnimation(self.IMAGES_HURT);
+      self.isIdle = false;
+      self.idle_countdown = 0;
+    }else if (self.isAboveGround()) {
       self.playAnimation(self.IMAGES_JUMPING);
-    } else if(!self.isAboveGround() && self.isJumping){
+    } else if (!self.isAboveGround() && self.isJumping) {
       self.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       self.isJumping = false;
+      self.isIdle = false;
+      self.idle_countdown = 0;
     } else if (self.world.keyboard.RIGHT || self.world.keyboard.LEFT) {
       self.playAnimation(self.IMAGES_WALKING);
+      self.isIdle = false;
+      self.idle_countdown = 0;
+    }else if(!self.isMoving() && !self.isIdle) {
+      self.isIdle = true;
+      self.sleepCount();
     }
+    else if (self.isIdle && self.sleepCount()) {
+        self.playAnimation(self.IMAGES_IDLE);    
+      }
   }
+  
 
   keyboardInputs(self) {
     if (self.world.keyboard.RIGHT && self.world.level.levelArea_end >= self.x) {
       self.moveRight();
       self.otherDirection = false;
     }
-    if (self.world.keyboard.LEFT && self.world.level.levelArea_start <= self.x) {
+    if (
+      self.world.keyboard.LEFT &&
+      self.world.level.levelArea_start <= self.x
+    ) {
       self.moveLeft();
       self.otherDirection = true;
     }

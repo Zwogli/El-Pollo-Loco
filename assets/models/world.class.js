@@ -27,7 +27,7 @@ class World {
   checkCollisions(self){
       self.level.enemies.forEach(enemy => {
         if (self.character.isColliding(enemy)) {
-          console.log('treffer')
+          self.character.hit();
         }
       });
   }
