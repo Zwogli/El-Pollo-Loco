@@ -4,7 +4,6 @@ class BabyChicken extends MovableObject{
     './assets/img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
     './assets/img/3_enemies_chicken/chicken_small/1_walk/3_w.png',
   ];
-  currentImg = 0;
   x = 200;
   y = 380;
   width = 40;

@@ -4,6 +4,7 @@ class World {
   keyboard;
   level; 
   character = new Character(); //Erstellt aus der Schablone ein Objekt
+  statusbarLive = new StatusbarLive();
   keyboard = new Keyboard;
   camera_x;
 
@@ -40,10 +41,12 @@ class World {
     this.addArrayToWorld(this.level.backgroundLayers);
     this.addArrayToWorld(this.level.clouds);
     this.addArrayToWorld(this.level.enemies);
-
+    
     this.addToWorld(this.character);
-
+    
     this.ctx.translate(-this.camera_x, 0);
+
+    this.addToWorld(this.statusbarLive);
 
     
     let self = this; // this wird nicht in requestAnimationFrame erkannt, daher wird eine hilfsvariable erzeugt.

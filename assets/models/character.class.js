@@ -44,7 +44,6 @@ class Character extends MovableObject {
     "./assets/img/2_character_pepe/2_walk/W-25.png",
     "./assets/img/2_character_pepe/2_walk/W-26.png",
   ];
-  currentImg = 0;
   x = 100;
   y = 150;
   width = 150;
@@ -57,7 +56,6 @@ class Character extends MovableObject {
   speed = 10; //3
   isJumping = false;
   position_startY = 150;
-  isIdle = false;
 
   constructor() {
     super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
@@ -78,33 +76,27 @@ class Character extends MovableObject {
   }
 
   imageAnimation(self) {
-    console.log(!self.isMoving());
     if (self.isDead()) {
       self.playAnimation(self.IMAGES_DEAD);
-      self.isIdle = false;
       self.idle_countdown = 0;
     }else if (self.isHurt()) {
       self.playAnimation(self.IMAGES_HURT);
-      self.isIdle = false;
       self.idle_countdown = 0;
     }else if (self.isAboveGround()) {
       self.playAnimation(self.IMAGES_JUMPING);
     } else if (!self.isAboveGround() && self.isJumping) {
       self.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       self.isJumping = false;
-      self.isIdle = false;
       self.idle_countdown = 0;
     } else if (self.world.keyboard.RIGHT || self.world.keyboard.LEFT) {
       self.playAnimation(self.IMAGES_WALKING);
-      self.isIdle = false;
       self.idle_countdown = 0;
-    }else if(!self.isMoving() && !self.isIdle) {
-      self.isIdle = true;
+    }else if(!self.isMoving() ) {
       self.sleepCount();
     }
-    else if (self.isIdle && self.sleepCount()) {
-        self.playAnimation(self.IMAGES_IDLE);    
-      }
+    if (self.sleepCount()) {
+      self.playAnimation(self.IMAGES_IDLE);    
+    }
   }
   
 
