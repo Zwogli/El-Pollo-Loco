@@ -62,6 +62,12 @@ class DrawableObjects {
     ) {
       this.setHitBoxColor(ctx, "red");
     }
+    if (
+      this instanceof Coins ||
+      this instanceof Bottles
+      ) {
+      this.setHitBoxColor(ctx, "green");
+    }
   }
 
   setHitBoxColor(ctx, color) {
