@@ -19,19 +19,20 @@ class MovableObject extends DrawableObjects {
   }
 
   hit() {
-    this.energy -= 20;
-    if (this.energy < 0) {
-      this.energy = 0;
-    } else {
-      this.lastHit = new Date().getTime(); //timestamp
+    if (!this.isHurt()) { // timeout for hit
+      this.energy -= 20;
+      if (this.energy < 0) {
+        this.energy = 0;
+      } else {
+        this.lastHit = new Date().getTime(); //timestamp
+      }
     }
   }
 
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
-    console.log(timepassed < 1)
-    return timepassed < 1; //
+    return timepassed < .5; 
   }
 
   isDead() {
