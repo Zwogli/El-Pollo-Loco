@@ -58,6 +58,7 @@ class World {
 
     this.addArrayToWorld(this.level.backgroundLayers);
     this.addArrayToWorld(this.level.clouds);
+    this.addArrayToWorld(this.level.coins);
     this.addArrayToWorld(this.level.bottles);
     this.addArrayToWorld(this.level.enemies);
     this.addArrayToWorld(this.throwableObjects);
