@@ -3,6 +3,7 @@ function initLevel(lvlNumber){
     return new Level(
       createLevel1Area(),
       createLevel1Enemies(),
+      createLevel1Bottles(),
       createLevel1Clouds(),
       createLevel1BackgroundLayers(),
     )
@@ -27,10 +28,19 @@ return [
 ];
 }
 
+function createLevel1Bottles(){
+  return[
+    new Bottles('./assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png', -600, 350),
+    new Bottles('./assets/img/6_salsa_bottle/salsa_bottle.png', -500, 200),
+    new Bottles('./assets/img/6_salsa_bottle/2_salsa_bottle_on_ground.png', 300, 370),
+    new Bottles('./assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png', canvas.width * 2 + 400, 350),
+    new Bottles('./assets/img/6_salsa_bottle/salsa_bottle.png', canvas.width, 200),
+  ]
+}
+
 function createLevel1Clouds(){
   return [
       new Cloud('assets/img/5_background/layers/4_clouds/full.png', -1050),
-      // new Cloud('assets/img/5_background/layers/4_clouds/full.png', 0),
     ];
 }
 
