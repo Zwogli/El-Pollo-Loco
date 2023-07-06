@@ -2,13 +2,14 @@ class World {
   canvas;
   ctx; //context
   keyboard;
+  keyboard = new Keyboard;
+  camera_x;
   level; 
   character = new Character(); //Erstellt aus der Schablone ein Objekt
   statusbarLive = new StatusbarLive();
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
-  keyboard = new Keyboard;
-  camera_x;
+  throwableObjects = [];
 
   constructor(canvas, keyboard){
     this.canvas = canvas;
@@ -18,13 +19,17 @@ class World {
     this.draw();
     this.setWorld();
     let self = this;
-    let collisionEnemy = setInterval(this.checkCollisions, 1000, self);
-    // this.checkCollisions(self);
+    let collisionEnemy = setInterval(this.worldIntervall, 100, self);
   }
 
   setWorld(){
     this.character.world = this;  //übergibt die world variablen an den Character
     this.level.world = this;
+  }
+
+  worldIntervall(self){
+    self.checkCollisions(self);
+    self.checkThrow(self);
   }
 
   checkCollisions(self){
@@ -36,6 +41,16 @@ class World {
       });
   }
 
+  checkThrow(self){
+    if (self.keyboard.THROW) {
+      let bottle = new ThrowableObject(
+        this.character.x + this.character.offset_width + this.character.width * 0.5, 
+        this.character.y + this.character.offset_height + this.character.height + 0.5
+        );
+      self.throwableObjects.push(bottle);
+    }
+  }
+
   draw(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //clear canvas!
 
@@ -44,7 +59,8 @@ class World {
     this.addArrayToWorld(this.level.backgroundLayers);
     this.addArrayToWorld(this.level.clouds);
     this.addArrayToWorld(this.level.enemies);
-    
+    this.addArrayToWorld(this.throwableObjects);
+
     this.addToWorld(this.character);
     
     this.ctx.translate(-this.camera_x, 0);

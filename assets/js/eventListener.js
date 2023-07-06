@@ -15,7 +15,7 @@ window.addEventListener("keydown", (event) => {
   if(event.keyCode == 32){
     keyboard.SPACE = true;
   }
-  if(event.keyCode == 70){
+  if(event.keyCode == 70){  // F
     keyboard.THROW = true;
   }
 })

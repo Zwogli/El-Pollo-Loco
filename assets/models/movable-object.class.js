@@ -30,6 +30,7 @@ class MovableObject extends DrawableObjects {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
+    console.log(timepassed < 1)
     return timepassed < 1; //
   }
 
@@ -53,7 +54,11 @@ class MovableObject extends DrawableObjects {
   }
 
   isAboveGround() {
-    return this.y < this.position_startY;
+    if (this instanceof ThrowableObject) { // ThrowableObjects should always fall.
+      return true;
+    }else{
+      return this.y < this.position_startY;
+    }
   }
 
   jump(jumpEnergy) {

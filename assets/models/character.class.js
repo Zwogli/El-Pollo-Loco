@@ -84,10 +84,10 @@ class Character extends MovableObject {
       self.idle_countdown = 0;
     }else if (self.isAboveGround()) {
       self.playAnimation(self.IMAGES_JUMPING);
+      self.idle_countdown = 0;
     } else if (!self.isAboveGround() && self.isJumping) {
       self.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       self.isJumping = false;
-      self.idle_countdown = 0;
     } else if (self.world.keyboard.RIGHT || self.world.keyboard.LEFT) {
       self.playAnimation(self.IMAGES_WALKING);
       self.idle_countdown = 0;
