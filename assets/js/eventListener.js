@@ -15,7 +15,9 @@ window.addEventListener("keydown", (event) => {
   if(event.keyCode == 32){
     keyboard.SPACE = true;
   }
-  // console.log(event.keyCode, keyboard);
+  if(event.keyCode == 70){
+    keyboard.THROW = true;
+  }
 })
 
 /**Set keyboard variable on keyup false*/
@@ -35,5 +37,7 @@ window.addEventListener("keyup", (event) => {
   if(event.keyCode == 32){
     keyboard.SPACE = false;
   }
-  // console.log(event.keyCode, keyboard);
+  if(event.keyCode == 70){
+    keyboard.THROW = false;
+  }
 })
