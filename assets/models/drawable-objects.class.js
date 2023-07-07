@@ -11,6 +11,9 @@ class DrawableObjects {
   imgCache = {};
   currentImg = 0;
   percentage;
+  lastCollect = 0;
+  setCoin = 0;
+  setBottle = 0;
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -62,10 +65,7 @@ class DrawableObjects {
     ) {
       this.setHitBoxColor(ctx, "red");
     }
-    if (
-      this instanceof Coins ||
-      this instanceof Bottles
-      ) {
+    if (this instanceof Coins || this instanceof Bottles) {
       this.setHitBoxColor(ctx, "green");
     }
   }
@@ -83,18 +83,51 @@ class DrawableObjects {
     ctx.stroke();
   }
 
-  resolveImageIndex(){
+  collect(collectable) {
+    if (!this.isCollect()) {
+      if (collectable instanceof Coins) {
+        this.countCoin();
+      }
+      if (collectable instanceof Bottles) {
+        this.countBottle();
+      } else {
+        this.lastCollect = new Date().getTime();
+      }
+    }
+  }
+
+  countCoin() {
+    this.setCoin += 20;
+    if (this.setCoin > 100) {
+      this.setCoin = 100;
+    }
+  }
+
+  countBottle() {
+    this.setBottle += 20;
+    if (this.setBottle > 100) {
+      this.setBottle = 100;
+    }
+  }
+
+  isCollect() {
+    let timepassed = new Date().getTime() - this.lastCollect; // difference in ms
+    timepassed = timepassed / 1000; // difference ins s
+    return timepassed < 1;
+  }
+
+  resolveImageIndex() {
     if (this.percentage == 100) {
       return 5;
-    }else if (this.percentage >= 80) {
+    } else if (this.percentage >= 80) {
       return 4;
-    }else if (this.percentage >= 60) {
+    } else if (this.percentage >= 60) {
       return 3;
-    }else if (this.percentage >= 40) {
+    } else if (this.percentage >= 40) {
       return 2;
-    }else if (this.percentage >= 20) {
+    } else if (this.percentage >= 20) {
       return 1;
-    }else {
+    } else {
       return 0;
     }
   }
