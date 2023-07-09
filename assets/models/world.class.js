@@ -51,7 +51,7 @@ class World {
     self.level.coins.forEach((coin) => {
       if (self.character.isColliding(coin)) {
         self.statusbarCoins.collect(coin);
-        self.statusbarCoins.setPercentageCoins(self.statusbarCoins.setCoin);
+        // self.statusbarCoins.setPercentageCoins(self.statusbarCoins.setCoin);
         self.level.coins.splice(this.level.coins.indexOf(coin), 1);
       }
     });
@@ -60,25 +60,20 @@ class World {
   checkCollisionsBottle(self) {
     self.level.bottles.forEach((bottle) => {
       if (self.character.isColliding(bottle)) {
-        self.statusbarBottles.collect(bottle);
-        self.statusbarBottles.setPercentageBottle(self.statusbarBottles.setBottle);
+        self.character.collect(bottle);
         self.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
       }
     });
   }
 
   checkThrow(self) {
-    if (self.keyboard.THROW) {
+    if (self.keyboard.THROW && self.character.setBottle > 0) {
       let bottle = new ThrowableObject(
-        this.character.x +
-          this.character.offset_width +
-          this.character.width * 0.5,
-        this.character.y +
-          this.character.offset_height +
-          this.character.height +
-          0.5
+        this.character.x_fix + this.character.width_fix * 0.5,
+        this.character.y_fix + this.character.height_fix * 0.2
       );
       self.throwableObjects.push(bottle);
+      self.character.countBottle(-1);
     }
   }
 

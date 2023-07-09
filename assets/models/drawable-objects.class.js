@@ -93,7 +93,7 @@ class DrawableObjects {
         this.countCoin();
       }
       if (collectable instanceof Bottles) {
-        this.countBottle();
+        this.countBottle(+1);
       } else {
         this.lastCollect = new Date().getTime();
       }
@@ -107,10 +107,11 @@ class DrawableObjects {
     }
   }
 
-  countBottle() {
-    this.setBottle += 20;
-    if (this.setBottle > 100) {
-      this.setBottle = 100;
+  countBottle(count) {
+    this.setBottle += count;
+    this.world.statusbarBottles.setPercentageBottle(this.setBottle * 20);
+    if (this.setBottle > 5) {
+      this.setBottle = 5;
     }
   }
 
