@@ -41,5 +41,6 @@ class BabyChicken extends MovableObject{
 
   enemieImageAnimation(self){
     self.playAnimation(self.IMAGES_WALKING);
+    self.setFixedPosition();
   }
 }

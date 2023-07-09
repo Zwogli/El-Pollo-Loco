@@ -40,6 +40,10 @@ class World {
         self.character.hit();
         self.statusbarLive.setPercentageLive(self.character.energy);
       }
+      //todo if (self.character.isJumpEnemy(enemy)) { 
+      //   self.character.jump(20);
+      //   console.log('jump')
+      // }
     });
   }
 

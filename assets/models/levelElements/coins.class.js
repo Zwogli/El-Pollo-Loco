@@ -11,5 +11,6 @@ offset_height = -120;
     super().loadImage(this.IMAGE);
     this.x = x;
     this.y = y;
+    this.setFixedPosition();
   }
 }

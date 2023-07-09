@@ -10,13 +10,34 @@ class MovableObject extends DrawableObjects {
 
   // character.isColliding(chicken)
   isColliding(object) {
-    return (
-      (this.x + this.offset_x) + (this.width + this.offset_width) > (object.x + object.offset_x) &&
-      (this.y + this.offset_y) + (this.height + this.offset_height) > (object.y + object.offset_y) &&
-      (this.x + this.offset_x) < (object.x + object.offset_x) &&
-      (this.y + this.offset_y) < (object.y + object.offset_y) + (object.height + object.offset_height)
-    );
+    if (object instanceof Chicken || 
+        object instanceof BabyChicken) {
+      return (
+        this.x_fix + this.width_fix > object.x_fix &&
+        this.x_fix < object.x_fix &&
+        this.y_fix + this.height_fix > object.y_fix &&
+        this.y_fix < object.y_fix + object.height_fix
+      );
+    }else{
+      return (
+        this.x_fix + this.width_fix > object.x_fix &&
+        this.x_fix < object.x_fix &&
+        this.y_fix + this.height_fix > object.y_fix &&
+        this.y_fix < object.y_fix + object.height_fix
+      );
+    }
   }
+  //todo 
+  // isJumpEnemy(object){
+  //   return (
+  //   this.x_fix + this.width_fix + this.y_fix + this.height_fix > object.x_fix &&
+  //   this.x_fix + this.width_fix + this.y_fix + this.height_fix < object.x_fix + object.width_fix ||
+  //   this.x_fix + this.y_fix + this.height_fix > object.x_fix &&
+  //   this.x_fix + this.y_fix + this.height_fix < object.x_fix + object.width_fix &&
+  //   this.x_fix + this.width_fix > object.x_fix &&
+  //   this.x_fix < object.x_fix
+//  )
+  // }
 
   hit() {
     if (!this.isHurt()) { // timeout for hit

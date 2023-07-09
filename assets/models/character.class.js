@@ -61,7 +61,6 @@ class Character extends MovableObject {
     super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
     this.renderImages();
     this.applyGravity();
-
     let self = this; //! In setIntervall wird this. nicht erkannt !
     let keyboardIntervall = setInterval(this.keyboardInputs, 1000 / 60, self); // setIntervall( function, time, argument1)
     let animationIntervall = setInterval(this.imageAnimation, 100, self);
@@ -116,6 +115,7 @@ class Character extends MovableObject {
       self.jump(20);
       self.isJumping = true;
     }
+    self.setFixedPosition();
     self.world.camera_x = -self.x + 200; // invert camera motion and set position
   }
 }

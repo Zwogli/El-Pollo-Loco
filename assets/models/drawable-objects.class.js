@@ -7,6 +7,10 @@ class DrawableObjects {
   offset_y = 0;
   offset_width = 0;
   offset_height = 0;
+  x_fix;
+  y_fix;
+  width_fix;
+  height_fix;
   img;
   imgCache = {};
   currentImg = 0;
@@ -113,7 +117,7 @@ class DrawableObjects {
   isCollect() {
     let timepassed = new Date().getTime() - this.lastCollect; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
-    return timepassed < 1;
+    return timepassed < .2;
   }
 
   resolveImageIndex() {
@@ -130,5 +134,12 @@ class DrawableObjects {
     } else {
       return 0;
     }
+  }
+
+  setFixedPosition(){
+    this.x_fix = this.x + this.offset_x;
+    this.y_fix = this.y + this.offset_y;
+    this.width_fix = this.width + this.offset_width;
+    this.height_fix = this.height + this.offset_height;
   }
 }
