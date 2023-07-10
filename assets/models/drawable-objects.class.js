@@ -102,6 +102,7 @@ class DrawableObjects {
 
   countCoin() {
     this.setCoin += 20;
+    this.setPercentageCoins(this.setCoin);
     if (this.setCoin > 100) {
       this.setCoin = 100;
     }
