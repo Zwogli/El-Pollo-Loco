@@ -64,17 +64,22 @@ class Endboss extends MovableObject{
 
   // todo
   enbossAnimation(self){
-    if(this.endbossTrigger == true){
+    if (self.isDead()) {
+      self.playAnimation(self.IMAGES_DEAD);
+    }else if(this.endbossTrigger){
       self.playAnimation(self.IMAGES_ALERT);
     }
   }
-
+  
   enbossIntervall(self){
-    if(self.world.character.x > self.world.canvas.width * 2.5){
+    if(self.characterIsNearEndboss()){
       setTimeout(() => {
         this.endbossTrigger = true;
-        console.log('aktiv')
       }, 500);
     }
+  }
+
+  characterIsNearEndboss(){
+    return this.world.character.x > this.world.canvas.width * 2.5
   }
 }
