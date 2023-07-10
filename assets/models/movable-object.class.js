@@ -76,6 +76,10 @@ class MovableObject extends DrawableObjects {
     this.speedY = jumpEnergy;
   }
 
+  isFalling(){
+    return this.speedY <= 0;
+  }
+
   isMoving() {
     return (
       this.world.keyboard.LEFT &&
