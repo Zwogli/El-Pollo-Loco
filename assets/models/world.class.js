@@ -6,6 +6,7 @@ class World {
   camera_x;
   level;
   character = new Character(); //Erstellt aus der Schablone ein Objekt
+  endboss;
   statusbarLive = new StatusbarLive();
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
@@ -16,6 +17,7 @@ class World {
     this.ctx = canvas.getContext("2d");
     this.keyboard = keyboard;
     this.level = initLevel(0); //generate level object
+    this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
     this.draw();
     this.setWorld();
     let self = this;
@@ -25,6 +27,7 @@ class World {
   setWorld() {
     this.character.world = this; //übergibt die world variablen an den Character
     this.level.world = this;
+    this.endboss.world = this;
   }
 
   worldIntervall(self) {
@@ -36,14 +39,21 @@ class World {
 
   checkCollisionsEnemies(self) {
     self.level.enemies.forEach((enemy) => {
-      if (self.character.isColliding(enemy)) {
+      if (
+        self.character.isColliding(enemy) &&
+        self.character.isAboveGround() && 
+        !self.character.isHurt()
+        ){
+          enemy -= 100;
+          self.character.jump(5);
+          // console.log(self.level.enemies.splice(this.level.enemies.indexOf(enemy), 1));
+          console.log(enemy);
+        }
+      else if (self.character.isColliding(enemy)) {
         self.character.hit();
         self.statusbarLive.setPercentageLive(self.character.energy);
+        console.log(enemy);
       }
-      //todo if (self.character.isJumpEnemy(enemy)) { 
-      //   self.character.jump(20);
-      //   console.log('jump')
-      // }
     });
   }
 
@@ -51,7 +61,6 @@ class World {
     self.level.coins.forEach((coin) => {
       if (self.character.isColliding(coin)) {
         self.statusbarCoins.collect(coin);
-        // self.statusbarCoins.setPercentageCoins(self.statusbarCoins.setCoin);
         self.level.coins.splice(this.level.coins.indexOf(coin), 1);
       }
     });

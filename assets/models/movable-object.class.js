@@ -27,17 +27,6 @@ class MovableObject extends DrawableObjects {
       );
     }
   }
-  //todo 
-  // isJumpEnemy(object){
-  //   return (
-  //   this.x_fix + this.width_fix + this.y_fix + this.height_fix > object.x_fix &&
-  //   this.x_fix + this.width_fix + this.y_fix + this.height_fix < object.x_fix + object.width_fix ||
-  //   this.x_fix + this.y_fix + this.height_fix > object.x_fix &&
-  //   this.x_fix + this.y_fix + this.height_fix < object.x_fix + object.width_fix &&
-  //   this.x_fix + this.width_fix > object.x_fix &&
-  //   this.x_fix < object.x_fix
-//  )
-  // }
 
   hit() {
     if (!this.isHurt()) { // timeout for hit
