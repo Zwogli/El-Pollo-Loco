@@ -1,21 +1,21 @@
 function initLevel(lvlNumber){
   if(lvlNumber == 0){
     return new Level(
-      createLevel1Area(),
-      createLevel1Enemies(),
-      createLevel1Coins(),
-      createLevel1Bottles(),
-      createLevel1Clouds(),
-      createLevel1BackgroundLayers(),
+      createAreaLevel1(),
+      createEnemiesLevel1(),
+      createCoinsLevel1(),
+      createBottlesLevel1(),
+      createCloudsLevel1(),
+      createBackgroundLayersLevel1(),
     )
   }
 }
 
-function createLevel1Area(){
-  return [- canvas.width * 1.5, canvas.width * 3];
+function createAreaLevel1(){
+  return [- canvas.width * 1.5, canvas.width * 4];
 }
 
-function createLevel1Enemies(){
+function createEnemiesLevel1(){
 return [
   new Chicken(550), 
   new Chicken(850),
@@ -29,7 +29,7 @@ return [
 ];
 }
 
-function createLevel1Coins(){
+function createCoinsLevel1(){
   return[
     new Coins(- canvas.width * 2 + 400, 150),
     new Coins(- canvas.width * 2 + 550, 80),
@@ -39,7 +39,7 @@ function createLevel1Coins(){
   ]
 }
 
-function createLevel1Bottles(){
+function createBottlesLevel1(){
   return[
     new Bottles('./assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png', -600, 350),
     new Bottles('./assets/img/6_salsa_bottle/salsa_bottle.png', -500, 200),
@@ -49,13 +49,13 @@ function createLevel1Bottles(){
   ]
 }
 
-function createLevel1Clouds(){
+function createCloudsLevel1(){
   return [
       new Cloud('assets/img/5_background/layers/4_clouds/full.png', -1050),
     ];
 }
 
-function createLevel1BackgroundLayers(){
+function createBackgroundLayersLevel1(){
   return [
     // canvas.width
     new BackgroundLayer('./assets/img/5_background/layers/air.png', - canvas.width * 2),
@@ -84,5 +84,14 @@ function createLevel1BackgroundLayers(){
     new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 3),
     new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/2.png', canvas.width * 3),
     new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 3),
+
+    new BackgroundLayer('./assets/img/5_background/layers/air.png', canvas.width * 4),
+    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width * 4),
+    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/1.png', canvas.width * 4),
+    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width * 4),
+    new BackgroundLayer('./assets/img/5_background/layers/air.png', canvas.width * 5),
+    new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 5),
+    new BackgroundLayer('./assets/img/5_background/layers/2_second_layer/2.png', canvas.width * 5),
+    new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 5),
   ];
 }
