@@ -18,13 +18,14 @@ height = 80;
 speedY;
 speedX;
 position_startY = 300;
+numRotate = 0;
 
 constructor(x, y){
   super().loadImage("./assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
+  this.loadImages(this.IMAGES_ROTATE);
+  this.loadImages(this.IMAGES_SPLASH);
   this.x = x;
   this.y = y;
-  // this.loadImages(this.IMAGES_ROTATE[0]);
-  // this.loadImages(this.IMAGES_SPLASH);
   this.throw();
 }
 
@@ -33,7 +34,22 @@ throw(){
   this.applyGravity();
   setInterval(() => {
     this.x += 8;
+    if(this.y < 350){
+    this.loadImage(this.IMAGES_ROTATE[this.numRotate]);
+      this.calcRotate();
+    }else{
+      // debugger
+      this.playAnimation(this.IMAGES_SPLASH);
+    }
   }, 25);
+}
+
+calcRotate(){
+  if(this.numRotate >= this.IMAGES_ROTATE.length - 1){
+    this.numRotate = 0;
+  }else{
+    this.numRotate++;
+  }
 }
 
 }
