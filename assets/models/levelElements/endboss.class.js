@@ -43,6 +43,7 @@ class Endboss extends MovableObject{
   offset_width = -30;
   offset_height = -90;
   world;
+  endbossTrigger = false;
 
   constructor(){
     super().loadImage(this.IMAGES_ALERT[1]);
@@ -62,15 +63,18 @@ class Endboss extends MovableObject{
   }
 
   // todo
-  // enbossAnimation(self){
-  //   if(this.world.character.width_fix > self.canvas.width * 3){
-  //     self.playAnimation(self.IMAGES_ALERT);
-  //   }
-  // }
+  enbossAnimation(self){
+    if(this.endbossTrigger == true){
+      self.playAnimation(self.IMAGES_ALERT);
+    }
+  }
 
   enbossIntervall(self){
-    if(self.world.character.x > self.world.canvas.width * 3){
-      console.log('Endoss trigger')
+    if(self.world.character.x > self.world.canvas.width * 2.5){
+      setTimeout(() => {
+        this.endbossTrigger = true;
+        console.log('aktiv')
+      }, 500);
     }
   }
 }
