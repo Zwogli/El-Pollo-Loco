@@ -39,12 +39,7 @@ class World {
 
   checkCollisionsEnemies(self) {
     self.level.enemies.forEach((enemy) => {
-      if (
-        //todo abfrage überarbeiten
-        self.character.isColliding(enemy) &&
-        self.character.isAboveGround() && 
-        !self.character.isHurt()
-        ){
+      if (self.isJumpOff(enemy)){
           enemy.energy -= 100;
           self.character.jump(5);
           self.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
@@ -54,6 +49,12 @@ class World {
         self.statusbarLive.setPercentageLive(self.character.energy);
       }
     });
+  }
+
+  isJumpOff(enemy){
+    return this.character.isColliding(enemy) &&
+    this.character.isAboveGround() && 
+    this.character.isFalling();
   }
 
   checkCollisionsCoin(self) {
@@ -75,14 +76,28 @@ class World {
   }
 
   checkThrow(self) {
-    if (self.keyboard.THROW && self.character.setBottle > 0) {
+    if (self.isThrowing()) {
       let bottle = new ThrowableObject(
-        this.character.x_fix + this.character.width_fix * 0.5,
-        this.character.y_fix + this.character.height_fix * 0.2
+        // this.character.x_fix + this.character.width_fix * 0.5,
+        // this.character.y_fix + this.character.height_fix * 0.2
+        this.positionBottleStartX(),
+        this.positionBottleStartY()
       );
       self.throwableObjects.push(bottle);
       self.character.countBottle(-1);
     }
+  }
+
+  isThrowing(){
+    return this.keyboard.THROW && this.character.setBottle > 0;
+  }
+
+  positionBottleStartX(){
+    return this.character.x_fix + this.character.width_fix * 0.5;
+  }
+
+  positionBottleStartY(){
+    return this.character.y_fix + this.character.height_fix * 0.2;
   }
 
   draw() {
