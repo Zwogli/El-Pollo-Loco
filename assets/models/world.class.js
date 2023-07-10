@@ -40,19 +40,18 @@ class World {
   checkCollisionsEnemies(self) {
     self.level.enemies.forEach((enemy) => {
       if (
+        //todo abfrage überarbeiten
         self.character.isColliding(enemy) &&
         self.character.isAboveGround() && 
         !self.character.isHurt()
         ){
-          enemy -= 100;
+          enemy.energy -= 100;
           self.character.jump(5);
-          // console.log(self.level.enemies.splice(this.level.enemies.indexOf(enemy), 1));
-          console.log(enemy);
+          self.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
         }
       else if (self.character.isColliding(enemy)) {
         self.character.hit();
         self.statusbarLive.setPercentageLive(self.character.energy);
-        console.log(enemy);
       }
     });
   }
