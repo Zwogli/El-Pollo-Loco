@@ -34,14 +34,17 @@ throw(){
   this.applyGravity();
   setInterval(() => {
     this.x += 8;
-    if(this.y < 350){
+    this.animateThrow();
+  }, 25);
+}
+
+animateThrow(){
+  if(this.isHigherGround()){
     this.loadImage(this.IMAGES_ROTATE[this.numRotate]);
       this.calcRotate();
     }else{
-      // debugger
       this.playAnimation(this.IMAGES_SPLASH);
     }
-  }, 25);
 }
 
 calcRotate(){
@@ -50,6 +53,10 @@ calcRotate(){
   }else{
     this.numRotate++;
   }
+}
+
+isHigherGround(){
+  return this.y < 350
 }
 
 }
