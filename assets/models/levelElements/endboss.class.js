@@ -51,7 +51,7 @@ class Endboss extends MovableObject{
     this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
     let self = this;
     let checkInervall = setInterval(this.enbossIntervall, 1000/60, self)
-    let animateInervall = setInterval(this.enbossAnimation, 100, self)
+    let animateInervall = setInterval(this.enbossAnimation, 200, self)
   }
 
   renderImages(){
