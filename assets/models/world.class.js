@@ -71,7 +71,7 @@ class World {
     self.level.coins.forEach((coin) => {
       if (self.character.isColliding(coin)) {
         self.statusbarCoins.collect(coin);
-        self.level.coins.splice(this.level.coins.indexOf(coin), 1);
+        this.deleteObject(this.level.coins, coin);
       }
     });
   }
@@ -80,7 +80,7 @@ class World {
     self.level.bottles.forEach((bottle) => {
       if (self.character.isColliding(bottle)) {
         self.character.collect(bottle);
-        self.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
+        this.deleteObject(this.level.bottles, bottle);
       }
     });
   }
@@ -92,11 +92,11 @@ class World {
           enemy.hit();
           bottle.isHitEnemy = true;
           bottle.animateThrow();
-          this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+          this.deleteObject(this.level.enemies, enemy);
           bottle.isHitEnemy = false;
         }
         if(bottle.y > 500){
-          self.throwableObjects.splice(self.throwableObjects.indexOf(bottle), 1);
+          this.deleteObject(this.throwableObjects, bottle);
         }
       })
     })
@@ -125,6 +125,10 @@ class World {
 
   positionBottleStartY(){
     return this.character.y_fix + this.character.height_fix * 0.2;
+  }
+
+  deleteObject(path, object){
+    path.splice(path.indexOf(object), 1);
   }
 
   draw() {
