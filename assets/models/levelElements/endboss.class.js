@@ -49,6 +49,7 @@ class Endboss extends MovableObject{
     super().loadImage(this.IMAGES_ALERT[1]);
     this.renderImages();
     this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
+    this.energy = 40;
     let self = this;
     let checkInervall = setInterval(this.enbossIntervall, 1000/60, self)
     let animateInervall = setInterval(this.enbossAnimation, 200, self)
@@ -66,6 +67,8 @@ class Endboss extends MovableObject{
   enbossAnimation(self){
     if (self.isDead()) {
       self.playAnimation(self.IMAGES_DEAD);
+    }else if(self.isHurt()){
+      self.playAnimation(self.IMAGES_HURT);
     }else if(this.endbossTrigger){
       self.playAnimation(self.IMAGES_ALERT);
     }
@@ -77,6 +80,7 @@ class Endboss extends MovableObject{
         this.endbossTrigger = true;
       }, 500);
     }
+    self.setFixedPosition();
   }
 
   characterIsNearEndboss(){

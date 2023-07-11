@@ -52,7 +52,7 @@ class World {
       if (self.isJumpOff(enemy)){
           enemy.energy -= 100;
           self.character.jump(5);
-          self.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+          this.deleteObject(this.level.enemies, enemy);
         }
       else if (self.character.isColliding(enemy)) {
         self.character.hit();
@@ -90,9 +90,12 @@ class World {
       self.level.enemies.forEach((enemy) => {
         if (bottle.isColliding(enemy)){
           enemy.hit();
+          console.log(enemy.energy)
           bottle.isHitEnemy = true;
           bottle.animateThrow();
-          this.deleteObject(this.level.enemies, enemy);
+          if (enemy.energy == 0 && enemy instanceof Chicken || enemy.energy == 0 && enemy instanceof BabyChicken) {
+            this.deleteObject(this.level.enemies, enemy);
+          }
           bottle.isHitEnemy = false;
         }
         if(bottle.y > 500){
