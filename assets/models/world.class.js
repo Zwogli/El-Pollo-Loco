@@ -92,6 +92,7 @@ class World {
           enemy.hit();
           bottle.isHitEnemy = true;
           bottle.animateThrow();
+          this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
           bottle.isHitEnemy = false;
         }
         if(bottle.y > 500){
@@ -105,7 +106,8 @@ class World {
       if (self.isThrowing()) {
         let bottle = new ThrowableObject(
           this.positionBottleStartX(),
-          this.positionBottleStartY()
+          this.positionBottleStartY(),
+          this.character.otherDirection
         );
         self.throwableObjects.push(bottle);
         self.character.countBottle(-1);

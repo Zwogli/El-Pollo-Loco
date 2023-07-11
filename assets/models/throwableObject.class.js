@@ -20,13 +20,15 @@ speedX;
 position_startY = 300;
 numRotate = 0;
 isHitEnemy = false;
+direction;
 
-constructor(x, y){
+constructor(x, y, direction){
   super().loadImage("./assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
   this.loadImages(this.IMAGES_ROTATE);
   this.loadImages(this.IMAGES_SPLASH);
   this.x = x;
   this.y = y;
+  this.direction = direction;
   this.throw();
 }
 
@@ -34,7 +36,11 @@ throw(){
   this.speedY = 20;
   this.applyGravity();
   setInterval(() => {
-    this.x += 8;
+    if(!this.direction){
+      this.x += 8;
+    }else{
+      this.x -= 8;
+    }
     this.setFixedPosition();
     this.animateThrow();
   }, 25);

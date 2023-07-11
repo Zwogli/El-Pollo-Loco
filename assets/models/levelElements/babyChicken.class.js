@@ -28,10 +28,7 @@ class BabyChicken extends MovableObject{
   }
 
   enemieJumpAction(self){
-    if(self.isDead()){
-      self.world.level.enemies.splice(self.world.level.enemies.indexOf(self), 1);
-      // debugger;
-    }else if (!self.isAboveGround()) {
+ if (!self.isAboveGround()) {
       self.jump(10);
     }
   }
