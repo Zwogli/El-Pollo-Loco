@@ -6,7 +6,7 @@ class World {
   camera_x;
   level;
   character = new Character(); //Erstellt aus der Schablone ein Objekt
-  endboss;
+  enemy = [];
   statusbarLive = new StatusbarLive();
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
@@ -17,23 +17,33 @@ class World {
     this.ctx = canvas.getContext("2d");
     this.keyboard = keyboard;
     this.level = initLevel(0); //generate level object
-    this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
+    this.level.enemies.forEach(arrayEnemy => {
+      this.enemy.push(arrayEnemy);
+    });
+    // this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
     this.draw();
     this.setWorld();
     let self = this;
-    let collisionEnemy = setInterval(this.worldIntervall, 100, self);
+    let collisionEnemy = setInterval(this.worldIntervallFast, 1000/60, self);
+    let actionFeedback = setInterval(this.worldIntervallSlow, 100, self);
   }
 
   setWorld() {
     this.character.world = this; //übergibt die world variablen an den Character
     this.level.world = this;
-    this.endboss.world = this;
+    this.enemy.forEach(arrayEnemy => {
+      arrayEnemy.world = this;
+    });
   }
 
-  worldIntervall(self) {
+  worldIntervallFast(self) {
     self.checkCollisionsEnemies(self);
     self.checkCollisionsCoin(self);
     self.checkCollisionsBottle(self);
+    self.checkCollisionThrowBottle(self);
+  }
+
+  worldIntervallSlow(self){
     self.checkThrow(self);
   }
 
@@ -75,21 +85,36 @@ class World {
     });
   }
 
+  checkCollisionThrowBottle(self){
+    self.throwableObjects.forEach((bottle) => {
+      self.level.enemies.forEach((enemy) => {
+        if (bottle.isColliding(enemy)){
+          enemy.hit();
+          bottle.isHitEnemy = true;
+          bottle.animateThrow();
+          bottle.isHitEnemy = false;
+        }
+        if(bottle.y > 500){
+          self.throwableObjects.splice(self.throwableObjects.indexOf(bottle), 1);
+        }
+      })
+    })
+  }
+
   checkThrow(self) {
-    if (self.isThrowing()) {
-      let bottle = new ThrowableObject(
-        // this.character.x_fix + this.character.width_fix * 0.5,
-        // this.character.y_fix + this.character.height_fix * 0.2
-        this.positionBottleStartX(),
-        this.positionBottleStartY()
-      );
-      self.throwableObjects.push(bottle);
-      self.character.countBottle(-1);
-    }
+      if (self.isThrowing()) {
+        let bottle = new ThrowableObject(
+          this.positionBottleStartX(),
+          this.positionBottleStartY()
+        );
+        self.throwableObjects.push(bottle);
+        self.character.countBottle(-1);
+      }
   }
 
   isThrowing(){
     return this.keyboard.THROW && this.character.setBottle > 0;
+      
   }
 
   positionBottleStartX(){

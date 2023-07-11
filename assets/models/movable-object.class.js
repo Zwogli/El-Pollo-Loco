@@ -8,26 +8,20 @@ class MovableObject extends DrawableObjects {
   lastHit = 0;
   idle_countdown = 0;
 
-  // character.isColliding(chicken)
+  /** Check object isColliding with object. 
+   * Example Function call is this.character.isColliding(enemy), 
+   * check colission bettween character and enemy */
   isColliding(object) {
-    if (object instanceof Chicken || 
-        object instanceof BabyChicken) {
-      return (
-        this.x_fix + this.width_fix > object.x_fix &&
-        this.x_fix < object.x_fix &&
-        this.y_fix + this.height_fix > object.y_fix &&
-        this.y_fix < object.y_fix + object.height_fix
-      );
-    }else{
-      return (
-        this.x_fix + this.width_fix > object.x_fix &&
-        this.x_fix < object.x_fix &&
-        this.y_fix + this.height_fix > object.y_fix &&
-        this.y_fix < object.y_fix + object.height_fix
-      );
-    }
+    return (
+      this.x_fix + this.width_fix > object.x_fix &&
+      this.x_fix < object.x_fix &&
+      this.y_fix + this.height_fix > object.y_fix &&
+      this.y_fix < object.y_fix + object.height_fix
+    );
   }
 
+  /** Calculates the energybar, hold up at 0.
+   * Made a timestamp. */
   hit() {
     if (!this.isHurt()) { // timeout for hit
       this.energy -= 20;
@@ -42,7 +36,7 @@ class MovableObject extends DrawableObjects {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
-    return timepassed < .5; 
+    return timepassed < 1; 
   }
 
   isDead() {

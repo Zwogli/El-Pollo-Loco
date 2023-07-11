@@ -9,11 +9,11 @@ class Chicken extends MovableObject {
   width = 80;
   height = 80;
   postion_startX;
+  world;
 
   constructor(postion_startX) {
-    super().loadImage(
-      "./assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png"
-    );
+    super().loadImage("./assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
+    this.energy = 20;
     this.x = postion_startX;
     this.postion_startX = postion_startX;
     this.speed = 0.1 + Math.random() * 0.2;

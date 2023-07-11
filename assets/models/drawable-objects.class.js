@@ -69,7 +69,7 @@ class DrawableObjects {
     ) {
       this.setHitBoxColor(ctx, "red");
     }
-    if (this instanceof Coins || this instanceof Bottles) {
+    if (this instanceof Coins || this instanceof Bottles || this instanceof ThrowableObject) {
       this.setHitBoxColor(ctx, "green");
     }
   }
