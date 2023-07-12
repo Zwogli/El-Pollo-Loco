@@ -44,6 +44,9 @@ class Endboss extends MovableObject{
   offset_height = -90;
   world;
   endbossTrigger = false;
+  speed = 1;
+  triggerDelay = 0;
+
 
   constructor(){
     super().loadImage(this.IMAGES_ALERT[1]);
@@ -69,21 +72,37 @@ class Endboss extends MovableObject{
       self.playAnimation(self.IMAGES_DEAD);
     }else if(self.isHurt()){
       self.playAnimation(self.IMAGES_HURT);
-    }else if(this.endbossTrigger){
+    }else if (self.isBeginnigMoveset()) {
+      self.playAnimation(self.IMAGES_WALKING);
+    }else if(self.endbossTrigger){
       self.playAnimation(self.IMAGES_ALERT);
     }
   }
   
   enbossIntervall(self){
-    if(self.characterIsNearEndboss()){
-      setTimeout(() => {
-        this.endbossTrigger = true;
-      }, 500);
-    }
+    if(self.characterIsNearEndboss() && !self.triggerDelay){
+      console.log(self.triggerDelay)
+      self.endbossTrigger = true;
+      self.triggerDelay = new Date().getTime();
+      console.log(self.triggerDelay)
+    }else if (self.isAlarmed() && self.triggerDelay) {
+      self.moveLeft();
+  }
+    
     self.setFixedPosition();
   }
 
   characterIsNearEndboss(){
-    return this.world.character.x > this.world.canvas.width * 2.5
+    return this.world.character.x > this.world.canvas.width * 2.5 + 200
+  }
+
+  isAlarmed() {
+    let timepassed = new Date().getTime() - this.triggerDelay; // difference in ms
+    timepassed = timepassed / 1000; // difference ins s
+    return timepassed > 1; 
+  }
+
+  isBeginnigMoveset(){
+    return this.isAlarmed() && this.triggerDelay;
   }
 }
