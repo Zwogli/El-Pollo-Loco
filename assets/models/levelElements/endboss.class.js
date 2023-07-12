@@ -72,6 +72,8 @@ class Endboss extends MovableObject{
       self.playAnimation(self.IMAGES_DEAD);
     }else if(self.isHurt()){
       self.playAnimation(self.IMAGES_HURT);
+    }else if(self.characterNearBoss()){
+      self.playAnimation(self.IMAGES_ATTACK);
     }else if (self.isBeginnigMoveset()) {
       self.playAnimation(self.IMAGES_WALKING);
     }else if(self.endbossTrigger){
@@ -80,20 +82,24 @@ class Endboss extends MovableObject{
   }
   
   enbossIntervall(self){
-    if(self.characterIsNearEndboss() && !self.triggerDelay){
+    self.setFixedPosition();
+    if(self.characterTriggerBoss() && !self.triggerDelay){
       console.log(self.triggerDelay)
       self.endbossTrigger = true;
       self.triggerDelay = new Date().getTime();
       console.log(self.triggerDelay)
-    }else if (self.isAlarmed() && self.triggerDelay) {
+    }else if (self.isAlarmed() && self.triggerDelay && !self.characterNearBoss()) {
       self.moveLeft();
   }
-    
-    self.setFixedPosition();
   }
 
-  characterIsNearEndboss(){
+  characterTriggerBoss(){
     return this.world.character.x > this.world.canvas.width * 2.5 + 200
+  }
+
+  characterNearBoss(){
+    let distance = this.x_fix - this.world.character.x_fix + this.world.character.width_fix;
+    return distance < 250;
   }
 
   isAlarmed() {
