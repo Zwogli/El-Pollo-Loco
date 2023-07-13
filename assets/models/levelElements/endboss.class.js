@@ -38,10 +38,12 @@ class Endboss extends MovableObject{
   y = 120;
   width = 250;
   height = 350;
-  offset_x = 20;
-  offset_y = 60;
-  offset_width = -30;
-  offset_height = -90;
+  offset = {
+    x: 20,
+    y: 60,
+    width: -30,
+    height: -90
+  }
   x_attack = 0;
   world;
   endbossTrigger = false;

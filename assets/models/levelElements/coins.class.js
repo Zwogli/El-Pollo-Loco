@@ -6,10 +6,12 @@ IMAGES_COIN = [
 IMAGE = './assets/img/8_coin/coin_2.png';
 width = 180;
 height = 180;
-offset_x = 60;
-offset_y = 60;
-offset_width = -120;
-offset_height = -120;
+offset = {
+  x: 60,
+  y: 60,
+  width: -120,
+  height: -120
+}
 
   constructor(x, y){
     super().loadImage(this.IMAGE);
