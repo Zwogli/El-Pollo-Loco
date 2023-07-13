@@ -41,6 +41,7 @@ class World {
     self.checkCollisionsCoin(self);
     self.checkCollisionsBottle(self);
     self.checkCollisionThrowBottle(self);
+    self.checkEndscreen();
   }
 
   worldIntervallSlow(self){
@@ -193,5 +194,16 @@ class World {
   flipImageBack(object) {
     object.x = object.x * -1;
     this.ctx.restore();
+  }
+
+  checkEndscreen(){
+    let endboss = this.enemy.find(e => e instanceof Endboss);
+    if (this.character.energy == 0) {
+      let endscreenLost = document.getElementById('endscreen-lost');
+      endscreenLost.classList.remove('d-none');
+    }else if (endboss.energy == 0) {
+      let endscreenLost = document.getElementById('endscreen-win');
+      endscreenLost.classList.remove('d-none');
+    }
   }
 }
