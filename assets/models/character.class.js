@@ -94,8 +94,8 @@ class Character extends MovableObject {
       self.sleepCount();
     }
     if (self.sleepCount()) {
-      self.playAnimation(self.IMAGES_IDLE);    
-    }
+      self.playAnimation(self.IMAGES_IDLE);
+    } 
   }
   
 

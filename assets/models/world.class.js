@@ -107,6 +107,8 @@ class World {
 
   checkThrow(self) {
       if (self.isThrowing()) {
+        self.character.idle_countdown = 0;
+        self.character.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
         let bottle = new ThrowableObject(
           this.positionBottleStartX(),
           this.positionBottleStartY(),
