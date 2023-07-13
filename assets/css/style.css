@@ -10,7 +10,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+main {
+  width: 100dvw;
+  height: 100dvh;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px);
 }
 
 canvas {
