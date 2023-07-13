@@ -90,7 +90,6 @@ class World {
       self.level.enemies.forEach((enemy) => {
         if (bottle.isColliding(enemy)){
           enemy.hit();
-          console.log(enemy.energy)
           bottle.isHitEnemy = true;
           bottle.animateThrow();
           if (enemy.energy == 0 && enemy instanceof Chicken || enemy.energy == 0 && enemy instanceof BabyChicken) {

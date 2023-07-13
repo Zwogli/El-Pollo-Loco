@@ -42,6 +42,7 @@ class Endboss extends MovableObject{
   offset_y = 60;
   offset_width = -30;
   offset_height = -90;
+  x_attack = 0;
   world;
   endbossTrigger = false;
   speed = 1;
@@ -66,15 +67,16 @@ class Endboss extends MovableObject{
     this.loadImages(this.IMAGES_DEAD);
   }
 
-  // todo
   enbossAnimation(self){
     if (self.isDead()) {
       self.playAnimation(self.IMAGES_DEAD);
     }else if(self.isHurt()){
       self.playAnimation(self.IMAGES_HURT);
     }else if(self.characterNearBoss()){
+      self.x_attack = -50;
       self.playAnimation(self.IMAGES_ATTACK);
     }else if (self.isBeginnigMoveset()) {
+      self.x_attack = 0;
       self.playAnimation(self.IMAGES_WALKING);
     }else if(self.endbossTrigger){
       self.playAnimation(self.IMAGES_ALERT);
@@ -84,11 +86,9 @@ class Endboss extends MovableObject{
   enbossIntervall(self){
     self.setFixedPosition();
     if(self.characterTriggerBoss() && !self.triggerDelay){
-      console.log(self.triggerDelay)
       self.endbossTrigger = true;
       self.triggerDelay = new Date().getTime();
-      console.log(self.triggerDelay)
-    }else if (self.isAlarmed() && self.triggerDelay && !self.characterNearBoss()) {
+    }else if (self.isBeginnigMoveset()) {
       self.moveLeft();
   }
   }
@@ -109,6 +109,6 @@ class Endboss extends MovableObject{
   }
 
   isBeginnigMoveset(){
-    return this.isAlarmed() && this.triggerDelay;
+    return this.isAlarmed() && this.triggerDelay && !this.characterNearBoss() && !this.isDead();
   }
 }

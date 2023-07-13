@@ -11,6 +11,7 @@ class DrawableObjects {
   y_fix;
   width_fix;
   height_fix;
+  x_attack = 0;
   img;
   imgCache = {};
   currentImg = 0;
@@ -79,10 +80,10 @@ class DrawableObjects {
     ctx.lineWidth = "5";
     ctx.strokeStyle = color;
     ctx.rect(
-      this.x + this.offset_x,
-      this.y + this.offset_y,
-      this.width + this.offset_width,
-      this.height + this.offset_height
+      this.x_fix,
+      this.y_fix,
+      this.width_fix,
+      this.height_fix
     );
     ctx.stroke();
   }
@@ -139,7 +140,7 @@ class DrawableObjects {
   }
 
   setFixedPosition(){
-    this.x_fix = this.x + this.offset_x;
+    this.x_fix = this.x + this.offset_x + this.x_attack;
     this.y_fix = this.y + this.offset_y;
     this.width_fix = this.width + this.offset_width;
     this.height_fix = this.height + this.offset_height;
