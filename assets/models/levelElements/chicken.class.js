@@ -28,7 +28,7 @@ class Chicken extends MovableObject {
 
   /** Set diffrent starting variables
    * 
-   * @param {number} postion_startX - [levels/level.js] let enemy spawn on this position
+   * @param {number} postion_startX - [levels/level.js] create object on this position
    */
   renderVariables(postion_startX){
     this.energy = 20;

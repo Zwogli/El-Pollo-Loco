@@ -11,6 +11,10 @@ class Cloud extends MovableObject {
     this.animate(x);
   }
 
+  /** Animate cloud movement
+   * 
+   * @param {number} x - [level/levels.js] create object on this position
+   */
   animate(x) {
     let startPosition = x;
     setInterval(() => {
@@ -20,7 +24,7 @@ class Cloud extends MovableObject {
       }
     }, 1000/60);
   }
-
+  
   isLevelEndsX(){
     return this.x >= canvas.width * 5;
   }

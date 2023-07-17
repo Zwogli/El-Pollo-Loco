@@ -52,16 +52,18 @@ class Endboss extends MovableObject{
 
 
   constructor(){
-    super().loadImage(this.IMAGES_ALERT[1]);
+    super();
     this.renderImages();
-    this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
-    this.energy = 40;
+    this.renderVariables()
+
     let self = this;
     let checkInervall = setInterval(this.enbossIntervall, 1000/60, self)
     let animateInervall = setInterval(this.enbossAnimation, 200, self)
   }
 
+  /** Load image, images into the imgCache - drawable-objects */
   renderImages(){
+    this.loadImage(this.IMAGES_ALERT[1]);
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_ALERT);
     this.loadImages(this.IMAGES_ATTACK);
@@ -69,12 +71,19 @@ class Endboss extends MovableObject{
     this.loadImages(this.IMAGES_DEAD);
   }
 
+  /** Set diffrent starting variables */
+  renderVariables(){
+    this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
+    this.energy = 40;
+  }
+
+  /** Intervall method, image animation */
   enbossAnimation(self){
     if (self.isDead()) {
       self.playAnimation(self.IMAGES_DEAD);
     }else if(self.isHurt()){
       self.playAnimation(self.IMAGES_HURT);
-    }else if(self.characterNearBoss()){
+    }else if(self.characterNearAttackRange()){
       self.x_attack = -50;
       self.playAnimation(self.IMAGES_ATTACK);
     }else if (self.isBeginnigMoveset()) {
@@ -85,6 +94,7 @@ class Endboss extends MovableObject{
     }
   }
   
+  /**Intervall method, for enemie action */
   enbossIntervall(self){
     self.setFixedPosition();
     if(self.characterTriggerBoss() && !self.triggerDelay){
@@ -99,7 +109,7 @@ class Endboss extends MovableObject{
     return this.world.character.x > this.world.canvas.width * 2.5 + 200
   }
 
-  characterNearBoss(){
+  characterNearAttackRange(){
     let distance = this.x_fix - this.world.character.x_fix + this.world.character.width_fix;
     return distance < 250;
   }
@@ -107,10 +117,10 @@ class Endboss extends MovableObject{
   isAlarmed() {
     let timepassed = new Date().getTime() - this.triggerDelay; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
-    return timepassed > 1; 
+    return timepassed > 2; 
   }
 
   isBeginnigMoveset(){
-    return this.isAlarmed() && this.triggerDelay && !this.characterNearBoss() && !this.isDead();
+    return this.isAlarmed() && this.triggerDelay && !this.characterNearAttackRange() && !this.isDead();
   }
 }

@@ -14,14 +14,30 @@ offset = {
 }
 
   constructor(x, y){
-    super().loadImage(this.IMAGE);
-    this.loadImages(this.IMAGES_COIN);
-    this.x = x;
-    this.y = y;
+    super();
+    this.renderImages();
+    this.renderVariables(x, y)
     this.setFixedPosition();
     this.animateCoin();
   }
 
+  /** Load image, images into the imgCache - drawable-objects */
+  renderImages(){
+    this.loadImage(this.IMAGE);
+    this.loadImages(this.IMAGES_COIN);
+  }
+
+  /** Set diffrent starting variables
+   * 
+   * @param {number} x  - [levels/level.js] create object on this position
+   * @param {number} y  - [levels/level.js] create object on this position
+   */
+  renderVariables(x, y){
+    this.x = x;
+    this.y = y;
+  }
+
+  /** Intervall method, image animation */
   animateCoin(){
     setInterval(() => {
       this.playAnimation(this.IMAGES_COIN);
