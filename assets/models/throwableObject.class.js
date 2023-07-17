@@ -25,7 +25,7 @@ direction;
 constructor(x, y, direction){
   super();
   this.renderImages();
-  this.renderVariables();  
+  this.renderVariables(x, y, direction);  
   this.throw();
 }
 
@@ -35,7 +35,7 @@ renderImages(){
   this.loadImages(this.IMAGES_SPLASH);
 }
 
-renderVariables(){
+renderVariables(x, y, direction){
   this.x = x;
   this.y = y;
   this.direction = direction;
