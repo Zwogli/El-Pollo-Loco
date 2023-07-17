@@ -23,13 +23,22 @@ isHitEnemy = false;
 direction;
 
 constructor(x, y, direction){
-  super().loadImage("./assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
+  super();
+  this.renderImages();
+  this.renderVariables();  
+  this.throw();
+}
+
+renderImages(){
+  this.loadImage("./assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
   this.loadImages(this.IMAGES_ROTATE);
   this.loadImages(this.IMAGES_SPLASH);
+}
+
+renderVariables(){
   this.x = x;
   this.y = y;
   this.direction = direction;
-  this.throw();
 }
 
 throw(){
@@ -49,13 +58,13 @@ throw(){
 animateThrow(){
   if(this.isHigherGround() && !this.isHitEnemy){
     this.loadImage(this.IMAGES_ROTATE[this.numRotate]);
-      this.calcRotate();
+      this.iterateRotate();
     }else{
       this.playAnimation(this.IMAGES_SPLASH);
     }
 }
 
-calcRotate(){
+iterateRotate(){
   if(this.numRotate >= this.IMAGES_ROTATE.length - 1){
     this.numRotate = 0;
   }else{
