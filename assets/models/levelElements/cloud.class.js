@@ -3,7 +3,7 @@ class Cloud extends MovableObject {
   y = 30;
   width = 1000;
   height = 200;
-  speed = .15;
+  speed = .2;
 
   constructor(img, x) {
     super().loadImage(img);
@@ -11,7 +11,7 @@ class Cloud extends MovableObject {
     //todo this.animate(x);
 
     let startPosition = x;
-    setPausableInterval(this.animate.bind(this), 100, startPosition);
+    setPausableInterval(this.animate.bind(this), 1000/60, startPosition);
   }
 
   /** Animate cloud movement

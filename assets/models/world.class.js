@@ -213,8 +213,8 @@ class World {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //clear canvas!
 
     this.ctx.translate(this.camera_x, 0);
-
-    this.addArrayToWorld(this.level.backgroundLayers);
+    
+    this.level.backgroundLayers.forEach( bg => this.addArrayToWorld(bg));
     this.addArrayToWorld(this.level.clouds);
     this.addArrayToWorld(this.level.coins);
     this.addArrayToWorld(this.level.bottles);

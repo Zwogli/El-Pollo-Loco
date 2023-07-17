@@ -152,6 +152,13 @@ class Character extends MovableObject {
     if (this.world.keyboard.RIGHT && this.world.level.levelArea_end >= this.x) {
       this.moveRight();
       this.otherDirection = false;
+      if(this.x < this.world.level.levelArea_end && this.x > this.world.level.levelArea_start) {
+        this.world.level.backgroundLayers.forEach(layer => { 
+            layer.forEach(b => {
+                b.moveLeft();
+            })
+        });
+      };
     }
     if (
       this.world.keyboard.LEFT &&
@@ -159,6 +166,13 @@ class Character extends MovableObject {
     ) {
       this.moveLeft();
       this.otherDirection = true;
+      if(this.x < this.world.level.levelArea_end && this.x > this.world.level.levelArea_start) {
+        this.world.level.backgroundLayers.forEach(layer => { 
+            layer.forEach(b => {
+                b.moveRight();
+            })
+        });
+      };
     }
     if (this.world.keyboard.UP && !this.isAboveGround()) {
       this.jump(20);
