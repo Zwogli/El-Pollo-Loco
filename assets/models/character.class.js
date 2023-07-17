@@ -106,7 +106,7 @@ class Character extends MovableObject {
   // }
   imageAnimation() {
     if (this.isDead()) {
-      this.playAnimation(self.IMAGES_DEAD);
+      this.playAnimation(this.IMAGES_DEAD);
       this.idle_countdown = 0;
     }else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
