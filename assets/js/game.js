@@ -1,10 +1,8 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let intervallIds = []; //todo
-let stopIntervall = null;
-
-
+// let intervalIDs = []; //todo
+let stopInterval;
 
 function init() {
   canvas = document.getElementById("canvas");
@@ -15,43 +13,42 @@ function init() {
   //todo setInterval(stopGame, 1000/60)
 }
 
-/* todo
+/* todo         
 function stopGame(){
-  if (!stopIntervall) {
-    intervallIds.forEach(id => {
+  if (!stopInterval) {
+    intervalIDs.forEach(id => {
       setInterval(id);
     });
   }
   if (pausableIntervall) {
     console.log('hi')
-    intervallIds.forEach(id => {
+    intervalIDs.forEach(id => {
       clearInterval(id);
     });
   }
 }
 */
 
-function setPausableInterval(fn, time){
-let intervallID;
-setInterval(() => {
-  if(stopIntervall){
-    clearInterval(intervallID);
-    intervallID = undefined;
-    return;
-  }
-  if (!intervallID) {
-    intervalID = setInterval(fn, time);
-  }
-}, 60);
+function setPausableInterval(fn, time) {
+  let intervalID;
+  setInterval(() => {
+    if (stopInterval) {
+      clearInterval(intervalID);
+      intervalID = undefined;
+      return;
+    }
+    if (!intervalID) {
+      intervalID = setInterval(fn, time);
+    }
+  }, 60);
 }
 
-window.addEventListener("resize", () =>{
-  if(window.innerWidth < 720){
-    document.getElementById('screen-canvas').classList.add('d-none');
-    document.getElementById('device-screen').classList.remove('d-none');
-  }else{
-    document.getElementById('screen-canvas').classList.remove('d-none');
-    document.getElementById('device-screen').classList.add('d-none');
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 720) {
+    document.getElementById("screen-canvas").classList.add("d-none");
+    document.getElementById("device-screen").classList.remove("d-none");
+  } else {
+    document.getElementById("screen-canvas").classList.remove("d-none");
+    document.getElementById("device-screen").classList.add("d-none");
   }
 });
-

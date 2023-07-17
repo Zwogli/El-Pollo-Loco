@@ -26,7 +26,11 @@ constructor(x, y, direction){
   super();
   this.renderImages();
   this.renderVariables(x, y, direction);  
-  this.throw();
+  //todo this.throw();
+
+  this.speedY = 20;
+  this.applyGravity();
+  setPausableInterval(this.throw.bind(this), 25);
 }
 
 renderImages(){
@@ -41,10 +45,21 @@ renderVariables(x, y, direction){
   this.direction = direction;
 }
 
+//todo throw(){
+//   this.speedY = 20;
+//   this.applyGravity();
+//   let intervallThrow = setInterval(() => {
+//     if(!this.direction){
+//       this.x += 8;
+//     }else{
+//       this.x -= 8;
+//     }
+//     this.setFixedPosition();
+//     this.animateThrow();
+//   }, 25);
+//   intervallIds.push(intervallThrow);
+// }
 throw(){
-  this.speedY = 20;
-  this.applyGravity();
-  let intervallThrow = setInterval(() => {
     if(!this.direction){
       this.x += 8;
     }else{
@@ -52,8 +67,6 @@ throw(){
     }
     this.setFixedPosition();
     this.animateThrow();
-  }, 25);
-  intervallIds.push(intervallThrow);
 }
 
 animateThrow(){
