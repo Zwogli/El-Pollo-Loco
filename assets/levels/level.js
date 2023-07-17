@@ -51,6 +51,7 @@ function createBottlesLevel1(){
 
 function createCloudsLevel1(){
   return [
+      new Cloud('assets/img/5_background/layers/4_clouds/full.png', -2000),
       new Cloud('assets/img/5_background/layers/4_clouds/full.png', -1050),
     ];
 }

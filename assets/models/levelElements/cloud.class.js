@@ -12,17 +12,17 @@ class Cloud extends MovableObject {
   }
 
   animate(x) {
-    this.moveRight(x);
-  }
-
-  moveRight(x){
     let startPosition = x;
     setInterval(() => {
-      this.x += this.speed;
-      if (this.x >= 1500) {
+      this.moveRight();
+      if (this.isLevelEndsX()) {
         this.x = startPosition;
       }
     }, 1000/60);
+  }
+
+  isLevelEndsX(){
+    return this.x >= canvas.width * 5;
   }
 }
 
