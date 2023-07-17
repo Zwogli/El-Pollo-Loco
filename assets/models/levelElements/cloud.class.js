@@ -8,22 +8,31 @@ class Cloud extends MovableObject {
   constructor(img, x) {
     super().loadImage(img);
     this.x = x;
-    this.animate(x);
+    //todo this.animate(x);
+
+    let startPosition = x;
+    setPausableInterval(this.animate.bind(this), 100, startPosition);
   }
 
   /** Animate cloud movement
    * 
    * @param {number} x - [level/levels.js] create object on this position
    */
-  animate(x) {
-    let startPosition = x;
-    let intervallCloud = setInterval(() => {
+  // animate(x) {
+  //   let startPosition = x;
+  //   let intervallCloud = setInterval(() => {
+  //     this.moveRight();
+  //     if (this.isLevelEndsX()) {
+  //       this.x = startPosition;
+  //     }
+  //   }, 1000/60);
+  //   intervallIds.push(intervallCloud);
+  // }
+  animate(startPosition) {
       this.moveRight();
       if (this.isLevelEndsX()) {
         this.x = startPosition;
       }
-    }, 1000/60);
-    intervallIds.push(intervallCloud);
   }
   
   isLevelEndsX(){

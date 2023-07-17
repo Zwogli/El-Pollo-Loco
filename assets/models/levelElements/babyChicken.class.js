@@ -18,10 +18,14 @@ class BabyChicken extends MovableObject {
     this.renderVariables(postion_startX);
     this.applyGravity();
 
-    let self = this;
-    intervallIds.push(setInterval(this.enemieJumpAction, timeToJump, self));
-    intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
-    intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
+    //todo let self = this;
+    // intervallIds.push(setInterval(this.enemieJumpAction, timeToJump, self));
+    // intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
+    // intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
+
+    setPausableInterval(this.enemieJumpAction.bind(this), timeToJump);
+    setPausableInterval(this.enemieAction.bind(this), 1000/60);
+    setPausableInterval(this.enemieImageAnimation.bind(this), 100);
   }
 
   /** Load image, images into the imgCache - drawable-objects */
@@ -42,20 +46,31 @@ class BabyChicken extends MovableObject {
   }
 
   /** Intervall method, let object jump - movable-objects*/
-  enemieJumpAction(self) {
-    if (!self.isAboveGround()) {
-      self.jump(10);
+  // enemieJumpAction(self) { 
+  //   if (!self.isAboveGround()) {
+  //     self.jump(10);
+  //   }
+  // }
+  enemieJumpAction() { 
+    if (!this.isAboveGround()) {
+      this.jump(10);
     }
   }
-
   /**Intervall method, for enemie action */
-  enemieAction(self) {
-    self.movementLoop(self);
+  // enemieAction(self) {
+  //   self.movementLoop(self);
+  // }
+  enemieAction() {
+    this.movementLoop();
   }
 
   /** Intervall method, image animation */
-  enemieImageAnimation(self) {
-    self.playAnimation(self.IMAGES_WALKING);
-    self.setFixedPosition();
+  // enemieImageAnimation(self) {
+  //   self.playAnimation(self.IMAGES_WALKING);
+  //   self.setFixedPosition();
+  // }
+  enemieImageAnimation() {
+    this.playAnimation(this.IMAGES_WALKING);
+    this.setFixedPosition();
   }
 }

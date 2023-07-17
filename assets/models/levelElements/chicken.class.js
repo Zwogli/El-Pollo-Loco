@@ -15,9 +15,12 @@ class Chicken extends MovableObject {
     super();
     this.renderImages();
     this.renderVariables(postion_startX);
-    let self = this;
-    intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
-    intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
+    //todo let self = this;
+    // intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
+    // intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
+
+    setPausableInterval(this.enemieAction.bind(this), 1000/60);
+    setPausableInterval(this.enemieImageAnimation.bind(this), 100);
   }
 
   /** Load image, images into the imgCache - drawable-objects */
@@ -38,13 +41,20 @@ class Chicken extends MovableObject {
   }
 
   /**Intervall method, for enemie action */
-  enemieAction(self) {
-    self.movementLoop(self);
+  //todo enemieAction(self) { 
+  //   self.movementLoop();
+  // }
+  enemieAction() { 
+    this.movementLoop();
   }
 
   /** Intervall method, image animation */
-  enemieImageAnimation(self) {
-    self.playAnimation(self.IMAGES_WALKING);
-    self.setFixedPosition();
+  //todo enemieImageAnimation(self) { 
+  //   self.playAnimation(self.IMAGES_WALKING);
+  //   self.setFixedPosition();
+  // }
+  enemieImageAnimation() { 
+    this.playAnimation(this.IMAGES_WALKING);
+    this.setFixedPosition();
   }
 }

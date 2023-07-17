@@ -1,7 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let intervallIds = [];
+let intervallIds = []; //todo
 let stopIntervall = null;
 
 
@@ -12,20 +12,37 @@ function init() {
   world = new World(canvas, keyboard); // lädt die Schablone World, mit Character und Enemies
 
   console.log(world.character);
-  // setInterval(stopGame, 1000/60)
+  //todo setInterval(stopGame, 1000/60)
 }
 
+/* todo
 function stopGame(){
   if (!stopIntervall) {
     intervallIds.forEach(id => {
       setInterval(id);
     });
-  }else{
-      console.log('hi')
-      intervallIds.forEach(id => {
-        clearInterval(id);
-      });
-    }
+  }
+  if (pausableIntervall) {
+    console.log('hi')
+    intervallIds.forEach(id => {
+      clearInterval(id);
+    });
+  }
+}
+*/
+
+function setPausableInterval(fn, time){
+let intervallID;
+setInterval(() => {
+  if(stopIntervall){
+    clearInterval(intervallID);
+    intervallID = undefined;
+    return;
+  }
+  if (!intervallID) {
+    intervalID = setInterval(fn, time);
+  }
+}, 60);
 }
 
 window.addEventListener("resize", () =>{

@@ -56,9 +56,12 @@ class Endboss extends MovableObject{
     this.renderImages();
     this.renderVariables()
 
-    let self = this;
-    intervallIds.push(setInterval(this.enbossIntervall, 1000/60, self));
-    intervallIds.push(setInterval(this.enbossAnimation, 200, self));
+    //todo let self = this;
+    // intervallIds.push(setInterval(this.enbossIntervall, 1000/60, self));
+    // intervallIds.push(setInterval(this.enbossAnimation, 200, self));
+
+    setPausableInterval(this.enbossIntervall.bind(this), 1000/60);
+    setPausableInterval(this.enbossAnimation.bind(this), 200);
   }
 
   /** Load image, images into the imgCache - drawable-objects */
@@ -78,30 +81,54 @@ class Endboss extends MovableObject{
   }
 
   /** Intervall method, image animation */
-  enbossAnimation(self){
-    if (self.isDead()) {
-      self.playAnimation(self.IMAGES_DEAD);
-    }else if(self.isHurt()){
-      self.playAnimation(self.IMAGES_HURT);
-    }else if(self.characterNearAttackRange()){
-      self.x_attack = -50;
-      self.playAnimation(self.IMAGES_ATTACK);
-    }else if (self.isBeginnigMoveset()) {
-      self.x_attack = 0;
-      self.playAnimation(self.IMAGES_WALKING);
-    }else if(self.endbossTrigger){
-      self.playAnimation(self.IMAGES_ALERT);
+  //todo enbossAnimation(self){
+  //   if (self.isDead()) {
+  //     self.playAnimation(self.IMAGES_DEAD);
+  //   }else if(self.isHurt()){
+  //     self.playAnimation(self.IMAGES_HURT);
+  //   }else if(self.characterNearAttackRange()){
+  //     self.x_attack = -50;
+  //     self.playAnimation(self.IMAGES_ATTACK);
+  //   }else if (self.isBeginnigMoveset()) {
+  //     self.x_attack = 0;
+  //     self.playAnimation(self.IMAGES_WALKING);
+  //   }else if(self.endbossTrigger){
+  //     self.playAnimation(self.IMAGES_ALERT);
+  //   }
+  // }
+  enbossAnimation(){
+    if (this.isDead()) {
+      this.playAnimation(this.IMAGES_DEAD);
+    }else if(this.isHurt()){
+      this.playAnimation(this.IMAGES_HURT);
+    }else if(this.characterNearAttackRange()){
+      this.x_attack = -50;
+      this.playAnimation(this.IMAGES_ATTACK);
+    }else if (this.isBeginnigMoveset()) {
+      this.x_attack = 0;
+      this.playAnimation(this.IMAGES_WALKING);
+    }else if(this.endbossTrigger){
+      this.playAnimation(this.IMAGES_ALERT);
     }
   }
   
   /**Intervall method, for enemie action */
-  enbossIntervall(self){
-    self.setFixedPosition();
-    if(self.characterTriggerBoss() && !self.triggerDelay){
-      self.endbossTrigger = true;
-      self.triggerDelay = new Date().getTime();
-    }else if (self.isBeginnigMoveset()) {
-      self.moveLeft();
+  //todo enbossIntervall(self){
+  //   self.setFixedPosition();
+  //   if(self.characterTriggerBoss() && !self.triggerDelay){
+  //     self.endbossTrigger = true;
+  //     self.triggerDelay = new Date().getTime();
+  //   }else if (self.isBeginnigMoveset()) {
+  //     self.moveLeft();
+  // }
+  // }
+  enbossIntervall(){
+    this.setFixedPosition();
+    if(this.characterTriggerBoss() && !this.triggerDelay){
+      this.endbossTrigger = true;
+      this.triggerDelay = new Date().getTime();
+    }else if (this.isBeginnigMoveset()) {
+      this.moveLeft();
   }
   }
 
