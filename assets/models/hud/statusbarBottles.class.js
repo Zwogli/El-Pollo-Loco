@@ -1,4 +1,4 @@
-class StatusbarBottles extends DrawableObjects {
+class StatusbarBottles extends StatusbarObject {
   IMAGES = [
     "./assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png", // 0
     "./assets/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png",

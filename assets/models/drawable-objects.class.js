@@ -47,7 +47,7 @@ class DrawableObjects {
     });
   }
 
-  /**Animate Images
+  /**Animate Images with modulo
    *
    * @param {Array} images - Image Array
    */
@@ -61,6 +61,7 @@ class DrawableObjects {
     }
   }
 
+  /** select hitbox color */
   drawHitBox(ctx) {
     if (this instanceof Character) {
       this.setHitBoxColor(ctx, "blue");
@@ -77,6 +78,7 @@ class DrawableObjects {
     }
   }
 
+  /** Draw hitbox */
   setHitBoxColor(ctx, color) {
     ctx.beginPath();
     ctx.lineWidth = "5";
@@ -90,57 +92,7 @@ class DrawableObjects {
     ctx.stroke();
   }
 
-  collect(collectable) {
-    if (!this.isCollect()) {
-      if (collectable instanceof Coins) {
-        this.countCoin();
-      }
-      if (collectable instanceof Bottles) {
-        this.countBottle(+1);
-      } else {
-        this.lastCollect = new Date().getTime();
-      }
-    }
-  }
-
-  countCoin() {
-    this.setCoin += 20;
-    this.setPercentageCoins(this.setCoin);
-    if (this.setCoin > 100) {
-      this.setCoin = 100;
-    }
-  }
-
-  countBottle(count) {
-    this.setBottle += count;
-    this.world.statusbarBottles.setPercentageBottle(this.setBottle * 20);
-    if (this.setBottle > 5) {
-      this.setBottle = 5;
-    }
-  }
-
-  isCollect() {
-    let timepassed = new Date().getTime() - this.lastCollect; // difference in ms
-    timepassed = timepassed / 1000; // difference ins s
-    return timepassed < .2;
-  }
-
-  resolveImageIndex() {
-    if (this.percentage == 100) {
-      return 5;
-    } else if (this.percentage >= 80) {
-      return 4;
-    } else if (this.percentage >= 60) {
-      return 3;
-    } else if (this.percentage >= 40) {
-      return 2;
-    } else if (this.percentage >= 20) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
+  /** Calc the real x, y, width & height, without offset*/
   setFixedPosition(){
     this.x_fix = this.x + this.offset.x + this.x_attack;
     this.y_fix = this.y + this.offset.y;

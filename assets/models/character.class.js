@@ -60,7 +60,7 @@ class Character extends MovableObject {
   position_startY = 150;
 
   constructor() {
-    super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
+    super();
     this.renderImages();
     this.applyGravity();
     let self = this; //! In setIntervall wird this. nicht erkannt !
@@ -69,6 +69,7 @@ class Character extends MovableObject {
   }
 
   renderImages(){
+    this.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_JUMPING);
@@ -76,6 +77,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_WALKING);
   }
 
+  /** Intervall method, image animation */
   imageAnimation(self) {
     if (self.isDead()) {
       self.playAnimation(self.IMAGES_DEAD);
@@ -100,7 +102,7 @@ class Character extends MovableObject {
     } 
   }
   
-
+  /** Intervall method, for character action & inputs*/
   keyboardInputs(self) {
     if (self.world.keyboard.RIGHT && self.world.level.levelArea_end >= self.x) {
       self.moveRight();

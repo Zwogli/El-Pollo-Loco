@@ -80,7 +80,7 @@ class World {
   checkCollisionsBottle(self) {
     self.level.bottles.forEach((bottle) => {
       if (self.character.isColliding(bottle)) {
-        self.character.collect(bottle);
+        self.statusbarBottles.collect(bottle);
         this.deleteObject(this.level.bottles, bottle);
       }
     });
@@ -115,12 +115,12 @@ class World {
           this.character.otherDirection
         );
         self.throwableObjects.push(bottle);
-        self.character.countBottle(-1);
+        self.statusbarBottles.countBottle(-1);
       }
   }
 
   isThrowing(){
-    return this.keyboard.THROW && this.character.setBottle > 0;
+    return this.keyboard.THROW && this.statusbarBottles.setBottle > 0;
       
   }
 
