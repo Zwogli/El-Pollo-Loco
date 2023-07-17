@@ -54,12 +54,12 @@ class MovableObject extends DrawableObjects {
   //     if (this.isAboveGround() || this.speedY > 0) {
   //       this.y -= this.speedY;
   //       this.speedY -= this.acceleration;
-  //     }
+  //     }5
   //   }, 1000 / 25);
   //   intervallIds.push(intervallGravity);
   // }
   applyGravity() {
-    setPausableInterval(this.checkGravity.bind(this), 100/25);
+    setPausableInterval(this.checkGravity.bind(this), 1000/25);
   }
   checkGravity(){
     if (this.isAboveGround() || this.speedY > 0) {
