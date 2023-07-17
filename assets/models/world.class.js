@@ -24,8 +24,8 @@ class World {
     this.draw();
     this.setWorld();
     let self = this;
-    let collisionEnemy = setInterval(this.worldIntervallFast, 1000/60, self);
-    let actionFeedback = setInterval(this.worldIntervallSlow, 100, self);
+    intervallIds.push(setInterval(this.worldIntervallFast, 1000/60, self));
+    intervallIds.push(setInterval(this.worldIntervallSlow, 100, self));
   }
 
   setWorld() {

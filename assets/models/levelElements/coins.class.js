@@ -39,8 +39,9 @@ offset = {
 
   /** Intervall method, image animation */
   animateCoin(){
-    setInterval(() => {
+    let intervallCoin = setInterval(() => {
       this.playAnimation(this.IMAGES_COIN);
     }, 500);
+    intervallIds.push(intervallCoin);
   }
 }

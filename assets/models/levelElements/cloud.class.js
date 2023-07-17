@@ -17,12 +17,13 @@ class Cloud extends MovableObject {
    */
   animate(x) {
     let startPosition = x;
-    setInterval(() => {
+    let intervallCloud = setInterval(() => {
       this.moveRight();
       if (this.isLevelEndsX()) {
         this.x = startPosition;
       }
     }, 1000/60);
+    intervallIds.push(intervallCloud);
   }
   
   isLevelEndsX(){

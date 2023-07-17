@@ -1,9 +1,19 @@
+/* smokum-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Smokum";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/smokum/smokum-v24-latin-regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/smokum/smokum-v24-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/smokum/smokum-v24-latin-regular.woff2") format("woff2"), url("../fonts/smokum/smokum-v24-latin-regular.woff") format("woff"), url("../fonts/smokum/smokum-v24-latin-regular.ttf") format("truetype"), url("../fonts/smokum/smokum-v24-latin-regular.svg#Smokum") format("svg"); /* Legacy iOS */
+}
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
+  font-family: "Smokum", cursive;
   width: 100dvw;
   height: 100dvh;
   display: flex;
@@ -42,6 +52,39 @@ img {
   height: 480px;
 }
 
+#device-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-device {
+  width: 150px;
+  filter: drop-shadow(0px 0px 5px white);
+}
+
+.rotate-device {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+}
+.txt-device {
+  font-size: 32px;
+  font-weight: bolder;
+  text-shadow: 0px 0px 5px white;
+}
+
 .p-absolute {
   position: absolute;
 }
@@ -52,4 +95,8 @@ img {
 
 .box-shadow {
   box-shadow: 0 0 5px #000;
+}
+
+.color-w {
+  color: rgb(0, 0, 0);
 }

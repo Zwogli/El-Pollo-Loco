@@ -13,10 +13,10 @@ class MovableObject extends DrawableObjects {
    * check colission bettween character and enemy */
   isColliding(object) {
     return (
-      this.x_fix + this.width_fix > object.x_fix &&
-      this.x_fix < object.x_fix &&
-      this.y_fix + this.height_fix > object.y_fix &&
-      this.y_fix < object.y_fix + object.height_fix
+      this.x_fix + this.width_fix > object.x_fix && // char.R -> obj.L (>) 
+      this.y_fix + this.height_fix > object.y_fix &&  // char.B -> obj.T (>)
+      this.x_fix < object.x_fix + object.width_fix &&  // char.L -> obj.R (<)
+      this.y_fix < object.y_fix + object.height_fix // char.T -> obj.B (<)
     );
   }
 
@@ -50,12 +50,13 @@ class MovableObject extends DrawableObjects {
   }
 
   applyGravity() {
-    setInterval(() => {
+    let intervallGravity = setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
     }, 1000 / 25);
+    intervallIds.push(intervallGravity);
   }
 
   isAboveGround() {

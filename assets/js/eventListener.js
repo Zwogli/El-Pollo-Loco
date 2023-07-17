@@ -41,3 +41,5 @@ window.addEventListener("keyup", (event) => {
     keyboard.THROW = false;
   }
 })
+
+/** Check Window Size */

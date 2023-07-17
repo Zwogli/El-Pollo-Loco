@@ -16,8 +16,8 @@ class Chicken extends MovableObject {
     this.renderImages();
     this.renderVariables(postion_startX);
     let self = this;
-    let actionIntervall = setInterval(this.enemieAction, 1000 / 60, self);
-    let animationIntervall = setInterval(this.enemieImageAnimation, 100, self);
+    intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
+    intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
   }
 
   /** Load image, images into the imgCache - drawable-objects */

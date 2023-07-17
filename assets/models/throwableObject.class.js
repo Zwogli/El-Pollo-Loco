@@ -44,7 +44,7 @@ renderVariables(x, y, direction){
 throw(){
   this.speedY = 20;
   this.applyGravity();
-  setInterval(() => {
+  let intervallThrow = setInterval(() => {
     if(!this.direction){
       this.x += 8;
     }else{
@@ -53,6 +53,7 @@ throw(){
     this.setFixedPosition();
     this.animateThrow();
   }, 25);
+  intervallIds.push(intervallThrow);
 }
 
 animateThrow(){

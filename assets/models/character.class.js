@@ -64,8 +64,8 @@ class Character extends MovableObject {
     this.renderImages();
     this.applyGravity();
     let self = this; //! In setIntervall wird this. nicht erkannt !
-    let keyboardIntervall = setInterval(this.keyboardInputs, 1000 / 60, self); // setIntervall( function, time, argument1)
-    let animationIntervall = setInterval(this.imageAnimation, 100, self);
+    intervallIds.push(setInterval(this.keyboardInputs, 1000 / 60, self)); // setIntervall( function, time, argument1)
+    intervallIds.push(setInterval(this.imageAnimation, 100, self));
   }
 
   renderImages(){

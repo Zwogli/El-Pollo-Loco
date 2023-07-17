@@ -57,8 +57,8 @@ class Endboss extends MovableObject{
     this.renderVariables()
 
     let self = this;
-    let checkInervall = setInterval(this.enbossIntervall, 1000/60, self)
-    let animateInervall = setInterval(this.enbossAnimation, 200, self)
+    intervallIds.push(setInterval(this.enbossIntervall, 1000/60, self));
+    intervallIds.push(setInterval(this.enbossAnimation, 200, self));
   }
 
   /** Load image, images into the imgCache - drawable-objects */

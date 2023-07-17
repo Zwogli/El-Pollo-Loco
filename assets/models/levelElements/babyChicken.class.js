@@ -19,9 +19,9 @@ class BabyChicken extends MovableObject {
     this.applyGravity();
 
     let self = this;
-    let jumpIntervall = setInterval(this.enemieJumpAction, timeToJump, self);
-    let actionIntervall = setInterval(this.enemieAction, 1000 / 60, self);
-    let animationIntervall = setInterval(this.enemieImageAnimation, 100, self);
+    intervallIds.push(setInterval(this.enemieJumpAction, timeToJump, self));
+    intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
+    intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
   }
 
   /** Load image, images into the imgCache - drawable-objects */
