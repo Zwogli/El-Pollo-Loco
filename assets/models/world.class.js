@@ -272,11 +272,21 @@ class World {
   checkEndscreen(){
     let endboss = this.enemy.find(e => e instanceof Endboss);
     if (this.character.energy == 0) {
-      let endscreenLost = document.getElementById('endscreen-lost');
-      endscreenLost.classList.remove('d-none');
+      setTimeout(() => {
+        let endscreenLost = document.getElementById('endscreen-lost');
+        endscreenLost.classList.remove('d-none');
+        this.stopGame();
+      }, 1000);
     }else if (endboss.energy == 0) {
-      let endscreenLost = document.getElementById('endscreen-win');
-      endscreenLost.classList.remove('d-none');
+      setTimeout(() => {
+        let endscreenLost = document.getElementById('endscreen-win');
+        endscreenLost.classList.remove('d-none');
+        this.stopGame();
+      }, 1000);
     }
+  }
+
+  stopGame(){
+    stopInterval = true;
   }
 }
