@@ -13,10 +13,7 @@ function startGame(mode){
     document.getElementById('start-screen').classList.add('d-none');
     world = new World(canvas, keyboard); // load the class World as template -> object
   }else{
-    let endscreenLost  = document.getElementById(`endscreen-${mode}`)
-    endscreenLost.classList.add('d-none');
-    stopInterval = undefined;
-    world = new World(canvas, keyboard); // load the class World as template -> object
+   location.reload();
   }
   console.log(world.character);
 }
