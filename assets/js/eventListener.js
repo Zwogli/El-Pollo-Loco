@@ -42,4 +42,13 @@ window.addEventListener("keyup", (event) => {
   }
 })
 
-/** Check Window Size */
+/** Check window size */
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 720) {
+    document.getElementById("screen-canvas").classList.add("d-none");
+    document.getElementById("device-screen").classList.remove("d-none");
+  } else {
+    document.getElementById("screen-canvas").classList.remove("d-none");
+    document.getElementById("device-screen").classList.add("d-none");
+  }
+});

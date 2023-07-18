@@ -56,10 +56,6 @@ class Endboss extends MovableObject{
     this.renderImages();
     this.renderVariables()
 
-    //todo let self = this;
-    // intervallIds.push(setInterval(this.enbossIntervall, 1000/60, self));
-    // intervallIds.push(setInterval(this.enbossAnimation, 200, self));
-
     setPausableInterval(this.enbossIntervall.bind(this), 1000/60);
     setPausableInterval(this.enbossAnimation.bind(this), 200);
   }
@@ -81,21 +77,6 @@ class Endboss extends MovableObject{
   }
 
   /** Intervall method, image animation */
-  //todo enbossAnimation(self){
-  //   if (self.isDead()) {
-  //     self.playAnimation(self.IMAGES_DEAD);
-  //   }else if(self.isHurt()){
-  //     self.playAnimation(self.IMAGES_HURT);
-  //   }else if(self.characterNearAttackRange()){
-  //     self.x_attack = -50;
-  //     self.playAnimation(self.IMAGES_ATTACK);
-  //   }else if (self.isBeginnigMoveset()) {
-  //     self.x_attack = 0;
-  //     self.playAnimation(self.IMAGES_WALKING);
-  //   }else if(self.endbossTrigger){
-  //     self.playAnimation(self.IMAGES_ALERT);
-  //   }
-  // }
   enbossAnimation(){
     if (this.isDead()) {
       this.playAnimation(this.IMAGES_DEAD);
@@ -113,15 +94,6 @@ class Endboss extends MovableObject{
   }
   
   /**Intervall method, for enemie action */
-  //todo enbossIntervall(self){
-  //   self.setFixedPosition();
-  //   if(self.characterTriggerBoss() && !self.triggerDelay){
-  //     self.endbossTrigger = true;
-  //     self.triggerDelay = new Date().getTime();
-  //   }else if (self.isBeginnigMoveset()) {
-  //     self.moveLeft();
-  // }
-  // }
   enbossIntervall(){
     this.setFixedPosition();
     if(this.characterTriggerBoss() && !this.triggerDelay){

@@ -4,7 +4,6 @@ class Chicken extends MovableObject {
     "./assets/img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
     "./assets/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
   ];
-  x = 200;
   y = 345;
   width = 80;
   height = 80;
@@ -15,9 +14,6 @@ class Chicken extends MovableObject {
     super();
     this.renderImages();
     this.renderVariables(postion_startX);
-    //todo let self = this;
-    // intervallIds.push(setInterval(this.enemieAction, 1000 / 60, self));
-    // intervallIds.push(setInterval(this.enemieImageAnimation, 100, self));
 
     setPausableInterval(this.enemieAction.bind(this), 1000/60);
     setPausableInterval(this.enemieImageAnimation.bind(this), 100);
@@ -41,18 +37,11 @@ class Chicken extends MovableObject {
   }
 
   /**Intervall method, for enemie action */
-  //todo enemieAction(self) { 
-  //   self.movementLoop();
-  // }
   enemieAction() { 
     this.movementLoop();
   }
 
   /** Intervall method, image animation */
-  //todo enemieImageAnimation(self) { 
-  //   self.playAnimation(self.IMAGES_WALKING);
-  //   self.setFixedPosition();
-  // }
   enemieImageAnimation() { 
     this.playAnimation(this.IMAGES_WALKING);
     this.setFixedPosition();

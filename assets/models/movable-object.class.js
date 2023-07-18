@@ -49,15 +49,6 @@ class MovableObject extends DrawableObjects {
     return idleCountdown_seconds > 5;
   }
 
-  //todo applyGravity() {
-  //   let intervallGravity = setInterval(() => {
-  //     if (this.isAboveGround() || this.speedY > 0) {
-  //       this.y -= this.speedY;
-  //       this.speedY -= this.acceleration;
-  //     }5
-  //   }, 1000 / 25);
-  //   intervallIds.push(intervallGravity);
-  // }
   applyGravity() {
     setPausableInterval(this.checkGravity.bind(this), 1000/25);
   }
@@ -103,19 +94,6 @@ class MovableObject extends DrawableObjects {
     this.x -= this.speed;
   }
 
-  //todo movementLoop(self) {
-  //   if (!self.otherDirection) {
-  //     self.moveLeft();
-  //     if (self.x < self.postion_startX - 200) {
-  //       self.otherDirection = true;
-  //     }
-  //   } else if (self.otherDirection) {
-  //     self.moveRight();
-  //     if (self.x > self.postion_startX) {
-  //       self.otherDirection = false;
-  //     }
-  //   }
-  // }
   movementLoop() {
     if (!this.otherDirection) {
       this.moveLeft();

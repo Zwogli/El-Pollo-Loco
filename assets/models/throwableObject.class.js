@@ -26,7 +26,6 @@ constructor(x, y, direction){
   super();
   this.renderImages();
   this.renderVariables(x, y, direction);  
-  //todo this.throw();
 
   this.speedY = 20;
   this.applyGravity();
@@ -45,20 +44,6 @@ renderVariables(x, y, direction){
   this.direction = direction;
 }
 
-//todo throw(){
-//   this.speedY = 20;
-//   this.applyGravity();
-//   let intervallThrow = setInterval(() => {
-//     if(!this.direction){
-//       this.x += 8;
-//     }else{
-//       this.x -= 8;
-//     }
-//     this.setFixedPosition();
-//     this.animateThrow();
-//   }, 25);
-//   intervallIds.push(intervallThrow);
-// }
 throw(){
     if(!this.direction){
       this.x += 8;

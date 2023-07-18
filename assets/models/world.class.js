@@ -23,9 +23,6 @@ class World {
     // this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
     this.draw();
     this.setWorld();
-    //todo let self = this;
-    // intervallIds.push(setInterval(this.worldIntervallFast, 1000/60, self));
-    // intervallIds.push(setInterval(this.worldIntervallSlow, 100, self));
 
     setPausableInterval(this.worldIntervallFast.bind(this), 1000/60);
     setPausableInterval(this.worldIntervallSlow.bind(this), 100);
@@ -39,13 +36,6 @@ class World {
     });
   }
 
-  //todo worldIntervallFast(self) {
-  //   self.checkCollisionsEnemies(self);
-  //   self.checkCollisionsCoin(self);
-  //   self.checkCollisionsBottle(self);
-  //   self.checkCollisionThrowBottle(self);
-  //   self.checkEndscreen();
-  // }
   worldIntervallFast() {
     this.checkCollisionsEnemies();
     this.checkCollisionsCoin();
@@ -54,26 +44,10 @@ class World {
     this.checkEndscreen();
   }
 
-  //todo worldIntervallSlow(self){
-  //   self.checkThrow(self);
-  // }
   worldIntervallSlow(){
     this.checkThrow();
   }
 
-  // checkCollisionsEnemies(self) {
-  //   self.level.enemies.forEach((enemy) => {
-  //     if (self.isJumpOff(enemy)){
-  //         enemy.energy -= 100;
-  //         self.character.jump(5);
-  //         this.deleteObject(this.level.enemies, enemy);
-  //       }
-  //     else if (self.character.isColliding(enemy)) {
-  //       self.character.hit();
-  //       self.statusbarLive.setPercentageLive(self.character.energy);
-  //     }
-  //   });
-  // }
   checkCollisionsEnemies() {
     this.level.enemies.forEach((enemy) => {
       if (this.isJumpOff(enemy)){
@@ -94,14 +68,6 @@ class World {
     this.character.isFalling();
   }
 
-  //todo checkCollisionsCoin(self) {
-  //   self.level.coins.forEach((coin) => {
-  //     if (self.character.isColliding(coin)) {
-  //       self.statusbarCoins.collect(coin);
-  //       this.deleteObject(this.level.coins, coin);
-  //     }
-  //   });
-  // }
   checkCollisionsCoin() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
@@ -111,14 +77,6 @@ class World {
     });
   }
 
-  //todo checkCollisionsBottle(self) {
-  //   self.level.bottles.forEach((bottle) => {
-  //     if (self.character.isColliding(bottle)) {
-  //       self.statusbarBottles.collect(bottle);
-  //       this.deleteObject(this.level.bottles, bottle);
-  //     }
-  //   });
-  // }
   checkCollisionsBottle() {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
@@ -128,24 +86,6 @@ class World {
     });
   }
 
-  //todo checkCollisionThrowBottle(self){
-  //   self.throwableObjects.forEach((bottle) => {
-  //     self.level.enemies.forEach((enemy) => {
-  //       if (bottle.isColliding(enemy)){
-  //         enemy.hit();
-  //         bottle.isHitEnemy = true;
-  //         bottle.animateThrow();
-  //         if (enemy.energy == 0 && enemy instanceof Chicken || enemy.energy == 0 && enemy instanceof BabyChicken) {
-  //           this.deleteObject(this.level.enemies, enemy);
-  //         }
-  //         bottle.isHitEnemy = false;
-  //       }
-  //       if(bottle.y > 500){
-  //         this.deleteObject(this.throwableObjects, bottle);
-  //       }
-  //     })
-  //   })
-  // }
   checkCollisionThrowBottle(){
     this.throwableObjects.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
@@ -165,19 +105,6 @@ class World {
     })
   }
 
-  //todo checkThrow(self) {
-  //     if (self.isThrowing()) {
-  //       self.character.idle_countdown = 0;
-  //       self.character.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
-  //       let bottle = new ThrowableObject(
-  //         this.positionBottleStartX(),
-  //         this.positionBottleStartY(),
-  //         this.character.otherDirection
-  //       );
-  //       self.throwableObjects.push(bottle);
-  //       self.statusbarBottles.countBottle(-1);
-  //     }
-  // }
   checkThrow() {
     if (this.isThrowing()) {
       this.character.idle_countdown = 0;

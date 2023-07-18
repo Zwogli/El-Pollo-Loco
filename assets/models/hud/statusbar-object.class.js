@@ -1,4 +1,10 @@
-class StatusbarObject extends DrawableObjects{
+class StatusbarObject extends DrawableObjects {
+  x = 10;
+  y = 0;
+  width = 200;
+  height = 50;
+  percentage;
+
   /** Check collectable for count */
   collect(collectable) {
     if (!this.isCollect()) {
@@ -13,6 +19,10 @@ class StatusbarObject extends DrawableObjects{
     }
   }
 
+  /** Counts the coins up to a maximum of 5. For setPercentageCoins() the current value is multiplied by 20.
+   *
+   * @param {number} count - iterate collected coin
+   */
   countCoin(count) {
     this.setCoin += count;
     this.setPercentageCoins(this.setCoin * 20);
@@ -21,6 +31,10 @@ class StatusbarObject extends DrawableObjects{
     }
   }
 
+  /** Counts the coins up to a maximum of 5. For setPercentageCoins() the current value is multiplied by 20.
+   *
+   * @param {number} count - iterate collected coin
+   */
   countBottle(count) {
     this.setBottle += count;
     this.setPercentageBottle(this.setBottle * 20);
@@ -33,7 +47,7 @@ class StatusbarObject extends DrawableObjects{
   isCollect() {
     let timepassed = new Date().getTime() - this.lastCollect; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
-    return timepassed < .2;
+    return timepassed < 0.2;
   }
 
   /** Gives the statusbars numbers for array position */

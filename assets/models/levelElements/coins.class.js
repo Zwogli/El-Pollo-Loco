@@ -18,7 +18,6 @@ offset = {
     this.renderImages();
     this.renderVariables(x, y)
     this.setFixedPosition();
-    //todo this.animateCoin();
 
     setPausableInterval(this.animateCoin.bind(this), 500);
   }
@@ -40,12 +39,6 @@ offset = {
   }
 
   /** Intervall method, image animation */
-  // animateCoin(){
-  //   let intervallCoin = setInterval(() => {
-  //     this.playAnimation(this.IMAGES_COIN);
-  //   }, 500);
-  //   intervallIds.push(intervallCoin);
-  // }
   animateCoin(){
       this.playAnimation(this.IMAGES_COIN);
   }
