@@ -6,6 +6,12 @@
     <title>El-Pollo-Loco</title>
     <!-- Style -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="./assets/img/icon/favicon.ico"
+    />
 
     <!-- models -->
     <script src="assets/models/keyboard.class.js"></script>
@@ -45,12 +51,23 @@
       />
 
       <div id="device-screen" class="p-absolute">
-        <img class="rotate-device img-device color-w" src="./assets/img/icon/mobile-phone-128.png" alt="">
+        <img
+          class="rotate-device img-device color-w"
+          src="./assets/img/icon/mobile-phone-128.png"
+          alt="please rotate your device"
+        />
         <h2 class="txt-device color-w">Please Rotate Device</h2>
       </div>
 
       <div id="screen-canvas" class="p-absolute box-shadow">
         <canvas id="canvas" width="720" height="480"></canvas>
+      </div>
+
+      <div id="start-screen" class="p-absolute">
+        <img src="./assets/img/9_intro_outro_screens/start/startscreen_1.png" alt="start-screen" />
+        <div class="btn-container">
+          <button>Start Game</button>
+        </div>
       </div>
 
       <div id="endscreen-win" class="p-absolute d-none">
@@ -66,6 +83,7 @@
           alt="you lost"
         />
       </div>
+
     </main>
   </body>
 </html>
