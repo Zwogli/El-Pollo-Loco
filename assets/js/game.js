@@ -7,10 +7,15 @@ let stopInterval;
 function init() {
   canvas = document.getElementById("canvas");
   canvasWidth = canvas.width;
+  
+  //todo setInterval(stopGame, 1000/60)
+}
+
+function startGame(){
+  document.getElementById('start-screen').classList.add('d-none');
   world = new World(canvas, keyboard); // lädt die Schablone World, mit Character und Enemies
 
   console.log(world.character);
-  //todo setInterval(stopGame, 1000/60)
 }
 
 /* todo         
