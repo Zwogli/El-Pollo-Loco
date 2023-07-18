@@ -11,6 +11,7 @@ class World {
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
   throwableObjects = [];
+  setEndscreen;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -198,13 +199,13 @@ class World {
 
   checkEndscreen(){
     let endboss = this.enemy.find(e => e instanceof Endboss);
-    if (this.character.energy == 0) {
+  if (this.character.energy == 0 && !this.setEndscreen) {
       setTimeout(() => {
         let endscreenLost = document.getElementById('endscreen-lost');
         endscreenLost.classList.remove('d-none');
         this.stopGame();
       }, 1000);
-    }else if (endboss.energy == 0) {
+    }else if (endboss.energy == 0 && !this.setEndscreen) {
       setTimeout(() => {
         let endscreenLost = document.getElementById('endscreen-win');
         endscreenLost.classList.remove('d-none');

@@ -8,10 +8,16 @@ function init() {
   canvasWidth = canvas.width;
 }
 
-function startGame(){
-  document.getElementById('start-screen').classList.add('d-none');
-  world = new World(canvas, keyboard); // load the class World as template -> object
-
+function startGame(mode){
+  if(mode == 'start'){
+    document.getElementById('start-screen').classList.add('d-none');
+    world = new World(canvas, keyboard); // load the class World as template -> object
+  }else{
+    let endscreenLost  = document.getElementById(`endscreen-${mode}`)
+    endscreenLost.classList.add('d-none');
+    stopInterval = undefined;
+    world = new World(canvas, keyboard); // load the class World as template -> object
+  }
   console.log(world.character);
 }
 
