@@ -80,14 +80,14 @@ return [
 
 function createBgLayer1Level1(){
 return [
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', - canvas.width * 2, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', -canvas.width, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width - canvas.width, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width * 2, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 3, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width * 4, -2),
-  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 5, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', - canvas.width * 2, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', -canvas.width, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width - canvas.width, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width * 2, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 3, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/1.png', canvas.width * 4, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/1_first_layer/2.png', canvas.width * 5, 0),
 ]
 }
 
@@ -106,13 +106,13 @@ return [
 
 function createBgLayer3Level1(){
 return [
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', - canvas.width * 2, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', -canvas.width, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width - canvas.width, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width * 2, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 3, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width * 4, 0),
-  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 5, 0),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', - canvas.width * 2, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', -canvas.width, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width - canvas.width, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width * 2, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 3, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/1.png', canvas.width * 4, -2),
+  new BackgroundLayer('./assets/img/5_background/layers/3_third_layer/2.png', canvas.width * 5, -2),
 ]
 }
