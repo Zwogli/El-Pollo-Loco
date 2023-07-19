@@ -5,12 +5,13 @@ class World {
   keyboard = new Keyboard();
   camera_x;
   level;
-  character = new Character(); //Erstellt aus der Schablone ein Objekt
+  character = new Character(assetsCharacter); //Erstellt aus der Schablone ein Objekt
   enemy = [];
   statusbarLive = new StatusbarLive();
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
   throwableObjects = [];
+  assetsCharacter;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;

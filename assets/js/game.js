@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let stopInterval;
+let assetsCharacter = new AssetsCharacter()
 
 function init() {
   canvas = document.getElementById("canvas");
