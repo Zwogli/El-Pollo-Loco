@@ -51,7 +51,6 @@ img{
 
 .btn-container{
   position: absolute;
-  bottom: 10px;
 
   width: 100%;
   height: 10%;
@@ -59,6 +58,12 @@ img{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.pos-b-start{
+  bottom: 15px;
+}
+.pos-b-restart{
+  bottom: 80px;
 }
 
 button{
