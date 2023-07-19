@@ -22,6 +22,8 @@ class DrawableObjects {
   setCoin = 0;
   setBottle = 0;
 
+  animationCounter = 0;
+
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
@@ -58,6 +60,17 @@ class DrawableObjects {
     this.currentImg++;
     if (this.currentImg > images.length) {
       this.currentImg = 0;
+    }
+  }
+
+  playSingleAnimation(images) {
+    if (this.animationCounter < images.length) {
+        let i = this.animationCounter;
+        let path = images[i];
+        this.img = this.imgCache[path];
+        this.animationCounter++;
+    }else{
+      this.animationCounter = 0;
     }
   }
 
