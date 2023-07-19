@@ -9,6 +9,18 @@ class Character extends MovableObject {
     "./assets/img/2_character_pepe/5_dead/D-57.png",
   ];
   IMAGES_IDLE = [
+    "./assets/img/2_character_pepe/1_idle/idle/I-1.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-2.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-3.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-4.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-5.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-6.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-7.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-8.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-9.png",
+    "./assets/img/2_character_pepe/1_idle/idle/I-10.png",
+  ]
+  IMAGES_IDLE_LONG = [
     "./assets/img/2_character_pepe/1_idle/long_idle/I-11.png",
     "./assets/img/2_character_pepe/1_idle/long_idle/I-12.png",
     "./assets/img/2_character_pepe/1_idle/long_idle/I-13.png",
@@ -71,7 +83,7 @@ class Character extends MovableObject {
   renderImages(){
     this.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_DEAD);
-    this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_IDLE_LONG);
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_WALKING);
@@ -98,7 +110,7 @@ class Character extends MovableObject {
       this.sleepCount();
     }
     if (this.sleepCount()) {
-      this.playAnimation(this.IMAGES_IDLE);
+      this.playAnimation(this.IMAGES_IDLE_LONG);
     } 
   }
   
