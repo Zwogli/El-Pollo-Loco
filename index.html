@@ -44,7 +44,7 @@
     <script src="assets/js/eventListener.js"></script>
   </head>
 
-  <body onload="init()">
+  <body id="body" onload="init()">
     <main>
       <img
         class="background p-absolute"
@@ -52,61 +52,93 @@
         alt="background"
       />
 
-      <div id="device-screen" class="p-absolute">
-        <img
-          class="rotate-device img-device color-w"
-          src="./assets/img/icon/mobile-phone-128.png"
-          alt="please rotate your device"
-        />
-        <h2 class="txt-device color-w">Please Rotate Device</h2>
-      </div>
+      
 
-      <div id="screen-canvas" class="p-absolute box-shadow">
-        <div class="d-flex p-rel">
+      <div id="game-screen" class="game-screen p-absolute">
+        <div id="screen" class="p-rel">
 
-        <canvas id="canvas" width="720" height="480"></canvas>
+          <section id="device-screen" class="p-absolute">
+            <img
+              class="rotate-device img-device color-w"
+              src="./assets/img/icon/mobile-phone-128.png"
+              alt="please rotate your device"
+            />
+            <h2 class="txt-device color-w">Please Rotate Device</h2>
+          </section>
 
-        <div id="controller-div" class="p-absolute">
-          <div class="controller">
-            <button id="btn-left" class="btn-controller">&#x2B9C;</button>
-            <button id="btn-right" class="btn-controller">&#x2B9E;</button>
+          <div id="options-div" class="p-absolute d-flex">
+            <button class="btn-none">
+              <img
+                class="icon-40"
+                src="./assets/img/icon/computer-1293125.svg"
+                alt="options"
+              />
+            </button>
+            <button id="fullscrren" class="btn-none" onclick="toggleFullscreen()">
+              <img
+                class="icon-48"
+                src="assets/img/icon/fullscreen.png"
+                alt="fullscreen"
+              />
+            </button>
           </div>
-          <div class="controller">
-            <button id="btn-jump" class="btn-controller">&#x2B9D;</button>
-            <button id="btn-throw" class="btn-controller">&#x1F89C;</button>
+        
+
+        <div id="screen-canvas" class="p-absolute box-shadow">
+          <div class="d-flex p-rel">
+            <canvas id="canvas" width="720" height="480"></canvas>
+
+            <div id="controller-div" class="p-absolute">
+              <div class="controller">
+                <button id="btn-left" class="btn-controller">&#x2B9C;</button>
+                <button id="btn-right" class="btn-controller">&#x2B9E;</button>
+              </div>
+
+              <div class="controller">
+                <button id="btn-jump" class="btn-controller">&#x2B9D;</button>
+                <button id="btn-throw" class="btn-controller">&#x1F89C;</button>
+              </div>
+            </div>
           </div>
         </div>
 
-      </div>
-      </div>
+        <div id="start-screen" class="p-absolute">
+          <img
+            src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
+            alt="start-screen"
+          />
+          <div class="btn-container pos-b-start">
+            <button onclick="startGame('start')" class="btn-game">
+              Start Game
+            </button>
+          </div>
+        </div>
 
-      <div id="start-screen" class="p-absolute">
-        <img src="./assets/img/9_intro_outro_screens/start/startscreen_1.png" alt="start-screen" />
-        <div class="btn-container pos-b-start">
-          <button onclick="startGame('start')" class="btn-game">Start Game</button>
+        <div id="endscreen-win" class="p-absolute d-none">
+          <img
+            src="./assets/img/9_intro_outro_screens/game_over/game over!.png"
+            alt="game over"
+          />
+          <div class="btn-container pos-b-restart">
+            <button onclick="startGame('win')" class="btn-game">
+              Restart Game
+            </button>
+          </div>
+        </div>
+
+        <div id="endscreen-lost" class="p-absolute d-none">
+          <img
+            src="./assets/img/9_intro_outro_screens/game_over/oh no you lost!.png"
+            alt="you lost"
+          />
+          <div class="btn-container pos-b-restart">
+            <button onclick="startGame('lost')" class="btn-game">
+              Restart Game
+            </button>
+          </div>
         </div>
       </div>
-
-      <div id="endscreen-win" class="p-absolute d-none">
-        <img
-          src="./assets/img/9_intro_outro_screens/game_over/game over!.png"
-          alt="game over"
-        />
-        <div class="btn-container pos-b-restart">
-          <button onclick="startGame('win')" class="btn-game">Restart Game</button>
-        </div>
       </div>
-
-      <div id="endscreen-lost" class="p-absolute d-none">
-        <img
-          src="./assets/img/9_intro_outro_screens/game_over/oh no you lost!.png"
-          alt="you lost"
-        />
-        <div class="btn-container pos-b-restart">
-          <button onclick="startGame('lost')" class="btn-game">Restart Game"></button>
-        </div>
-      </div>
-
     </main>
   </body>
 </html>

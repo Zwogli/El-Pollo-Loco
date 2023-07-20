@@ -3,6 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let stopInterval;
 let assetsCharacter = new AssetsCharacter()
+let isFullscreen;
 
 function init() {
   canvas = document.getElementById("canvas");
@@ -45,6 +46,16 @@ function setPausableInterval(fn, time) {
 //     }
 //   }, 100);
 // }
+
+function toggleFullscreen(){
+  if (isFullscreen) {
+    document.exitFullscreen();
+    isFullscreen = false;
+} else {
+    document.getElementById('game-screen').requestFullscreen();
+    isFullscreen = true;
+}
+}
 
 function bindBtnsPressEvents(){
   document.getElementById('btn-left').addEventListener("touchstart", (e) => {
