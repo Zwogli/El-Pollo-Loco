@@ -7,6 +7,7 @@ let assetsCharacter = new AssetsCharacter()
 function init() {
   canvas = document.getElementById("canvas");
   canvasWidth = canvas.width;
+  checkWindowWidth();
 }
 
 function startGame(mode){
@@ -32,4 +33,14 @@ function setPausableInterval(fn, time) {
       intervalID = setInterval(fn, time);
     }
   }, 60);
+}
+
+function checkWindowWidth(){
+  setInterval(() => {
+    if(window.innerWidth < 720){
+      document.getElementById("controller-div").style.display = 'flex';
+    }else{
+      document.getElementById("controller-div").style.display = 'none';
+    }
+  }, 100);
 }

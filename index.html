@@ -62,13 +62,28 @@
       </div>
 
       <div id="screen-canvas" class="p-absolute box-shadow">
+        <div class="d-flex p-rel">
+
         <canvas id="canvas" width="720" height="480"></canvas>
+
+        <div id="controller-div" class="p-absolute">
+          <div class="controller">
+            <button class="btn-controller">&#x2B9C;</button>
+            <button class="btn-controller">&#x2B9E;</button>
+          </div>
+          <div class="controller">
+            <button class="btn-controller">&#x2B9D;</button>
+            <button class="btn-controller">&#x1F89C;</button>
+          </div>
+        </div>
+
+      </div>
       </div>
 
       <div id="start-screen" class="p-absolute">
         <img src="./assets/img/9_intro_outro_screens/start/startscreen_1.png" alt="start-screen" />
         <div class="btn-container pos-b-start">
-          <button onclick="startGame('start')">Start Game</button>
+          <button onclick="startGame('start')" class="btn-game">Start Game</button>
         </div>
       </div>
 
@@ -78,7 +93,7 @@
           alt="game over"
         />
         <div class="btn-container pos-b-restart">
-          <button onclick="startGame('win')">Restart Game</button>
+          <button onclick="startGame('win')" class="btn-game">Restart Game</button>
         </div>
       </div>
 
@@ -88,7 +103,7 @@
           alt="you lost"
         />
         <div class="btn-container pos-b-restart">
-          <button onclick="startGame('lost')">Restart Game</button>
+          <button onclick="startGame('lost')" class="btn-game">Restart Game"></button>
         </div>
       </div>
 
