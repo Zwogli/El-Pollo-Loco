@@ -7,7 +7,8 @@ let assetsCharacter = new AssetsCharacter()
 function init() {
   canvas = document.getElementById("canvas");
   canvasWidth = canvas.width;
-  checkWindowWidth();
+  // checkWindowWidth();
+  bindBtnsPressEvents();
 }
 
 function startGame(mode){
@@ -35,12 +36,50 @@ function setPausableInterval(fn, time) {
   }, 60);
 }
 
-function checkWindowWidth(){
-  setInterval(() => {
-    if(window.innerWidth < 720){
-      document.getElementById("controller-div").style.display = 'flex';
-    }else{
-      document.getElementById("controller-div").style.display = 'none';
-    }
-  }, 100);
+// function checkWindowWidth(){
+//   setInterval(() => {
+//     if(window.innerWidth < 720){
+//       document.getElementById("controller-div").style.display = 'flex';
+//     }else{
+//       document.getElementById("controller-div").style.display = 'none';
+//     }
+//   }, 100);
+// }
+
+function bindBtnsPressEvents(){
+  document.getElementById('btn-left').addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.LEFT = true;
+});
+  document.getElementById('btn-left').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.LEFT = false;
+  });
+
+  document.getElementById('btn-right').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = true;
+  });
+  document.getElementById('btn-right').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = false;
+  });
+
+  document.getElementById('btn-jump').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.UP = true;
+  });
+  document.getElementById('btn-jump').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.UP = false;
+  });
+
+  document.getElementById('btn-throw').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.THROW = true;
+  });
+  document.getElementById('btn-throw').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.THROW = false;
+  });
 }
