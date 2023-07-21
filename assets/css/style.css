@@ -30,7 +30,7 @@ body {
   filter: blur(5px);
 }
 
-#screen {
+.screen {
   width: 720px;
   height: 480px;
   display: flex;
