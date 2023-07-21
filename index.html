@@ -62,8 +62,8 @@
     </aside>
 
     <main id="screen" class="screen p-rel">
-      <section id="options-div" class="p-absolute d-flex">
-        <button class="btn-none">
+      <section id="menu-div" class="p-absolute d-flex">
+        <button onclick="toggleOptions()" class="btn-none">
           <img
             class="icon-40"
             src="./assets/img/icon/computer-1293125.svg"
@@ -77,6 +77,29 @@
             alt="fullscreen"
           />
         </button>
+      </section>
+
+      <section id="options-div" onclick=" toggleOptions()" class="p-absolute d-none">
+        <div id="options" onclick="event.stopPropagation()">
+          <h2>Options</h2>
+          <label for="music">Music</label>
+          <input type="range" min="1" max="100" value="30" class="slider" id="music" onmousemove="volumeControllMusic(this.value/100)" onchange="volumeControllMusic(this.value/100)">
+
+          <label for="sfxSound">SFX-Sound</label>
+          <input type="range" min="1" max="100" value="30" class="slider" id="sfxSound" onmousemove="volumeControllMusic(this.value/100)" onchange="volumeControllMusic(this.value/100)">
+        
+          <div class="label">
+            <label for="mute">Mute</label>
+            <input id="mute" class="largerBox" type="checkbox">
+          </div>
+
+          <div class="label">
+            <label for="touchControll">Touch Controller</label>
+            <input id="touchControll" class="largerBox" type="checkbox">
+          </div>
+
+          <button onclick="toggleOptions()" class="btn-options">Back</button>
+        </div>
       </section>
 
       <section id="screen-canvas" class="p-absolute box-shadow">

@@ -39,6 +39,10 @@ function setPausableInterval(fn, time) {
   }, 60);
 }
 
+function toggleOptions(){
+  document.getElementById('options-div').classList.toggle('d-none');
+}
+
 /** Is height > width, use landscape mode */
 function checkLandscapeMode() {
   if (screen.availHeight > screen.availWidth) {
