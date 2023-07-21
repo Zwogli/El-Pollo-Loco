@@ -13,6 +13,7 @@ function init() {
   bindBtnsPressEvents();
 }
 
+/** Start Game / Reloade url */
 function startGame(mode) {
   if (mode == "start") {
     document.getElementById("start-screen").classList.add("d-none");
@@ -38,17 +39,18 @@ function setPausableInterval(fn, time) {
   }, 60);
 }
 
+/** Is height > width, use landscape mode */
 function checkLandscapeMode() {
-  console.log(screen.availHeight , screen.availWidth);
   if (screen.availHeight > screen.availWidth) {
-    this.document.getElementById("rotateDevice-screen").classList.remove("dNone");
-    this.document.getElementById("screen").classList.add("dNone");
+    this.document.getElementById("rotateDevice-screen").classList.remove("d-none");
+    this.document.getElementById("screen").classList.add("d-none");
   } else {
-    this.document.getElementById("rotateDevice-screen").classList.add("dNone");
-    this.document.getElementById("screen").classList.remove("dNone");
+    this.document.getElementById("rotateDevice-screen").classList.add("d-none");
+    this.document.getElementById("screen").classList.remove("d-none");
   }
 }
 
+/** If window shrink, add zoom to the screen */
 function fitToScreen(){
   let bodyWidth = document.getElementById('body').clientWidth;
   let bodyHeight = document.getElementById('body').clientHeight;
@@ -71,11 +73,12 @@ function toggleFullscreen() {
     document.exitFullscreen();
     isFullscreen = false;
   } else {
-    document.getElementById("screen").requestFullscreen();
+    document.getElementById("body").requestFullscreen();
     isFullscreen = true;
   }
 }
 
+/** add touchable btns */
 function bindBtnsPressEvents() {
   document.getElementById("btn-left").addEventListener("touchstart", (e) => {
     e.preventDefault();
