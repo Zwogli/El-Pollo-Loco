@@ -42,14 +42,12 @@ window.addEventListener("keyup", (event) => {
   }
 })
 
-/** Check window size */
-window.addEventListener("resize", () => {
-  if (window.innerWidth < 720) {
-    document.getElementById("rotateDevice-screen").classList.remove("d-none");
-    document.getElementById("screen").classList.add("d-none");
-  } else{
-    console.log('width > 720px' +  window.innerWidth)
-    document.getElementById("rotateDevice-screen").classList.add("d-none");
-    document.getElementById("screen").classList.remove("d-none");
-  }
+/** Check Landscape*/
+window.addEventListener("orientationchange", () => {
+  checkLandscapeMode();
+});
+
+/** Zoom screen if window smaller */
+window.addEventListener('resize', () => {
+  fitToScreen();
 });
