@@ -16,36 +16,23 @@
 body {
   width: 100dvw;
   height: 100dvh;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-main {
-  width: 100dvw;
-  height: 100dvh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.background {
+.img-background {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(5px);
 }
 
-.game-screen {
-  height: 480px;
-  width: 720px;
-}
-
 #screen {
-  width: 100%;
-  height: 100%;
+  width: 720px;
+  height: 480px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +47,7 @@ img {
   height: 100%;
 }
 
-#screen-canvas, #start-screen, #endscreen-win, #endscreen-lost {
+#screen-canvas, #start-screen, #endscreen {
   width: 720px;
   height: 480px;
 }
@@ -76,14 +63,6 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.pos-b-start {
-  bottom: 15px;
-}
-
-.pos-b-restart {
-  bottom: 80px;
 }
 
 .btn-none {
@@ -146,7 +125,7 @@ img {
   gap: 20px;
 }
 
-#device-screen {
+#rotateDevice-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,6 +164,14 @@ img {
 
 .p-rel {
   position: relative;
+}
+
+.pos-b-start {
+  bottom: 15px;
+}
+
+.pos-b-restart {
+  bottom: 80px;
 }
 
 .d-flex {

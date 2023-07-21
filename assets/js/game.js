@@ -52,7 +52,7 @@ function toggleFullscreen(){
     document.exitFullscreen();
     isFullscreen = false;
 } else {
-    document.getElementById('game-screen').requestFullscreen();
+    document.getElementById('screen').requestFullscreen();
     isFullscreen = true;
 }
 }

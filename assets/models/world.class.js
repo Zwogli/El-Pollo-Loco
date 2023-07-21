@@ -197,24 +197,31 @@ class World {
     this.ctx.restore();
   }
 
+  /**Check which endscreen should load. */
   checkEndscreen(){
     let endboss = this.enemy.find(e => e instanceof Endboss);
-  if (this.character.energy == 0) {
-      setTimeout(() => {
-        let endscreenLost = document.getElementById('endscreen-lost');
-        endscreenLost.classList.remove('d-none');
-        this.stopGame();
-      }, 1000);
+    
+    if (this.character.energy == 0) {
+      let path = "./assets/img/9_intro_outro_screens/game_over/oh no you lost!.png";
+      this.stopGame(path);
     }else if (endboss.energy == 0) {
-      setTimeout(() => {
-        let endscreenLost = document.getElementById('endscreen-win');
-        endscreenLost.classList.remove('d-none');
-        this.stopGame();
-      }, 1000);
+      let path = "./assets/img/9_intro_outro_screens/game_over/game over!.png";
+      this.stopGame(path);
     }
   }
 
-  stopGame(){
-    stopInterval = true;
+  /**Render endscreen & stop interval
+   * 
+   * @param {string} path - endscreen img
+   */
+  stopGame(path){
+    let endscreen = document.getElementById('endscreen');
+    let imgEndscreen = document.getElementById('img-endscreen');
+
+    imgEndscreen.src = path;
+    setTimeout(() => {
+      endscreen.classList.remove('d-none');
+      stopInterval = true;
+    }, 1000);
   }
 }
