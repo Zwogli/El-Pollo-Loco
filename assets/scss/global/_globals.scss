@@ -47,7 +47,11 @@ img {
   width: 720px;
   height: 480px;
 }
-
+#instruction{
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+}
 #start-screen {
   position: relative;
 }
@@ -63,6 +67,7 @@ img {
   align-items: center;
 }
 .btn-none {
+  cursor: pointer;
   background-color: transparent;
   border: none;
 }
@@ -79,12 +84,14 @@ img {
   font-weight: bolder;
 }
 .btn-game:hover,
-.btn-controller:hover {
+.btn-controller:hover,
+.btn-options:hover {
   transform: scale(1.2);
   transition: all ease-in-out 175ms;
 }
 .btn-game:active,
-.btn-controller:active {
+.btn-controller:active,
+.btn-options:active{
   transition: none;
   border-style: inset;
 }

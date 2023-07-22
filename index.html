@@ -62,7 +62,19 @@
     </aside>
 
     <main id="screen" class="screen p-rel">
+
+      <section id="instruction" class="p-absolute d-none">
+        <img src="./assets/img/instructions/instruction.png" alt="instruction">
+        <div class="btn-container btn-instcruction">
+          <button onclick="toggleInstruction()" class="btn-options">Back</button>
+        </div>
+      </section>
+
       <section id="menu-div" class="p-absolute d-flex">
+        <button onclick="toggleInstruction()" class="btn-none">
+          <img class="icon-40" src="./assets/img/icon/help.png" alt="help">
+        </button>
+
         <button onclick="toggleOptions()" class="btn-none">
           <img
             class="icon-40"

@@ -40,7 +40,23 @@ function setPausableInterval(fn, time) {
 }
 
 function toggleOptions(){
-  document.getElementById('options-div').classList.toggle('d-none');
+  let options = document.getElementById('options-div')
+  options.classList.toggle('d-none');
+  togglePausedInterval(options);
+}
+
+function toggleInstruction(){
+  let instruction = document.getElementById('instruction');
+  instruction.classList.toggle('d-none');
+  togglePausedInterval(instruction);
+}
+
+function togglePausedInterval(id){
+  if (id.classList.contains('d-none')) {
+    stopInterval = undefined;
+  }else{
+    stopInterval = true;
+  }
 }
 
 /** Is height > width, use landscape mode */
