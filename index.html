@@ -40,6 +40,7 @@
     <script src="assets/models/world.class.js"></script>
     <!-- JavaScript -->
     <script src="assets/js/game.js"></script>
+    <script src="assets/js/audio.js"></script>
     <script src="assets/levels/level.js"></script>
     <script src="assets/js/eventListener.js"></script>
   </head>
@@ -64,7 +65,7 @@
     <main id="screen" class="screen p-rel">
 
       <section id="instruction" class="p-absolute d-none">
-        <img src="./assets/img/instructions/instruction.png" alt="instruction">
+        <img src="./assets/img/instructions/instruction-Smokum.png" alt="instruction">
         <div class="btn-container btn-instcruction">
           <button onclick="toggleInstruction()" class="btn-options">Back</button>
         </div>
@@ -98,11 +99,11 @@
           <input type="range" min="1" max="100" value="30" class="slider" id="music" onmousemove="volumeControllMusic(this.value/100)" onchange="volumeControllMusic(this.value/100)">
 
           <label for="sfxSound">SFX-Sound</label>
-          <input type="range" min="1" max="100" value="30" class="slider" id="sfxSound" onmousemove="volumeControllMusic(this.value/100)" onchange="volumeControllMusic(this.value/100)">
+          <input type="range" min="1" max="100" value="30" class="slider" id="sfxSound" onmousemove="volumeControllSound(this.value/100)" onchange="volumeControllSound(this.value/100)">
         
           <div class="label">
             <label for="mute">Mute</label>
-            <input id="mute" class="largerBox" type="checkbox">
+            <input id="mute" onclick="checkMute()" class="largerBox" type="checkbox">
           </div>
 
           <div class="label">

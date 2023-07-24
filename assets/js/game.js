@@ -11,6 +11,8 @@ function init() {
   canvas = document.getElementById("canvas");
   canvasWidth = canvas.width;
   bindBtnsPressEvents();
+  volumeControllSound(0.3);
+  volumeControllMusic(0.3);
 }
 
 /** Start Game / Reloade url */
