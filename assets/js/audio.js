@@ -1,10 +1,11 @@
 // Character sounds
 characterWalkingSound = new Audio('./assets/audio/character/walking.mp3');
 characterJumpSound = new Audio('./assets/audio/character/jump.wav');
-characterHurtSound = new Audio('assets/audio/character/hurt.wav');
+characterHurtSound = new Audio('./assets/audio/character/hurt.wav');
+characterDeadSound = new Audio('./assets/audio/character/dead.wav')
 // Endboss sounds
 endbossHurtSound = new Audio('./assets/audio/endboss/endbosshurt.wav');
-endbossDeadSound = new Audio('assets/audio/endboss/endbossdead.wav');
+endbossDeadSound = new Audio('./assets/audio/endboss/endbossdead.wav');
 // Collectable sound
 collectBottleSound = new Audio('./assets/audio/bottle/collectbottle.wav');
 throwBottleSound = new Audio('./assets/audio/bottle/throw.mp3');
@@ -21,6 +22,7 @@ function volumeControllSound(vol){
     characterWalkingSound.volume = vol;
     characterJumpSound.volume = vol;
     characterHurtSound.volume = vol;
+    characterDeadSound.volume = vol;
     endbossHurtSound.volume = vol;
     endbossDeadSound.volume = vol;
     collectBottleSound.volume = vol;

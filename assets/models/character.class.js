@@ -35,9 +35,18 @@ class Character extends MovableObject {
     this.loadImages(this.assets.IMAGES_WALKING);
   }
 
+  pauseAudio(){
+    characterWalkingSound.pause();
+    characterJumpSound.pause();
+    characterHurtSound.pause();
+    characterDeadSound.pause();
+  }
+
   /** Intervall method, image animation */
   imageAnimation() {
+    this.pauseAudio();
     if (this.isDead()) {
+      characterDeadSound.play();
       // this.playAnimation(this.assets.IMAGES_DEAD);
       this.playSingleAnimation(this.assets.IMAGES_DEAD);
       this.idle_countdown = 0;
@@ -48,6 +57,7 @@ class Character extends MovableObject {
     //   this.idle_countdown = 0;
     // } 
     else if (this.isAboveGround() && this.speedY >= 0) {
+      characterJumpSound.play();
       this.playAnimation(this.assets.IMAGES_JUMPING);
       this.idle_countdown = 0;
       if (this.isAboveGround() && this.speedY <= 0) {
@@ -57,12 +67,14 @@ class Character extends MovableObject {
       this.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       this.isJumping = false;
     } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+      characterWalkingSound.play();
       this.playAnimation(this.assets.IMAGES_WALKING);
       this.idle_countdown = 0;
     } else if (!this.isMoving()) {
       this.sleepCount();
     }
     if (this.isHurt() && !this.isDead()) {
+      characterHurtSound.play();
       // this.playAnimation(this.assets.IMAGES_HURT);
       this.playSingleAnimation(this.assets.IMAGES_HURT);
       this.idle_countdown = 0;
