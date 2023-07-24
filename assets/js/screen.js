@@ -12,6 +12,15 @@ function toggleInstruction() {
   playMenuMusic(instruction);
 }
 
+function toggleControllerDiv(){
+  let controller = document.getElementById('controller-div');
+  if(touchControll.checked){
+    controller.classList.remove('d-none');
+  }else{
+    controller.classList.add('d-none');
+  }
+}
+
 /** Is height > width, use landscape mode */
 function checkLandscapeMode() {
   if (screen.availHeight > screen.availWidth) {
