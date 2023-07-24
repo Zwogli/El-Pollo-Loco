@@ -16,8 +16,7 @@ function initSettings(){
   checkLandscapeMode();
   fitToScreen();
   bindBtnsPressEvents();
-  volumeControllSound(0.3);
-  volumeControllMusic(0.3);
+  manageAudio();
 }
 
 /** Start Game / Reloade url */
