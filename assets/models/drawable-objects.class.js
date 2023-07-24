@@ -75,35 +75,35 @@ class DrawableObjects {
   }
 
   /** select hitbox color */
-  drawHitBox(ctx) {
-    if (this instanceof Character) {
-      this.setHitBoxColor(ctx, "blue");
-    }
-    if (
-      this instanceof Chicken ||
-      this instanceof BabyChicken ||
-      this instanceof Endboss
-    ) {
-      this.setHitBoxColor(ctx, "red");
-    }
-    if (this instanceof Coins || this instanceof Bottles || this instanceof ThrowableObject) {
-      this.setHitBoxColor(ctx, "green");
-    }
-  }
+  // drawHitBox(ctx) {
+  //   if (this instanceof Character) {
+  //     this.setHitBoxColor(ctx, "blue");
+  //   }
+  //   if (
+  //     this instanceof Chicken ||
+  //     this instanceof BabyChicken ||
+  //     this instanceof Endboss
+  //   ) {
+  //     this.setHitBoxColor(ctx, "red");
+  //   }
+  //   if (this instanceof Coins || this instanceof Bottles || this instanceof ThrowableObject) {
+  //     this.setHitBoxColor(ctx, "green");
+  //   }
+  // }
 
   /** Draw hitbox */
-  setHitBoxColor(ctx, color) {
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = color;
-    ctx.rect(
-      this.x + this.offset.x,
-      this.y + this.offset.y,
-      this.width + this.offset.width,
-      this.height + this.offset.height
-    );
-    ctx.stroke();
-  }
+  // setHitBoxColor(ctx, color) {
+  //   ctx.beginPath();
+  //   ctx.lineWidth = "5";
+  //   ctx.strokeStyle = color;
+  //   ctx.rect(
+  //     this.x + this.offset.x,
+  //     this.y + this.offset.y,
+  //     this.width + this.offset.width,
+  //     this.height + this.offset.height
+  //   );
+  //   ctx.stroke();
+  // }
 
   /** Calc the real x, y, width & height, without offset*/
   setFixedPosition(){
