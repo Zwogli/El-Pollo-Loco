@@ -2,12 +2,14 @@ function toggleOptions() {
   let options = document.getElementById("options-div");
   options.classList.toggle("d-none");
   togglePausedInterval(options);
+  playMenuMusic(options);
 }
 
 function toggleInstruction() {
   let instruction = document.getElementById("instruction");
   instruction.classList.toggle("d-none");
   togglePausedInterval(instruction);
+  playMenuMusic(instruction);
 }
 
 /** Is height > width, use landscape mode */

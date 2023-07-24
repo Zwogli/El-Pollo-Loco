@@ -7,6 +7,7 @@ class World {
   level;
   character = new Character(assetsCharacter); //Erstellt aus der Schablone ein Objekt
   enemy = [];
+  endboss;
   statusbarLive = new StatusbarLive();
   statusbarCoins = new StatusbarCoins();
   statusbarBottles = new StatusbarBottles();
@@ -21,6 +22,7 @@ class World {
     this.level.enemies.forEach(arrayEnemy => {
       this.enemy.push(arrayEnemy);
     });
+    this.endboss = this.level.enemies.find(e => e instanceof Endboss);
     // this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
     this.draw();
     this.setWorld();
@@ -72,6 +74,7 @@ class World {
   checkCollisionsCoin() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
+        collectCoinSound.play();
         this.statusbarCoins.collect(coin);
         this.deleteObject(this.level.coins, coin);
       }
@@ -81,6 +84,7 @@ class World {
   checkCollisionsBottle() {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
+        collectBottleSound.play();
         this.statusbarBottles.collect(bottle);
         this.deleteObject(this.level.bottles, bottle);
       }
@@ -114,7 +118,8 @@ class World {
         this.positionBottleStartX(),
         this.positionBottleStartY(),
         this.character.otherDirection
-      );
+        );
+      throwBottleSound.play();
       this.throwableObjects.push(bottle);
       this.statusbarBottles.countBottle(-1);
     }
@@ -202,9 +207,13 @@ class World {
     let endboss = this.enemy.find(e => e instanceof Endboss);
     
     if (this.character.energy == 0) {
+      bossMusic.pause();
+      looseSound.play();
       let path = "./assets/img/9_intro_outro_screens/game_over/oh no you lost!.png";
       this.stopGame(path);
     }else if (endboss.energy == 0) {
+      bossMusic.pause();
+      winSound.play();
       let path = "./assets/img/9_intro_outro_screens/game_over/game over!.png";
       this.stopGame(path);
     }

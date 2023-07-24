@@ -7,10 +7,11 @@ characterDeadSound = new Audio('./assets/audio/character/dead.wav')
 endbossHurtSound = new Audio('./assets/audio/endboss/endbosshurt.wav');
 endbossDeadSound = new Audio('./assets/audio/endboss/endbossdead.wav');
 // Collectable sound
+collectCoinSound = new Audio('./assets/audio/coin/coincollect.wav');
 collectBottleSound = new Audio('./assets/audio/bottle/collectbottle.wav');
 throwBottleSound = new Audio('./assets/audio/bottle/throw.mp3');
 // Background music
-menuSound = new Audio('./assets/audio/Komiku_-_13_-_Good_Fellow.mp3');
+menuMusic = new Audio('./assets/audio/Komiku_-_13_-_Good_Fellow.mp3');
 gameMusic = new Audio('./assets/audio/background.mp3');
 bossMusic = new Audio('./assets/audio/backgroundBossFight.wav');
 looseSound = new Audio('./assets/audio/backgroundLoose.mp3');
@@ -30,7 +31,7 @@ function volumeControllSound(vol){
 }
 
 function volumeControllMusic(vol){
-    menuSound.volume = vol;
+    menuMusic.volume = vol;
     gameMusic.volume = vol;
     bossMusic.volume = vol;
     looseSound.volume = vol;
@@ -47,3 +48,18 @@ function checkMute(){
         volumeControllMusic(0);
     }
 }
+
+function playMenuMusic(id){
+    if(!id.classList.contains('d-none')){
+      gameMusic.pause();
+      bossMusic.pause();
+      menuMusic.play();
+    }else if(isGameStarted){
+      menuMusic.pause();
+      if(isGameStarted && world.endboss.characterTriggerBoss()){
+        bossMusic.play()
+      }else{
+        gameMusic.play();
+      }
+    }
+  }

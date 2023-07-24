@@ -76,11 +76,19 @@ class Endboss extends MovableObject{
     this.energy = 40;
   }
 
+  pauseAudio(){
+    endbossDeadSound.pause();
+    endbossHurtSound.pause();
+  }
+
   /** Intervall method, image animation */
   enbossAnimation(){
+    this.pauseAudio();
     if (this.isDead()) {
+      endbossDeadSound.play();
       this.playAnimation(this.IMAGES_DEAD);
     }else if(this.isHurt()){
+      endbossHurtSound.play()
       this.playAnimation(this.IMAGES_HURT);
     }else if(this.characterNearAttackRange()){
       this.x_attack = -50;
@@ -89,6 +97,8 @@ class Endboss extends MovableObject{
       this.x_attack = 0;
       this.playAnimation(this.IMAGES_WALKING);
     }else if(this.endbossTrigger){
+      gameMusic.pause();
+      bossMusic.play();
       this.playAnimation(this.IMAGES_ALERT);
     }
   }

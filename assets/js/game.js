@@ -4,11 +4,12 @@ let keyboard = new Keyboard();
 let stopInterval;
 let assetsCharacter = new AssetsCharacter();
 let isFullscreen;
+let isGameStarted = false;
 
 function init() {
   initSettings();
   canvas = document.getElementById("canvas");
-  canvasWidth = canvas.width; 
+  canvasWidth = canvas.width;
 }
 
 function initSettings(){
@@ -22,6 +23,9 @@ function initSettings(){
 /** Start Game / Reloade url */
 function startGame(mode) {
   if (mode == "start") {
+    isGameStarted = true;
+    menuMusic.pause();
+    gameMusic.play();
     document.getElementById("start-screen").classList.add("d-none");
     world = new World(canvas, keyboard); // load the class World as template -> object
   } else {
