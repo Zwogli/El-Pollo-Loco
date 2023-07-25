@@ -47,7 +47,6 @@ class Character extends MovableObject {
     this.pauseAudio();
     if (this.isDead()) {
       characterDeadSound.play();
-      // this.playAnimation(this.assets.IMAGES_DEAD);
       this.playSingleAnimation(this.assets.IMAGES_DEAD);
       this.idle_countdown = 0;
     } 
@@ -75,7 +74,6 @@ class Character extends MovableObject {
     }
     if (this.isHurt() && !this.isDead()) {
       characterHurtSound.play();
-      // this.playAnimation(this.assets.IMAGES_HURT);
       this.playSingleAnimation(this.assets.IMAGES_HURT);
       this.idle_countdown = 0;
     } 
@@ -83,12 +81,6 @@ class Character extends MovableObject {
       this.playAnimation(this.assets.IMAGES_IDLE_LONG);
     }
   }
-
-  // hurtAnimation(){
-  //   setInterval(() => {
-  //     this.playAnimation(this.assets.IMAGES_HURT);
-  //   }, 80);
-  // }
 
   /** Intervall method, for character action & inputs*/
   keyboardInputs() {

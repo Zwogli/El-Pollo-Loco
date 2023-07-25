@@ -13,6 +13,7 @@ class World {
   statusbarBottles = new StatusbarBottles();
   throwableObjects = [];
   assetsCharacter;
+  throwing = false;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -23,7 +24,6 @@ class World {
       this.enemy.push(arrayEnemy);
     });
     this.endboss = this.level.enemies.find(e => e instanceof Endboss);
-    // this.endboss = this.level.enemies.find(e => e instanceof Endboss); // find class Enboss in array
     this.draw();
     this.setWorld();
 
@@ -111,7 +111,7 @@ class World {
   }
 
   checkThrow() {
-    if (this.isThrowing()) {
+    if (this.isThrowing() && !this.throwing) {
       this.character.idle_countdown = 0;
       this.character.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       let bottle = new ThrowableObject(
@@ -122,6 +122,9 @@ class World {
       throwBottleSound.play();
       this.throwableObjects.push(bottle);
       this.statusbarBottles.countBottle(-1);
+      this.throwing = true;
+    }else if(!this.keyboard.THROW){
+      this.throwing = false;
     }
 }
 

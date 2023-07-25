@@ -32,7 +32,6 @@ function startGame(mode) {
   } else {
     location.reload();
   }
-  console.log(world.character);
 }
 
 /** Start and Stop game intervalls */
