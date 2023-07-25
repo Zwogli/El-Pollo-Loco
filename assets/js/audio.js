@@ -18,10 +18,10 @@ looseSound = new Audio("./assets/audio/backgroundLoose.mp3");
 winSound = new Audio("./assets/audio/backgroundWin.wav");
 let muteSoundToggle = false;
 
-// function manageAudio() {
-//   volumeControllSound(0.3);
-//   volumeControllMusic(0.3);
-// }
+function manageAudio() {
+  volumeControllSound(0.3);
+  volumeControllMusic(0.3);
+}
 
 function volumeControllSound(vol) {
   characterWalkingSound.volume = vol;

@@ -16,9 +16,7 @@ function initSettings(){
   checkLandscapeMode();
   fitToScreen();
   bindBtnsPressEvents();
-  // manageAudio();
-  volumeControllSound(0.3);
-  volumeControllMusic(0.3);
+  manageAudio();
 }
 
 /** Start Game / Reloade url */
@@ -34,17 +32,21 @@ function startGame(mode) {
   }
 }
 
-/** Start and Stop game intervalls */
+/** Start and Stop game intervalls 
+ * 
+ * @param {Function} fn - intervall function
+ * @param {number} time - in ms
+ */
 function setPausableInterval(fn, time) {
   let intervalID;
-  setInterval(() => {
-    if (stopInterval) {
-      clearInterval(intervalID);
-      intervalID = undefined;
+  setInterval(() => { // check every interval
+    if (stopInterval) { // true (pause)
+      clearInterval(intervalID); // paused all intervals - e.g. clearInterval(3)
+      intervalID = undefined; // reset intervallID - e.g. intervalID = (3) => undefined;
       return;
     }
-    if (!intervalID) {
-      intervalID = setInterval(fn, time);
+    if (!intervalID) { // undefined first tim, page was load
+      intervalID = setInterval(fn, time); // load interval - e.g. intervalID = 3
     }
   }, 60);
 }
