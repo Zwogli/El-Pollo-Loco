@@ -3,6 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let stopInterval;
 let assetsCharacter = new AssetsCharacter();
+let assetsEndboss = new AssetsEndboss();
 let isFullscreen;
 let isGameStarted = false;
 

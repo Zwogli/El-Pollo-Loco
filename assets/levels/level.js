@@ -25,7 +25,7 @@ return [
   new BabyChicken(-400, 5000), 
   new BabyChicken(600, 2500), 
   new BabyChicken(1100, 3200),
-  new Endboss(),
+  new Endboss(assetsEndboss),
 ];
 }
 
