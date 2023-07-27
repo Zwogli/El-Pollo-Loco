@@ -44,7 +44,7 @@ function fitToScreen() {
       "screen"
     ).style = `zoom:${zoomFactorW}; ,-moz-transform: scale(${zoomFactorW});`;
     document.getElementById("controller-div").classList.remove("d-none");
-  } else if (bodyHeight < 485 || isFullscreen) {
+  } else if (bodyHeight < 485 || bodyHeight < 485 && isFullscreen) {
     let zoomFactorH = bodyHeight / 485;
     document.getElementById(
       "screen"

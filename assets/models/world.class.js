@@ -16,6 +16,20 @@ class World {
   throwing = false;
 
   constructor(canvas, keyboard) {
+    this.initGame(canvas, keyboard);
+    this.draw();
+    this.setWorld();
+
+    setPausableInterval(this.worldIntervallFast.bind(this), 1000/60);
+    setPausableInterval(this.worldIntervallSlow.bind(this), 100);
+  }
+
+  /** Load game framework
+   * 
+   * @param {Node} canvas - document.getElementById('canvas')
+   * @param {EventListener} keyboard - bind keyboard
+   */
+  initGame(canvas, keyboard){
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.keyboard = keyboard;
@@ -24,13 +38,9 @@ class World {
       this.enemy.push(arrayEnemy);
     });
     this.endboss = this.level.enemies.find(e => e instanceof Endboss);
-    this.draw();
-    this.setWorld();
-
-    setPausableInterval(this.worldIntervallFast.bind(this), 1000/60);
-    setPausableInterval(this.worldIntervallSlow.bind(this), 100);
   }
 
+  /** shares variables with objects */
   setWorld() {
     this.character.world = this; //übergibt die world variablen an den Character
     this.level.world = this;
@@ -51,6 +61,7 @@ class World {
     this.checkThrow();
   }
 
+  /** Check if character jump off or hit by enemy */
   checkCollisionsEnemies() {
     this.level.enemies.forEach((enemy) => {
       if (this.isJumpOff(enemy)){
@@ -91,6 +102,7 @@ class World {
     });
   }
 
+  /** Check bottle collision, hitting normal enemies delete them.  */
   checkCollisionThrowBottle(){
     this.throwableObjects.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
@@ -110,6 +122,7 @@ class World {
     })
   }
 
+  /** Check throw input and generate bottle object */
   checkThrow() {
     if (this.isThrowing() && !this.throwing) {
       this.character.idle_countdown = 0;
@@ -145,11 +158,24 @@ class World {
     path.splice(path.indexOf(object), 1);
   }
 
+  /** Draw World */
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //clear canvas!
 
     this.ctx.translate(this.camera_x, 0);
+    this.drawDynamicCameraObjects();
+    this.ctx.translate(-this.camera_x, 0);
+
+    this.drawFixCameraObjects();
     
+    let self = this; // this wird nicht in requestAnimationFrame erkannt, daher wird eine hilfsvariable erzeugt.
+    requestAnimationFrame(function () {
+      //draw() wird immer wieder aufgerufen, um animationen anzuzeigen muss canvas immer wieder gelöscht werden!!
+      self.draw();
+    });
+  }
+
+  drawDynamicCameraObjects(){
     this.level.backgroundLayers.forEach( bg => this.addArrayToWorld(bg));
     this.addArrayToWorld(this.level.clouds);
     this.addArrayToWorld(this.level.coins);
@@ -158,19 +184,13 @@ class World {
     this.addArrayToWorld(this.throwableObjects);
 
     this.addToWorld(this.character);
+  }
 
-    this.ctx.translate(-this.camera_x, 0);
-
+  drawFixCameraObjects(){
     // HUD
     this.addToWorld(this.statusbarLive);
     this.addToWorld(this.statusbarCoins);
     this.addToWorld(this.statusbarBottles);
-
-    let self = this; // this wird nicht in requestAnimationFrame erkannt, daher wird eine hilfsvariable erzeugt.
-    requestAnimationFrame(function () {
-      //draw() wird immer wieder aufgerufen, um animationen anzuzeigen muss canvas immer wieder gelöscht werden!!
-      self.draw();
-    });
   }
 
   addArrayToWorld(array) {
@@ -187,7 +207,6 @@ class World {
 
     object.draw(this.ctx);
     // object.drawHitBox(this.ctx);
-
     if (object.otherDirection) {
       this.flipImageBack(object);
     }
