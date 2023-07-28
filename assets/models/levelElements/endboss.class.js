@@ -59,11 +59,9 @@ class Endboss extends MovableObject{
       this.playAnimation(this.assets.IMAGES_HURT);
     }else if(this.characterNearAttackRangeLeft()){
       this.x_attack = -50;
-      console.log(this.x_attack);
       this.playAnimation(this.assets.IMAGES_ATTACK);
     }else if(this.characterNearAttackRangeRight()){
       this.x_attack =+ 50;
-      console.log(this.x_attack);
       this.playAnimation(this.assets.IMAGES_ATTACK);
     }else if (this.isBeginnigMoveset()) {
       this.x_attack = 0;
