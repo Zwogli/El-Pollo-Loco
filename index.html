@@ -77,7 +77,7 @@
         </div>
       </section>
 
-      <section id="menu-div" class="p-absolute d-flex">
+      <!-- <section id="menu-div" class="p-absolute d-flex">
         <button onclick="toggleInstruction()" class="btn-none">
           <img class="icon-40" src="./assets/img/icon/help.png" alt="help" />
         </button>
@@ -96,13 +96,9 @@
             alt="fullscreen"
           />
         </button>
-      </section>
+      </section> -->
 
-      <section
-        id="options-div"
-        onclick=" toggleOptions()"
-        class="p-absolute d-none"
-      >
+      <section id="options-div" onclick=" toggleOptions()" class="p-absolute d-none">
         <div id="options" onclick="event.stopPropagation()">
           <h2>Options</h2>
           <label for="music">Music</label>
@@ -153,8 +149,29 @@
         </div>
       </section>
 
-      <section id="screen-canvas" class="p-absolute box-shadow">
+      <section id="screen-canvas" class="p-rel box-shadow">
         <canvas id="canvas" width="720" height="480" class="canvas"></canvas>
+
+        <section id="menu-div" class="p-absolute d-flex">
+          <button onclick="toggleInstruction()" class="btn-none">
+            <img class="icon-40" src="./assets/img/icon/help.png" alt="help" />
+          </button>
+  
+          <button onclick="toggleOptions()" class="btn-none">
+            <img
+              class="icon-40"
+              src="./assets/img/icon/computer-1293125.svg"
+              alt="options"
+            />
+          </button>
+          <button id="fullscrn" class="btn-none" onclick="toggleFullscreen()">
+            <img
+              class="icon-48"
+              src="assets/img/icon/fullscreen.png"
+              alt="fullscreen"
+            />
+          </button>
+        </section>
 
         <div id="controller-div" class="p-absolute">
           <div class="controller">

@@ -60,12 +60,12 @@ window.addEventListener('fullscreenchange', () => {
   let zoomFactorH = bodyHeight / 485;
   if (!document.fullscreenElement) {
     document.getElementById('screen').style = `zoom:1; ,-moz-transform: scale(1);`;
-    document.getElementById('canvas').style = `zoom:1; ,-moz-transform: scale(1);`;
+    document.getElementById('screen-canvas').style = `zoom:1; ,-moz-transform: scale(1);`;
     isFullscreen = false;
 }else{
   if(zoomFactorW < zoomFactorH){
-    document.getElementById('canvas').style = `zoom:${zoomFactorW}; ,-moz-transform: ${zoomFactorW};`;
+    document.getElementById('screen-canvas').style = `zoom:${zoomFactorW}; ,-moz-transform: ${zoomFactorW};`;
   }else
-  document.getElementById('canvas').style = `zoom:${zoomFactorH}; ,-moz-transform: ${zoomFactorH};`;
+  document.getElementById('screen-canvas').style = `zoom:${zoomFactorH}; ,-moz-transform: ${zoomFactorH};`;
 }
 });
