@@ -16,6 +16,7 @@ class Level{
     this.backgroundLayers = backgroundLayers;
   }
 
+  /** Define level limitation */
   levelArea(levelArea){
     this.levelArea_start = levelArea[0];
     this.levelArea_end = levelArea[1];

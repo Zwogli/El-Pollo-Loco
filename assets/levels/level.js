@@ -11,6 +11,7 @@ function initLevel(lvlNumber){
   }
 }
 
+/** Define start, end level */
 function createAreaLevel1(){
   return [- 720 * 1.5, 720 * 4];
 }

@@ -33,6 +33,7 @@ class MovableObject extends DrawableObjects {
     }
   }
 
+  /** Time how long object is hurt */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
@@ -43,6 +44,7 @@ class MovableObject extends DrawableObjects {
     return this.energy == 0;
   }
 
+  /** Time until the character sleeps */
   sleepCount() {
     this.idle_countdown++;
     let idleCountdown_seconds = this.idle_countdown / 10; // change into seconds
@@ -94,6 +96,7 @@ class MovableObject extends DrawableObjects {
     this.x -= this.speed;
   }
 
+  /** Enemy movement loop with flip image */
   movementLoop() {
     if (!this.otherDirection) {
       this.moveLeft();

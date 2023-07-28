@@ -109,6 +109,7 @@ class Character extends MovableObject {
     this.world.camera_x = -this.x + 200; // invert camera motion and set position
   }
 
+  /** level limitation */
   isCharacterReachedLevelEnds() {
     return (
       this.x < this.world.level.levelArea_end &&

@@ -7,11 +7,13 @@ let assetsEndboss = new AssetsEndboss();
 let isFullscreen;
 let isGameStarted = false;
 
+/** Init canvas */
 function init() {
   initSettings();
   canvas = document.getElementById("canvas");
 }
 
+/** Manage screen device and audio */
 function initSettings(){
   checkLandscapeMode();
   fitToScreen();
@@ -51,6 +53,10 @@ function setPausableInterval(fn, time) {
   }, 60);
 }
 
+/** Paused game by activ menu container
+ * 
+ * @param {Node} id - instruction or option container
+ */
 function togglePausedInterval(id){
   if (id.classList.contains('d-none')) {
     stopInterval = undefined;

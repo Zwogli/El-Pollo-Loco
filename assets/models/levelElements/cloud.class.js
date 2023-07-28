@@ -23,6 +23,7 @@ class Cloud extends MovableObject {
       }
   }
   
+  /** Check level end */
   isLevelEndsX(){
     return this.x >= 720 * 5;
   }

@@ -63,6 +63,7 @@ animateThrow(){
     }
 }
 
+/** Render img array position */
 iterateRotate(){
   if(this.numRotate >= this.IMAGES_ROTATE.length - 1){
     this.numRotate = 0;
@@ -71,8 +72,8 @@ iterateRotate(){
   }
 }
 
+/** Check y-position for delete */
 isHigherGround(){
   return this.y < 350
 }
-
 }

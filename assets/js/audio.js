@@ -18,11 +18,16 @@ looseSound = new Audio("./assets/audio/backgroundLoose.mp3");
 winSound = new Audio("./assets/audio/backgroundWin.wav");
 let muteSoundToggle = false;
 
+/** Render sound and music param */
 function manageAudio() {
   volumeControllSound(0.3);
   volumeControllMusic(0.3);
 }
 
+/** Set Sound param
+ * 
+ * @param {number} vol - load sound volume param
+ */
 function volumeControllSound(vol) {
   characterWalkingSound.volume = vol;
   characterJumpSound.volume = vol;
@@ -34,6 +39,10 @@ function volumeControllSound(vol) {
   throwBottleSound.volume = vol;
 }
 
+/** Set Music param
+ * 
+ * @param {number} vol - load music volume param
+ */
 function volumeControllMusic(vol) {
   menuMusic.volume = vol;
   gameMusic.volume = vol;
@@ -42,6 +51,7 @@ function volumeControllMusic(vol) {
   winSound.volume = vol;
 }
 
+/** Check mute checkbox */
 function checkMute() {
   let mute = document.getElementById("mute");
   if (!mute.checked) {
@@ -53,6 +63,10 @@ function checkMute() {
   }
 }
 
+/** Manage Menu Music
+ * 
+ * @param {Node} id - instruction or option container
+ */
 function playMenuMusic(id) {
   if (!id.classList.contains("d-none")) {
     gameMusic.pause();

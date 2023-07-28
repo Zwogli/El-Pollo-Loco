@@ -90,6 +90,7 @@ class Endboss extends MovableObject{
     return distance < 250;
   }
 
+  /** Moveset delay */
   isAlarmed() {
     let timepassed = new Date().getTime() - this.triggerDelay; // difference in ms
     timepassed = timepassed / 1000; // difference ins s
