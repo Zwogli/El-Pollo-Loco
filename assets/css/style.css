@@ -66,6 +66,12 @@ img {
   height: 100%;
 }
 
+#screen-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .canvas {
   width: 720px;
   height: 480px;

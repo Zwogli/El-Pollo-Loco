@@ -52,9 +52,20 @@ window.addEventListener('resize', () => {
   fitToScreen();
 });
 
+/** Set zoom by fullscreen */
 window.addEventListener('fullscreenchange', () => {
+  let bodyWidth = document.getElementById("body").clientWidth;
+  let bodyHeight = document.getElementById("body").clientHeight;
+  let zoomFactorW = bodyWidth / 720;
+  let zoomFactorH = bodyHeight / 485;
   if (!document.fullscreenElement) {
     document.getElementById('screen').style = `zoom:1; ,-moz-transform: scale(1);`;
+    document.getElementById('canvas').style = `zoom:1; ,-moz-transform: scale(1);`;
     isFullscreen = false;
+}else{
+  if(zoomFactorW < zoomFactorH){
+    document.getElementById('canvas').style = `zoom:${zoomFactorW}; ,-moz-transform: ${zoomFactorW};`;
+  }else
+  document.getElementById('canvas').style = `zoom:${zoomFactorH}; ,-moz-transform: ${zoomFactorH};`;
 }
 });
