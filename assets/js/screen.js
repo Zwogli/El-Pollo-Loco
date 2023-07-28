@@ -67,27 +67,3 @@ function toggleFullscreen() {
     isFullscreen = true;
   }
 }
-
-// function toggleFullscreen() {
-//   let canvas = document.getElementById('canvas');
-//   let screen = document.getElementById('screen');
-//   if (isFullscreen) {
-//     document.exitFullscreen();
-//     isFullscreen = false;
-//   } else {
-//     if(canvas.requestFullscreen){
-//       canvas.requestFullscreen();
-//       isFullscreen = true;
-//     }else if(canvas.mozRequestFullscreen){ /* Firefox */
-//       	canvas.mozRequestFullscreen();
-//         isFullscreen = true;
-//     }else if(canvas.webkitRequestFullscreen){ /* Chrome, Safari, Opera */
-//       canvas.webkitRequestFullscreen();
-//       screen.webkitRequestFullscreen();
-//     }else if(canvas.msRequestFullscreen){ /* IE / Edge */
-//       canvas.msRequestFullscreen
-//     }
-//     // document.getElementById("screen").requestFullscreen();
-//     // isFullscreen = true;
-//   }
-// }

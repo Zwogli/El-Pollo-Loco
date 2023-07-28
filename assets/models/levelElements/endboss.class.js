@@ -57,8 +57,13 @@ class Endboss extends MovableObject{
       this.speed += 0.3;
       endbossHurtSound.play()
       this.playAnimation(this.assets.IMAGES_HURT);
-    }else if(this.characterNearAttackRange()){
+    }else if(this.characterNearAttackRangeLeft()){
       this.x_attack = -50;
+      console.log(this.x_attack);
+      this.playAnimation(this.assets.IMAGES_ATTACK);
+    }else if(this.characterNearAttackRangeRight()){
+      this.x_attack =+ 50;
+      console.log(this.x_attack);
       this.playAnimation(this.assets.IMAGES_ATTACK);
     }else if (this.isBeginnigMoveset()) {
       this.x_attack = 0;
@@ -77,7 +82,13 @@ class Endboss extends MovableObject{
       this.endbossTrigger = true;
       this.triggerDelay = new Date().getTime();
     }else if (this.isBeginnigMoveset()) {
-      this.moveLeft();
+      if(this.characterIsLeft()){
+        this.otherDirection = false;
+        this.moveLeft();
+      }else if(this.characterIsRight()){
+        this.otherDirection = true;
+        this.moveRight()
+      }
   }
   }
 
@@ -85,9 +96,22 @@ class Endboss extends MovableObject{
     return this.world.character.x > 720 * 2.5 + 200
   }
 
-  characterNearAttackRange(){
-    let distance = this.x_fix - this.world.character.x_fix + this.world.character.width_fix;
-    return distance < 250;
+  characterIsLeft(){
+    return this.world.character.x_fix + this.world.character.width_fix < this.x_fix;
+  }
+
+  characterIsRight(){
+    return this.world.character.x_fix > this.x_fix + this.width_fix;
+  }
+
+  characterNearAttackRangeLeft(){
+    let distanceLeft = this.x_fix - this.world.character.x_fix + this.world.character.width_fix;
+    return distanceLeft < 250 && distanceLeft > 0;
+  }
+
+  characterNearAttackRangeRight(){
+    let distanceRight =  this.world.character.x_fix - this.x_fix
+    return distanceRight < 250 && distanceRight > 0;
   }
 
   /** Moveset delay */
@@ -98,6 +122,7 @@ class Endboss extends MovableObject{
   }
 
   isBeginnigMoveset(){
-    return this.isAlarmed() && this.triggerDelay && !this.characterNearAttackRange() && !this.isDead();
+    return this.isAlarmed() && this.triggerDelay && !this.characterNearAttackRangeLeft() && !this.isDead() ||
+    this.isAlarmed() && this.triggerDelay && !this.characterNearAttackRangeRight() && !this.isDead();
   }
 }
