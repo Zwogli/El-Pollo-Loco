@@ -124,7 +124,7 @@ class World {
 
   /** Check throw input and generate bottle object */
   checkThrow() {
-    if (this.isThrowing() && !this.throwing) {
+    if (this.isThrowing() && !this.throwing && this.throwableObjects.length < 1) {
       this.character.idle_countdown = 0;
       this.character.loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
       let bottle = new ThrowableObject(
@@ -143,7 +143,6 @@ class World {
 
   isThrowing(){
     return this.keyboard.THROW && this.statusbarBottles.setBottle > 0;
-      
   }
 
   positionBottleStartX(){
@@ -160,7 +159,7 @@ class World {
 
   /** Draw World */
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //clear canvas!
+    this.ctx.clearRect(0, 0, 720, 480); //clear canvas!
 
     this.ctx.translate(this.camera_x, 0);
     this.drawDynamicCameraObjects();
@@ -175,6 +174,7 @@ class World {
     });
   }
 
+  /** Drawed objects are moving into the canvas */
   drawDynamicCameraObjects(){
     this.level.backgroundLayers.forEach( bg => this.addArrayToWorld(bg));
     this.addArrayToWorld(this.level.clouds);
@@ -186,6 +186,7 @@ class World {
     this.addToWorld(this.character);
   }
 
+  /** Drawed objects are fixed into the canvas */
   drawFixCameraObjects(){
     // HUD
     this.addToWorld(this.statusbarLive);
@@ -212,6 +213,7 @@ class World {
     }
   }
 
+  /** Reflect image */
   flipImage(object) {
     this.ctx.save(); // saves the entire state of the canvas by pushing the current state onto a stack.
     this.ctx.translate(object.width, 0); // translate(x, y),
@@ -219,6 +221,7 @@ class World {
     object.x = object.x * -1;
   }
 
+  /** Reflect image back */
   flipImageBack(object) {
     object.x = object.x * -1;
     this.ctx.restore();
