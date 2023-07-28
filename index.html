@@ -71,43 +71,22 @@
           alt="instruction"
         />
         <div class="btn-container btn-instcruction">
-          <button onclick="toggleInstruction()" class="btn-options">
+          <button onclick="toggleInstruction()" class="btn-options c-pointer">
             Back
           </button>
         </div>
       </section>
 
-      <!-- <section id="menu-div" class="p-absolute d-flex">
-        <button onclick="toggleInstruction()" class="btn-none">
-          <img class="icon-40" src="./assets/img/icon/help.png" alt="help" />
-        </button>
-
-        <button onclick="toggleOptions()" class="btn-none">
-          <img
-            class="icon-40"
-            src="./assets/img/icon/computer-1293125.svg"
-            alt="options"
-          />
-        </button>
-        <button id="fullscrren" class="btn-none" onclick="toggleFullscreen()">
-          <img
-            class="icon-48"
-            src="assets/img/icon/fullscreen.png"
-            alt="fullscreen"
-          />
-        </button>
-      </section> -->
-
       <section id="options-div" onclick=" toggleOptions()" class="p-absolute d-none">
         <div id="options" onclick="event.stopPropagation()">
-          <h2>Options</h2>
+          <h2 class="c-default">Options</h2>
           <label for="music">Music</label>
           <input
             type="range"
             min="1"
             max="100"
             value="30"
-            class="slider"
+            class="slider c-pointer"
             id="music"
             onmousemove="volumeControllMusic(this.value/100)"
             onchange="volumeControllMusic(this.value/100)"
@@ -119,7 +98,7 @@
             min="1"
             max="100"
             value="30"
-            class="slider"
+            class="slider c-pointer"
             id="sfxSound"
             onmousemove="volumeControllSound(this.value/100)"
             onchange="volumeControllSound(this.value/100)"
@@ -130,7 +109,7 @@
             <input
               id="mute"
               onclick="checkMute()"
-              class="largerBox"
+              class="largerBox c-pointer"
               type="checkbox"
             />
           </div>
@@ -140,12 +119,12 @@
             <input
               id="touchControll"
               onclick="toggleControllerDiv()"
-              class="largerBox"
+              class="largerBox c-pointer"
               type="checkbox"
             />
           </div>
 
-          <button onclick="toggleOptions()" class="btn-options">Back</button>
+          <button onclick="toggleOptions()" class="btn-options c-pointer">Back</button>
         </div>
       </section>
 
@@ -212,7 +191,7 @@
           alt="start-screen"
         />
         <div class="btn-container pos-b-start">
-          <button onclick="startGame('start')" class="btn-game">
+          <button onclick="startGame('start')" class="btn-game c-pointer">
             Start Game
           </button>
         </div>
@@ -221,7 +200,7 @@
       <section id="endscreen" class="p-absolute d-none">
         <img id="img-endscreen" src="" alt="game over" />
         <div class="btn-container pos-b-restart">
-          <button onclick="startGame('win')" class="btn-game">
+          <button onclick="startGame('win')" class="btn-game c-pointer">
             Restart Game
           </button>
         </div>
