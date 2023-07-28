@@ -1,3 +1,4 @@
+/** Show hide options */
 function toggleOptions() {
   let options = document.getElementById("options-div");
   options.classList.toggle("d-none");
@@ -5,6 +6,7 @@ function toggleOptions() {
   playMenuMusic(options);
 }
 
+/** Show hide instructions */
 function toggleInstruction() {
   let instruction = document.getElementById("instruction");
   instruction.classList.toggle("d-none");
@@ -12,6 +14,7 @@ function toggleInstruction() {
   playMenuMusic(instruction);
 }
 
+/** Show hide touch controller input */
 function toggleControllerDiv(){
   let controller = document.getElementById('controller-div');
   if(touchControll.checked){
@@ -46,24 +49,21 @@ function fitToScreen() {
     document.getElementById("controller-div").classList.remove("d-none");
   } else if (bodyHeight < 485 || bodyHeight < 485 && isFullscreen) {
     let zoomFactorH = bodyHeight / 485;
-    document.getElementById(
-      "screen"
-    ).style = `zoom:${zoomFactorH}; ,-moz-transform: scale(${zoomFactorH});`;
+    document.getElementById("screen").style = `zoom:${zoomFactorH}; ,-moz-transform: scale(${zoomFactorH});`;
     document.getElementById("controller-div").classList.remove("d-none");
   } else {
-    document.getElementById(
-      "screen"
-    ).style = `zoom:1; ,-moz-transform: scale(1);`;
+    document.getElementById("screen").style = `zoom:1; ,-moz-transform: scale(1);`;
     document.getElementById("controller-div").classList.add("d-none");
   }
 }
 
+/** De- and activate fullscreen */
 function toggleFullscreen() {
   if (isFullscreen) {
     document.exitFullscreen();
     isFullscreen = false;
   } else {
-    document.getElementById("body").requestFullscreen();
+    document.getElementById("screen").requestFullscreen();
     isFullscreen = true;
   }
 }

@@ -24,7 +24,7 @@ class Cloud extends MovableObject {
   }
   
   isLevelEndsX(){
-    return this.x >= canvas.width * 5;
+    return this.x >= 720 * 5;
   }
 }
 

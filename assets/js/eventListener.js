@@ -51,3 +51,10 @@ window.addEventListener("orientationchange", () => {
 window.addEventListener('resize', () => {
   fitToScreen();
 });
+
+window.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) {
+    document.getElementById('screen').style = `zoom:1; ,-moz-transform: scale(1);`;
+    isFullscreen = false;
+}
+});

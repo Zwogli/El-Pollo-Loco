@@ -65,17 +65,21 @@
     </aside>
 
     <main id="screen" class="screen p-rel">
-
       <section id="instruction" class="p-absolute d-none">
-        <img src="./assets/img/instructions/instruction-Smokum.png" alt="instruction">
+        <img
+          src="./assets/img/instructions/instruction-Smokum.png"
+          alt="instruction"
+        />
         <div class="btn-container btn-instcruction">
-          <button onclick="toggleInstruction()" class="btn-options">Back</button>
+          <button onclick="toggleInstruction()" class="btn-options">
+            Back
+          </button>
         </div>
       </section>
 
       <section id="menu-div" class="p-absolute d-flex">
         <button onclick="toggleInstruction()" class="btn-none">
-          <img class="icon-40" src="./assets/img/icon/help.png" alt="help">
+          <img class="icon-40" src="./assets/img/icon/help.png" alt="help" />
         </button>
 
         <button onclick="toggleOptions()" class="btn-none">
@@ -94,23 +98,55 @@
         </button>
       </section>
 
-      <section id="options-div" onclick=" toggleOptions()" class="p-absolute d-none">
+      <section
+        id="options-div"
+        onclick=" toggleOptions()"
+        class="p-absolute d-none"
+      >
         <div id="options" onclick="event.stopPropagation()">
           <h2>Options</h2>
           <label for="music">Music</label>
-          <input type="range" min="1" max="100" value="30" class="slider" id="music" onmousemove="volumeControllMusic(this.value/100)" onchange="volumeControllMusic(this.value/100)">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="30"
+            class="slider"
+            id="music"
+            onmousemove="volumeControllMusic(this.value/100)"
+            onchange="volumeControllMusic(this.value/100)"
+          />
 
           <label for="sfxSound">SFX-Sound</label>
-          <input type="range" min="1" max="100" value="30" class="slider" id="sfxSound" onmousemove="volumeControllSound(this.value/100)" onchange="volumeControllSound(this.value/100)">
-        
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="30"
+            class="slider"
+            id="sfxSound"
+            onmousemove="volumeControllSound(this.value/100)"
+            onchange="volumeControllSound(this.value/100)"
+          />
+
           <div class="label">
             <label for="mute">Mute</label>
-            <input id="mute" onclick="checkMute()" class="largerBox" type="checkbox">
+            <input
+              id="mute"
+              onclick="checkMute()"
+              class="largerBox"
+              type="checkbox"
+            />
           </div>
 
           <div class="label">
             <label for="touchControll">Touch Controller</label>
-            <input id="touchControll" onclick="toggleControllerDiv()" class="largerBox" type="checkbox">
+            <input
+              id="touchControll"
+              onclick="toggleControllerDiv()"
+              class="largerBox"
+              type="checkbox"
+            />
           </div>
 
           <button onclick="toggleOptions()" class="btn-options">Back</button>
@@ -118,27 +154,37 @@
       </section>
 
       <section id="screen-canvas" class="p-absolute box-shadow">
-        <div class="d-flex p-rel">
-          <canvas id="canvas" width="720" height="480"></canvas>
+        <canvas id="canvas" width="720" height="480" class="canvas"></canvas>
 
-          <div id="controller-div" class="p-absolute">
-            <div class="controller">
-              <button id="btn-left" class="btn-controller">
-                <img class="btn-img" src="./assets/img/icon/arrow-left.png" alt="left">
-              </button>
-              <button id="btn-right" class="btn-controller">
-                <img class="btn-img" src="./assets/img/icon/arrow-right.png" alt="right">
-              </button>
-            </div>
+        <div id="controller-div" class="p-absolute">
+          <div class="controller">
+            <button id="btn-left" class="btn-controller">
+              <img
+                class="btn-img"
+                src="./assets/img/icon/arrow-left.png"
+                alt="left"
+              />
+            </button>
+            <button id="btn-right" class="btn-controller">
+              <img
+                class="btn-img"
+                src="./assets/img/icon/arrow-right.png"
+                alt="right"
+              />
+            </button>
+          </div>
 
-            <div class="controller">
-              <button id="btn-jump" class="btn-controller">
-                <img class="btn-img" src="./assets/img/icon/arrow-up.png" alt="up">
-              </button>
-              <button id="btn-throw" class="btn-controller">
-                <img src="./assets/img/6_salsa_bottle/salsa_bottle.png" alt="">
-              </button>
-            </div>
+          <div class="controller">
+            <button id="btn-jump" class="btn-controller">
+              <img
+                class="btn-img"
+                src="./assets/img/icon/arrow-up.png"
+                alt="up"
+              />
+            </button>
+            <button id="btn-throw" class="btn-controller">
+              <img src="./assets/img/6_salsa_bottle/salsa_bottle.png" alt="" />
+            </button>
           </div>
         </div>
       </section>

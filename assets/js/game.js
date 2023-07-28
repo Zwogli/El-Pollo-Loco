@@ -10,7 +10,6 @@ let isGameStarted = false;
 function init() {
   initSettings();
   canvas = document.getElementById("canvas");
-  canvasWidth = canvas.width;
 }
 
 function initSettings(){

@@ -38,7 +38,7 @@ class Endboss extends MovableObject{
 
   /** Set diffrent starting variables */
   renderVariables(){
-    this.x = canvas.width * 3 + 200;;  //canvas.width * 3 + 200;
+    this.x = 720 * 3 + 200;
     this.energy = 60;
   }
 
@@ -81,7 +81,7 @@ class Endboss extends MovableObject{
   }
 
   characterTriggerBoss(){
-    return this.world.character.x > this.world.canvas.width * 2.5 + 200
+    return this.world.character.x > 720 * 2.5 + 200
   }
 
   characterNearAttackRange(){

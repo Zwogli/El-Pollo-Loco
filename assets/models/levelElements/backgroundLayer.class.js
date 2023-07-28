@@ -1,7 +1,7 @@
 class BackgroundLayer extends MovableObject{
 y = 0;
-width = canvas.width + 1; //canvas ist als globalevariable in der game.js
-height = canvas.height;
+width = 720 + 1; //canvas ist als globalevariable in der game.js
+height = 480;
 
   constructor(img, x, maxSpeed){
     super().loadImage(img);
